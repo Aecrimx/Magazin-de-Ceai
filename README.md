@@ -9,5 +9,9 @@
 
 ## Tehnologii folosite
 To be done
+
+## Bibliografie
+- To be done
+
 ## License(s)
 To be done
