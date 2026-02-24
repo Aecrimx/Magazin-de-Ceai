@@ -1,0 +1,13 @@
+# Magazin de Ceai
+## TODO list
+- [ ] Tematica Design
+- [ ] Backend
+- [ ] Frontend
+- [ ] Adaugat lucruri reale in TODO list
+
+
+
+## Tehnologii folosite
+To be done
+## License(s)
+To be done
