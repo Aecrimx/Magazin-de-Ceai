@@ -31,3 +31,7 @@
 - [ ] 18. In footer sa fie date si un telefon fictiv, adresa fictiva pt o locatie google maps, email, link ce deschide un sociall websiite
 - [ ] 19. Informatie copyright.
 - [ ] 20. sintaxa corecta si well bonusuri
+
+
+##Etapa 2
+- [ ] FONT GOOGLE!

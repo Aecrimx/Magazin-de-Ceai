@@ -34,6 +34,10 @@ figure{
 #grid-pagina > *{
     padding: 15px 15px 15px 15px;
     border: 2.5px solid var(--culoare-contur);
+
+    box-shadow: 0 0 5px var(--culoare-contur);
+    /* box-shadow: 10px 0 5px var(--culoare-contur);  */
+    /*putem muta si umbra!*/
 }
 /* steluta inseamna orice. deci orice fel de element care este fiu care este mai mic decat grid pagina*/
 
@@ -61,6 +65,16 @@ figure{
 #fig3{
     grid-area: fig3;
 }
+
+/* figure > img{
+    width:100%;
+} daca vrem sa se intample doar pt fig1 fig2 si fig3 nu putem face asa general*/
+/*folosim class id!!!!*/
+
+figure.fg-img > img{
+    width:100%;
+}
+
 #produse{
     grid-area: produse;
 }
@@ -107,4 +121,6 @@ figure{
 
     /* 
     putem pune doar display: block; si va face sa fie unu dupa altul  */
+    }
 }
+
