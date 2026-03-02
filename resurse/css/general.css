@@ -1,5 +1,6 @@
 body{
     --culoare-fundal: pink;
+    --culoare-contur: rgb(214, 96, 116);
     background-color: var(--culoare-fundal);
 }
 
@@ -12,15 +13,64 @@ main{
     margin-left: var(--valoare-margine);
     margin-right: var(--valoare-margine);
 }
+
+#grid-pagina{
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-areas: "welcome welcome welcome"
+                         "promotii promotii anunturi"
+                         "fig1 orar orar"
+                         "fig2 orar orar"
+                         "fig3 orar orar"
+                         "produse produse produse"
+                         "index-intrebari index-intrebari index-intrebari";
+}
+#grid-pagina > *{
+    border: 1px solid var(--culoare-contur);
+}
+/* steluta inseamna orice. deci orice fel de element care este fiu care este mai mic decat grid pagina*/
+
+
+ 
+#welcome{
+    grid-area: welcome;
+}
+#promotii{
+    grid-area: promotii;
+}
+#anunturi{
+    grid-area: anunturi;
+}
+#orar{
+    grid-area: orar;
+}
+ 
+#fig1{
+    grid-area: fig1;
+}
+#fig2{
+    grid-area: fig2;
+}
+#fig3{
+    grid-area: fig3;
+}
+#produse{
+    grid-area: produse;
+}
+#index-intrebari{
+    grid-area: index-intrebari;
+}
+
+
 /*pt diferite rezolutii*/
-@media screen and (max-widdth:1200px) {
-    main{
+@media screen and (max-width:1200px) {
+    body{
         --valoare-margine: 80px;
     }
 }
 
-@media screen and (max-widdth:700px) {
-    main{
+@media screen and (max-width:700px) {
+    body{
         --valoare-margine: 50px;
     }
 }

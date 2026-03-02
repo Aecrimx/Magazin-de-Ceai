@@ -68,7 +68,7 @@
                                 <!-- il ia pe primul care se potriveste cu query-ul din media-->
                                 <source srcset="resurse/imagini/test1.jpg" media="(max-width:700px)" />
                                 <source srcset="resurse/imagini/test2.jpg" media="(max-width:1200px)" />
-                                <img src="resurse/imagini/test3.jpg" alt="lipsa poza" />
+                                <img src="resurse/imagini/test3.jpg" alt="lipsa poza" style="width: 100%"/>
                             </picture>
                             <figcaption>Ceaiul verde este perfect pentru dimineata!</figcaption>
                         </figure>
@@ -251,6 +251,18 @@
                 </table>
                 <p><strong>Atentie!!!</strong> in prima zi a lunii facem inventar.</p>
             </section>
+            <figure id="fig1" class="fg-img">
+            <img src="resurse/imagini/briose-frisca.png" alt="ceai1">
+            <figcaption>Briose 1</figcaption>
+            </figure>
+            <figure id="fig2" class="fg-img">
+            <img src="resurse/imagini/briose-frisca.png" alt="ceai2">
+            <figcaption>Briose 2</figcaption>
+            </figure>
+            <figure  id="fig3" class="fg-img">
+            <img src="resurse/imagini/briose-frisca.png" alt="ceai3">
+            <figcaption>Briose 3</figcaption>
+            </figure>
             <section id="anunturi">
                 <h2 class="fg-img">Anunțuri</h2>
                 <p><time datetime="2025-07-20">20 iulie 2025</time>Lichidare stoc de vara!</p>
@@ -300,7 +312,8 @@
 
 
     </main>
-    <footer>
+    <footer id="subsol">
+        <a href="#" title="mergi sus" id ="link-top">Mergi sus</a>
         <!-- <p><small>All frontend and backend code is under MIT License. Images and third-party assets belong to their
                 respective owners and are used under their individual licenses; Popa Mircea Alexandru</small></p> -->
         <p>Copyright &copy; <a href="https://github.com/Aecrimx/Magazin-de-Ceai" target="_blank">Popa Mircea Alexandru</a></p>
