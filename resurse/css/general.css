@@ -12,3 +12,15 @@ main{
     margin-left: var(--valoare-margine);
     margin-right: var(--valoare-margine);
 }
+/*pt diferite rezolutii*/
+@media screen and (max-widdth:1200px) {
+    main{
+        --valoare-margine: 80px;
+    }
+}
+
+@media screen and (max-widdth:700px) {
+    main{
+        --valoare-margine: 50px;
+    }
+}
