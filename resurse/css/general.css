@@ -1,0 +1,14 @@
+body{
+    --culoare-fundal: pink;
+    background-color: var(--culoare-fundal);
+}
+
+p{
+    border: 1px solid var(--culoare-fundal);
+}
+
+main{
+    --valoare-margine: 100px;
+    margin-left: var(--valoare-margine);
+    margin-right: var(--valoare-margine);
+}
