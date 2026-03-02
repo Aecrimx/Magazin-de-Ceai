@@ -14,8 +14,14 @@ main{
     margin-right: var(--valoare-margine);
 }
 
+figure{
+    margin:0;
+}
+/*Pentru a alinia figure cum trebuie fata de celelalte, irelevant de rezolutia imaginii. ALtfel avem spatiu gol*/
+
 #grid-pagina{
     display: grid;
+    /* gap:15px; daca nu vrem cu padding*/
     grid-template-columns: 2fr 1fr 2fr;
     grid-template-areas: "welcome welcome welcome"
                          "promotii promotii anunturi"
@@ -26,7 +32,8 @@ main{
                          "index-intrebari index-intrebari index-intrebari";
 }
 #grid-pagina > *{
-    border: 1px solid var(--culoare-contur);
+    padding: 15px 15px 15px 15px;
+    border: 2.5px solid var(--culoare-contur);
 }
 /* steluta inseamna orice. deci orice fel de element care este fiu care este mai mic decat grid pagina*/
 
@@ -67,10 +74,37 @@ main{
     body{
         --valoare-margine: 80px;
     }
+
+    #grid-pagina{
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "welcome welcome"
+                         "promotii promotii"
+                         "anunturi anunturi"
+                         "fig1 orar"
+                         "fig2 orar"
+                         "fig3 orar"
+                         "produse produse"
+                         "index-intrebari index-intrebari";
+}
 }
 
 @media screen and (max-width:700px) {
     body{
         --valoare-margine: 50px;
     }
+
+    #grid-pagina{
+    grid-template-columns: 1fr;
+    grid-template-areas: "welcome"
+                         "promotii"
+                         "anunturi"
+                         "fig1"
+                         "fig2"
+                         "fig3"
+                         "orar"
+                         "produse"
+                         "index-intrebari";
+
+    /* 
+    putem pune doar display: block; si va face sa fie unu dupa altul  */
 }
