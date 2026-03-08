@@ -19,29 +19,6 @@ figure{
 }
 /*Pentru a alinia figure cum trebuie fata de celelalte, irelevant de rezolutia imaginii. ALtfel avem spatiu gol*/
 
-#grid-pagina{
-    display: grid;
-    /* gap:15px; daca nu vrem cu padding*/
-    grid-template-columns: 2fr 1fr 2fr;
-    grid-template-areas: "welcome welcome welcome"
-                         "promotii promotii anunturi"
-                         "fig1 ghid ghid"
-                         "fig2 ghid ghid"
-                         "fig3 ghid ghid"
-                         "despre-noi orar orar"
-                         "produse produse produse"
-                         "index-intrebari index-intrebari index-intrebari";
-}
-#grid-pagina > *{
-    padding: 15px 15px 15px 15px;
-    border: 2.5px solid var(--culoare-contur);
-
-    box-shadow: 0 0 5px var(--culoare-contur);
-    /* box-shadow: 10px 0 5px var(--culoare-contur);  */
-    /*putem muta si umbra!*/
-}
-/* steluta inseamna orice. deci orice fel de element care este fiu care este mai mic decat grid pagina*/
-
 
  
 #welcome{
@@ -82,9 +59,130 @@ figure.fg-img > img{
 #produse{
     grid-area: produse;
 }
+
+#index-produse{
+    grid-area: index-produse;
+}
+
 #index-intrebari{
     grid-area: index-intrebari;
 }
+
+/* grid 2x2 pt produse home*/
+#grid_produse_home{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/*card pt produs*/
+.card_produs{
+    border: 2px solid var(--culoare-contur);
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgb(255, 202, 234);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card_produs header{
+    padding: 12px 15px 8px 15px;
+}
+
+.card_produs h3{
+    margin: 0 0 6px 0;
+}
+
+.fig-produse-card{
+    margin: 0;
+}
+
+.fig-produse-card img{
+    width: 100%;
+    display: block;
+}
+
+.fig-produse-card figcaption{
+    padding: 6px 15px;
+    font-style: italic;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.info-meters{
+    padding: 8px 15px;
+}
+
+.info-meters p{
+    margin: 4px 0 2px 0;
+    border: none;
+}
+
+.meter-descriere{
+    width: 100%;
+}
+
+.descriere-card{
+    padding: 8px 15px 15px 15px;
+}
+
+.descriere-card p{
+    margin: 0;
+    border: none;
+}
+
+/*TAGURI PRODUSE ------------------------------*/
+.tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tag{
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.75em;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 0.3px;
+}
+
+.tag-verde      { background-color: #4caf50; }
+.tag-popular    { background-color: #ff9800; }
+.tag-sweet      { background-color: #e91e63; }
+.tag-floral     { background-color: #ab47bc; }
+.tag-relaxant   { background-color: #5c6bc0; }
+.tag-exotic     { background-color: #7b1fa2; }
+.tag-amar       { background-color: #795548; }
+.tag-rar        { background-color: #00897b; }
+.tag-blend      { background-color: #f06292; }
+.tag-aromat     { background-color: #ff7043; }
+
+
+
+#grid-pagina{
+    display: grid;
+    /* gap:15px; daca nu vrem cu padding*/
+    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-areas: "welcome welcome welcome"
+                         "promotii promotii anunturi"
+                         "fig1 ghid ghid"
+                         "fig2 ghid ghid"
+                         "fig3 ghid ghid"
+                         "despre-noi orar orar"
+                         "produse produse produse"
+                         "index-intrebari index-intrebari index-intrebari"
+                         "index-produse index-produse index-produse";
+}
+#grid-pagina > *{
+    padding: 15px 15px 15px 15px;
+    border: 2.5px solid var(--culoare-contur);
+
+    box-shadow: 0 0 5px var(--culoare-contur);
+    /* box-shadow: 10px 0 5px var(--culoare-contur);  */
+    /*putem muta si umbra!*/
+}
+/* steluta inseamna orice. deci orice fel de element care este fiu care este mai mic decat grid pagina*/
 
 
 /*pt diferite rezolutii*/
@@ -101,8 +199,11 @@ figure.fg-img > img{
                          "fig1 orar"
                          "fig2 orar"
                          "fig3 orar"
+                         "ghid ghid"
                          "produse produse"
-                         "index-intrebari index-intrebari";
+                         "despre-noi despre-noi"
+                         "index-intrebari index-intrebari"
+                         "index-produse index-produse";
 }
 }
 
@@ -120,11 +221,18 @@ figure.fg-img > img{
                          "fig2"
                          "fig3"
                          "orar"
+                         "ghid"
                          "produse"
-                         "index-intrebari";
+                         "despre-noi"
+                         "index-intrebari"
+                         "index-produse";
 
     /* 
     putem pune doar display: block; si va face sa fie unu dupa altul  */
+    }
+
+    #grid_produse_home{
+        grid-template-columns: 1fr;
     }
 }
 
