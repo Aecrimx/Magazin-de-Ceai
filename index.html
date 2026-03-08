@@ -29,20 +29,32 @@
 
 <body>
     <header>
-        <h1>Camellie's Corner<i class="fa-solid fa-mug-hot"></i></h1>
+        <h1><i class="fa-solid fa-mug-hot"></i>Camellie's Corner</h1>
         <img src="resurse/imagini/siglatemporara.png" alt="sigla" />
         <nav>
             <ul>
-                <li>Acasa
+                <li>Acasă
                     <ul>
-                        <li><a href="#welcome">Bine ati venit la ceainaria Camellie's Corner!</a></li> <!--Link intern # urmarit de id-->
-                        <li><a href="#promotii">Promotii!</a></li>
+                        <li><a href="#welcome"><i class="fa-solid fa-house"></i>Bine ati venit la ceainaria Camellie's Corner!</a></li> <!--Link intern # urmarit de id-->
+                        <li><a href="#promotii"><i class="fa-solid fa-percent"></i>Promotii!</a></li>
                         
                     </ul>
                 </li>
-                <li><a href="#produse">Produse</a></li>
-                <li><a href="#alegere">Ceaiul perfect pentru tine!</a></li>
-                <li><a href="#videouri">De ce e sanatos sa bem ceai?</a></li>
+                <li>Cumpărați
+                    <ul>
+                        <li><a href="#produse"><i class="fa-solid fa-store"></i>Produse</a></li>
+                        <li><a href="#ghid"><i class="fa-solid fa-hand-holding-heart"></i>Ceaiul perfect pentru tine!</a></li>
+                        <!-- mai tarziu va face referinta la o pagina diferita pt acel quiz de care vorbeam -->
+                    </ul>
+                </li>
+                <li>Informații
+                    <ul>
+                        <li><a href="#ghid">Ghid</a></li>
+                        <li><a href="#orar">Program</a></li>
+                        <li><a href="#index-intrebari">Întrebări frecvente</a></li>
+                        <li><a href="#despre-noi">Despre noi</a></li>
+                    </ul>
+                </li>
                 <li>Inregistrare</li>
             </ul>
         </nav>
@@ -57,13 +69,14 @@
                     <p class="subtitlu">Prezentarea magazinului</p>
                 </hgroup>
 
-                <p class="intro">Vă mulțumim că ne vizitați site-ul. Luați de aici niște ceai virtual. Poftă bună!
+                <p class="intro">Vă mulțumim că ne vizitați acest colț virtual al magazinului nostru! La ceainăria noastră găsiți cele mai fresh sortimente de ceai de calitate!
                 </p>
 
                 <div class="intro-oferte">
                     <div>Ceai Negru</div>
                     <div>Ceai Verde</div>
                     <div>Ceai Alb</div>
+                    <div>Ceai de Fructe</div>
                     <div>Ceainic</div>
                 </div>
                 <p class="anunt intro"> Sortimentele noastre sunt disponibile atat in magazin cat si prin livrare la domiciliul dumneavoastra!</p>
@@ -73,11 +86,11 @@
                             <picture>
                                 <!--Basically picture ne lasa sa dam o imagine pt o rezolutie specifica, which is good-->
                                 <!-- il ia pe primul care se potriveste cu query-ul din media-->
-                                <source srcset="resurse/imagini/test1.jpg" media="(max-width:700px)" />
-                                <source srcset="resurse/imagini/test2.jpg" media="(max-width:1200px)" />
-                                <img src="resurse/imagini/test3.jpg" alt="lipsa poza" style="width: 100%"/>
+                                <source srcset="resurse/imagini/bineativenit1_800.jpg" media="(max-width:700px)" />
+                                <source srcset="resurse/imagini/bineativenit1_1200.jpg" media="(max-width:1200px)" />
+                                <img src="resurse/imagini/bineativenit1.jpg" alt="lipsa poza" style="width: 100%"/>
                             </picture>
-                            <figcaption>Ceaiul verde este perfect pentru dimineata!</figcaption>
+                            <figcaption>O ceașcă de ceai te poate însoți în momentele intime ale zilei, fie dimineața sau seara.</figcaption>
                         </figure>
                     </div>
                 </div>
@@ -137,45 +150,69 @@
                     </ol>
 
                 </article>
-                <article>
-                    <h3>Beneficiile bautului de ceai</h3>
+                <!-- <article>
+                    <h3>Beneficiile bautului de ceai</h3> DE MUTAT IN SECTIE SEPARATA
                     <p>Consumul de ceai regulat aduce beneficii precum: stari de relaxare, sursa de cafeina sanatoasa, o digestie mai linistita!</p>
 
-                </article>
+                </article> -->
             </section>
             <section id="produse">
                 <h2>Produsele noastre</h2>
                 <p>Vă oferim o multitudine de sortimente de ceai si produse pentru prepararea acestuia:</p>
                 <section>
                     <h3>Sortimente ceai</h3>
-                    <p>Achizitionarea acestora se face la vrac</p>
-                    <p>Sortimente ceai:</p>
+                    <p>Achizitionarea acestora se face la vrac!</p>
+                    <p>Sortimentele pe care le oferim:</p>
                     <ul>
                         <li>Ceai verde</li>
                         <li>Ceai negru</li>
                         <li>Ceai alb</li>
                         <li>Ceai Oolong</li>
                         <li>Infuzie fructe</li>
+                        <li>Ceai artizanal</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Plicuri de ceai</h3>
+                    <p>Cele mai populare arome din magazinul nostru:</p>
+                    <ul>
+                        <li>Ceai de fructe de pădure</li>
+                        <li>Ceai de lămâie cu ghimbir</li>
+                        <li>Ceai de mentă</li>
+                        <li>Ceai de trandafir</li>
+                        <li>Blend ceai Rooibos și fructe de pădure</li>
+                        <li>Blend ceai negru cu ceai verde</li>
                     </ul>
                 </section>
                 <section>
                     <h3>Accesorii</h3>
                     <p>Prepararea ceaiului este in sine o forma de arta!</p>
+                    <p>Măsuțe de ceai</p>
+                    <ul>
+                        <li>Măsuță de ceai tradițională</li>
+                        <li>Suport de lemn pentru ceainic și cească</li>
+                    </ul>
                     <p>Infuzatoare</p>
                     <ul>
-                        <li>Infuzator cu AI integrat</li>
-                        <li>Infuzatoare de ceasca</li>
+                        <li>Infuzator cană</li>
+                        <li>Infuzator de sticlă 700ml</li>
+                    </ul>
+                    <p>Seturi de cești și căni de ceai</p>
+                    <ul>
+                        <li>Set căni ceai tradițional chinezesc</li>
+                        <li>Cană de ceai cu animăluț</li>
+                        <li>Cană de ceai de ceramică în stil japonez</li>
+                        <li>Set cești sticlă pentru ceai turcești</li>
                     </ul>
                 </section>
 
                 <section>
                     <h3>Ceainice</h3>
-                    <p>Un ceainic bun te va tine o viata</p>
+                    <p>Un ceainic bun te va tine o viata!</p>
                     <ul>
                         <li>Ceainic traditional chinezesc</li>
                         <li>Ceainic inox</li>
                         <li>Ceainic ceramic turcesc</li>
-                        <li>carpați (orientali, meridionali și occidentali)</li>
                     </ul>
                 </section>
             </section>
@@ -252,39 +289,108 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="6">Închis cu ocazia sărbătorilor legale, sau, când ne e mai lene așa.</td>
+                            <td colspan="6">Închis cu ocazia sărbătorilor legale.</td>
                         </tr>
                     </tfoot>
                 </table>
                 <p><strong>Atentie!!!</strong> in prima zi a lunii facem inventar.</p>
             </section>
+            <section id="despre-noi">
+                <h2>Despre noi</h2>
+                <div class="continut-despre">
+                    <p>
+                        <strong>Camellie's Corner</strong> s-a născut din pasiunea pentru ceai și plăcerea de a gusta aroma culturilor de pe globul pământesc. Suntem o ceainărie dedicată iubitorilor de ceai, oferind o gamă diversă de sortimente de ceai exclusiv alese pentru gustul dumneavoastră.
+                    </p>
+                    <p>
+                        Fie că doar apreciați o cană de ceai de bună calitate sau sunteți pasionați de tot ritualul preparării ceaiului, echipa noastră este dedicată în a vă oferi exact ce vi se potrivește. Ne puteți comanda produsele online sau să ne vizitați la locația noastră fizică pentru a vă delecta personal din diferitele noastre sortimente oferite.
+                    </p>
+                </div>
+                <h3>Unde ne puteți găsi</h3>
+                <p>
+                    Ne puteți găsi la sediul nostru fizic în orele disponibile din program, unde vă așteptăm cu drag!
+                </p>
+                <div class="harta-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.8842997291954!2d26.0995867!3d44.4355355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff472f47f047%3A0x493984726f0235f9!2sFaculty%20of%20Mathematics%20and%20Computer%20Science!5e0!3m2!1sen!2sro!4v1772976884175!5m2!1sen!2sro"
+                     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </section>
             <figure id="fig1" class="fg-img">
-            <img src="resurse/imagini/briose-frisca.png" alt="ceai1">
-            <figcaption>Briose 1</figcaption>
+            <img src="resurse/imagini/ceai1.jpg" alt="ceai1">
+            <figcaption></figcaption>
             </figure>
             <figure id="fig2" class="fg-img">
-            <img src="resurse/imagini/briose-frisca.png" alt="ceai2">
-            <figcaption>Briose 2</figcaption>
+            <img src="resurse/imagini/ceai2.jpg" alt="ceai2">
+            <figcaption></figcaption>
             </figure>
             <figure  id="fig3" class="fg-img">
-            <img src="resurse/imagini/briose-frisca.png" alt="ceai3">
-            <figcaption>Briose 3</figcaption>
+            <img src="resurse/imagini/ceai3.jpg" alt="ceai3">
+            <figcaption></figcaption>
             </figure>
             <section id="anunturi">
                 <h2 class="fg-img">Anunțuri</h2>
-                <p><time datetime="2025-07-20">20 iulie 2025</time> Lichidare stoc de vara!</p>
-                <p><time datetime="2022-01-05">5 ianuarie 2022</time> <strong>Locatia fizica este deschisa!</strong></p>
-
-                <p><time datetime="2020-03-15">15 martie 2020</time> <span>Avem un nou supplier! <a href="https://mach3tryhard.github.io/Commercial-Plant-Site/origin.html" target="_blank">Seedlingrounds</a></span>
+                <p><time datetime="2025-07-20">20 iulie 2025</time> Încercați noul sortiment de ceai Matcha la locația noastră fizică!</p>
+                <p><time datetime="2022-01-05">5 ianuarie 2022</time> <strong>Locatia fizica este redeschisa!</strong></p>
+                <p><time datetime="2020-04-15">15 aprilie 2020</time> <span>Avem un nou supplier! <a href="https://mach3tryhard.github.io/Commercial-Plant-Site/origin.html" target="_blank">Seedlingrounds</a></span>
                 </p>
-                <p><time datetime="2020-04-05">5 aprilie 2020</time> <span>Avem un nou sortiment disponibil!</span>
+                <p><time datetime="2020-03-05">5 martie 2020</time> <span>Avem noi sortimente disponibile!</span>
                 </p>
+                <p><time datetime="2019-12-01">01 decembrie 2019</time> <span>Reduceri de sărbători pentru pachetele cadou!</span>
+                </p>
+            </section>
+            <section id="ghid">
+                <h1>Ghiduri</h1>
+                <h2>Alegerea sortimentului de ceai</h2>
+                <h3>După momentul zilei</h3>
+                <p>Alegerea unui sortiment de ceai se realizează nu doar după preferințele dumneavoastră de gust, ci și de momentul zilei în care îl consumați! Pentru un boost de energie dimineața vă recomandăm o ceașcă de ceai negru sau verde! În timp ce un shot de espresso conține în jur de 60mg de cafeină o cupă de ceai negru vă va servi 50mg de cafeină, iar pentru cei care nu doresc o doză mare de cafeină dar tot doresc ceva ce să îi trezească o cupă de ceai verde conține în jur de 25mg de cafeină! Pentru un somn liniștit recomandăm blend-uri de ceai, ce oferă un balans între ceaiuri destinate unei digestii corespunzătoare cât și cu efecte calmante pentru a vă relaxa după o zi lungă.</p>
+                <h3>Pentru digestie</h3>
+                <p>Pentru o digestie sănătoasă sau pentru debalonare se recomandă consum de ceai de mentă, de ghimbir sau de mușețel.</p>
+                <h3>Pentru gust</h3>
+                <p>Un obicei sănătos este înlocuirea sucurilor carbogazoase cu ceai! Ceaiurile se pot servi atât cald cât și rece. Pentru a vă rocării vara vă recomandăm blendurile noastre de ceai negru cu arome de fructe, sau pentru cei care preferă un gust citric vă recomandăm să combinați ceai de lămâie cu ghimbir!</p>
+                <h2>Calculul prețului pentru ceai la vrac</h2>
+                <p>Când cumperi ceai la vrac, costul se calculează în funcție de greutatea dorită. Formula generală este:</p>
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mrow>
+                        <mi>C</mi>
+                        <mo>=</mo>
+                        <mi>p</mi>
+                        <mo>&#x00D7;</mo>
+                        <mi>m</mi>
+                    </mrow>
+                    <mtext> </mtext>
+                    <mrow>
+                        <mtext>&nbsp;unde&nbsp;</mtext>
+                        <mi>C</mi><mo>:</mo><mi>cost total</mi><mo>,</mo>
+                        <mi>p</mi><mo>:</mo><mi>preț&nbsp;pe&nbsp;kg</mi><mo>,</mo>
+                        <mi>m</mi><mo>:</mo><mi>masă&nbsp;în&nbsp;kg</mi>
+                    </mrow>
+                </math>
+                <p>
+                 Exemplu: la 40 lei/kg, 0.25 kg de Ceai Verde costă
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                <mn>40</mn><mo>&#x00D7;</mo><mn>0.25</mn><mo>=</mo><mn>10</mn>
+                <mo>lei</mo>
+                </mrow>
+                </math>.
+                </p>
+                <h2>Moduri de preparare ceai</h2>
+                <div class="container-iframe">
+                    <div class="taburi-iframe">
+                        <a href="https://www.youtube.com/embed/XoiZlK16b2w?si=2_Vt5uKNtSY7wamy" target="ifr-video">Preparare ceai turcesc</a>
+                        <a href="https://www.youtube.com/watch?v=9Rrf0RitkME" target="ifr-video">Beneficii ceai verde</a>
+                        <a href="https://www.youtube.com/watch?v=8Zz8RHj90w8" target="ifr-video">Proces de facut ceai negru</a><br />
+                    </div>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/XoiZlK16b2w?si=2_Vt5uKNtSY7wamy" 
+                    title="ifr-video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+                    encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </section>
             <section id="index-intrebari">
                 <h2>Întrebări frecvente</h2>
                 <details>
                     <summary>Livrati in toata tara?</summary>
-                    <p>Da!</p>
+                    <p>Da! O comandă durează în jur de 3-5 zile lucrătoare.</p>
                 </details>
                 <details>
                     <summary>De unde faceti rost de diversele sortimente?</summary>
@@ -293,24 +399,16 @@
                 </details>
                 <details>
                     <summary>Oferiti ceaiuri la plic?</summary>
-                    <p>Nu, sortimentele noastre se cumpara doar la vrac, deoarece plicurile de ceai contin micropplastice.</p>
+                    <p>Din data de 1 Iunie 2023 magazinul nostru va începe să ofere și sortimente de ceai la plic!</p>
                 </details>
+            </section>
+            <section id="index-produse">
+                
             </section>
 
         </div>
         <section id="videouri">
-            <h2>Moduri de preparare ceai</h2>
-            <p></p>
-            <div class="container-iframe">
-                <div class="taburi-iframe">
-                    <a href="https://www.youtube.com/embed/XoiZlK16b2w?si=2_Vt5uKNtSY7wamy" target="ifr-video">Preparare ceai turcesc</a>
-                    <a href="https://www.youtube.com/watch?v=9Rrf0RitkME" target="ifr-video">Beneficii ceai verde</a>
-                    <a href="https://www.youtube.com/watch?v=8Zz8RHj90w8" target="ifr-video">Proces de facut ceai negru</a><br />
-                </div>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/XoiZlK16b2w?si=2_Vt5uKNtSY7wamy" 
-                title="ifr-video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
-                encrypted-media; gyroscope; picture-in-picture; web-share" 
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ 
 
 
             </div>
@@ -323,7 +421,36 @@
         <a href="#" title="mergi sus" id ="link-top">Mergi sus</a>
         <!-- <p><small>All frontend and backend code is under MIT License. Images and third-party assets belong to their
                 respective owners and are used under their individual licenses; Popa Mircea Alexandru</small></p> -->
-        <p>Copyright &copy; <a href="https://github.com/Aecrimx/Magazin-de-Ceai" target="_blank">Popa Mircea Alexandru</a></p>
+        <p><small>
+        Site făcut de <a href="https://github.com/Aecrimx/Magazin-de-Ceai" target="_blank">Popa Mircea Alexandru</a>. &copy; Copyright <time datetime="2026-03-08">8 martie 2026</time><br>
+        </small> 
+        <address>
+            <p><small>
+                <strong>Nr. de telefon:</strong>
+                <a href="tel:+40756728008">0756 728 008</a>
+            </p></small>
+            <p><small>
+                <strong> Adresă sediu fizic:</strong><br>
+                <a href="https://maps.google.com/?q=Facultatea+de+Matematica+si+Informatica+Bucuresti" target="_blank">
+                    Strada Ceaiului, Nr. 3<br>
+                    Clădirea Facultatea de Matcha și Infuzii, Parter<br>
+                    Sector 1, București
+                </a>
+            </p></small>
+            <p><small>
+                <strong>Email de contact:</strong>
+                <a href="mailto:mircea.alexandru.popa@gmail.com">mircea.alexandru.popa@gmail.com</a>
+            </p></small>
+            <p><small>
+                <strong>Contactați-ne pe Whatsapp:</strong>
+                <a href="https://wa.me/40756728008"><i class="fa-brands fa-whatsapp"></i></a>
+            </p></small>    
+            <p><small>
+                <strong>Ne puteți găși pe Social Media:</strong>
+                <a href="https://www.instagram.com/mirceaa_m.e"><i class="fa-brands fa-instagram"></i></a> | <a href="https://www.facebook.com/alexzip123"> <i class="fa-brands fa-square-facebook"></i></a> 
+            </p></small>           
+        </address>
+    </p>
     </footer>
 </body>
 

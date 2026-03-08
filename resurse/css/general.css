@@ -25,9 +25,10 @@ figure{
     grid-template-columns: 2fr 1fr 2fr;
     grid-template-areas: "welcome welcome welcome"
                          "promotii promotii anunturi"
-                         "fig1 orar orar"
-                         "fig2 orar orar"
-                         "fig3 orar orar"
+                         "fig1 ghid ghid"
+                         "fig2 ghid ghid"
+                         "fig3 ghid ghid"
+                         "despre-noi orar orar"
                          "produse produse produse"
                          "index-intrebari index-intrebari index-intrebari";
 }
@@ -51,6 +52,9 @@ figure{
 }
 #anunturi{
     grid-area: anunturi;
+}
+#ghid{
+    grid-area: ghid;
 }
 #orar{
     grid-area: orar;
