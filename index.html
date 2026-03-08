@@ -31,7 +31,7 @@
 <body>
     <header>
         <h1><i class="fa-solid fa-mug-hot"></i>Camellie's Corner</h1>
-        <img src="resurse/imagini/siglatemporara.png" alt="sigla" />
+        <a href="resurse/imagini/siglatemporara.png" target="_blank"><img src="resurse/imagini/siglatemporara.png" alt="sigla" /></a>
         <nav>
             <ul>
                 <li>Acasă
@@ -89,6 +89,7 @@
                 <div id="dv-prezentare-1">
                     <div id="dv-prezentare">
                         <figure>
+                            <a href="resurse/imagini/bineativenit1.jpg">
                             <picture>
                                 <!--Basically picture ne lasa sa dam o imagine pt o rezolutie specifica, which is good-->
                                 <!-- il ia pe primul care se potriveste cu query-ul din media-->
@@ -96,8 +97,10 @@
                                 <source srcset="resurse/imagini/bineativenit1_1200.jpg" media="(max-width:1200px)" />
                                 <img src="resurse/imagini/bineativenit1.jpg" alt="lipsa poza" style="width: 100%" />
                             </picture>
+                            </a>
                             <figcaption>O ceașcă de ceai te poate însoți în momentele intime ale zilei, fie dimineața
-                                sau seara.</figcaption>
+                                sau seara.<br><a href="resurse/imagini/bineativenit1.jpg" download="bineativenit1_descarcat.jpg">Descarcă imaginea</a></figcaption>
+                            
                         </figure>
                     </div>
                 </div>
@@ -344,24 +347,24 @@
             </figure>
             <section id="anunturi">
                 <h2 class="fg-img">Anunțuri</h2>
-                <p><time datetime="2025-07-20">20 iulie 2025</time> Încercați noul sortiment de ceai Matcha la locația
-                    noastră fizică!</p>
-                <p><time datetime="2022-01-05">5 ianuarie 2022</time> <strong>Locatia fizica este redeschisa!</strong>
-                </p>
-                <p><time datetime="2020-04-15">15 aprilie 2020</time> <span>Avem un nou supplier! <a
-                            href="https://mach3tryhard.github.io/Commercial-Plant-Site/origin.html"
-                            target="_blank">Seedlingrounds</a></span>
-                </p>
-                <p><time datetime="2020-03-05">5 martie 2020</time> <span>Avem noi sortimente disponibile!</span>
-                </p>
-                <p><time datetime="2019-12-01">01 decembrie 2019</time> <span>Reduceri de sărbători pentru pachetele
-                        cadou!</span>
-                </p>
+                <ul>
+                    <li><time datetime="2025-07-20T10:00">20 iulie 2025, ora 10:00</time> — <b>Degustare Matcha</b> -
+                        Încercați noul sortiment de ceai Matcha la locația noastră fizică!</li>
+                    <li><time datetime="2022-01-05T09:00">5 ianuarie 2022, ora 09:00</time> — <b>Redeschidere
+                            locație</b> - <strong>Locația fizică este redeschisă!</strong></li>
+                    <li><time datetime="2020-04-15T12:00">15 aprilie 2020, ora 12:00</time> — <b>Supplier nou</b> - Avem
+                        un nou furnizor! <a href="https://mach3tryhard.github.io/Commercial-Plant-Site/origin.html"
+                            target="_blank">Seedlingrounds</a></li>
+                    <li><time datetime="2020-03-05T08:00">5 martie 2020, ora 08:00</time> — <b>Sortimente noi</b> - Avem
+                        noi sortimente disponibile!</li>
+                    <li><time datetime="2019-12-01T10:00">01 decembrie 2019, ora 10:00</time> — <b>Reduceri de
+                            sărbători</b> - Reduceri speciale pentru pachetele cadou!</li>
+                </ul>
             </section>
             <section id="ghid">
-                <h1>Ghiduri</h1>
-                <h2>Alegerea sortimentului de ceai</h2>
-                <h3>După momentul zilei</h3>
+                <h2>Ghiduri</h2>
+                <h3>Alegerea sortimentului de ceai</h3>
+                <h4>După momentul zilei</h4>
                 <p>Alegerea unui sortiment de ceai se realizează nu doar după preferințele dumneavoastră de gust, ci și
                     de momentul zilei în care îl consumați! Pentru un boost de energie dimineața vă recomandăm o ceașcă
                     de ceai negru sau verde! În timp ce un shot de espresso conține în jur de 60mg de cafeină o cupă de
@@ -369,15 +372,19 @@
                     doresc ceva ce să îi trezească o cupă de ceai verde conține în jur de 25mg de cafeină! Pentru un
                     somn liniștit recomandăm blend-uri de ceai, ce oferă un balans între ceaiuri destinate unei digestii
                     corespunzătoare cât și cu efecte calmante pentru a vă relaxa după o zi lungă.</p>
-                <h3>Pentru digestie</h3>
+                <h4>Pentru digestie</h4>
                 <p>Pentru o digestie sănătoasă sau pentru debalonare se recomandă consum de ceai de mentă, de ghimbir
                     sau de mușețel.</p>
-                <h3>Pentru gust</h3>
+                <h4>Pentru gust</h4>
                 <p>Un obicei sănătos este înlocuirea sucurilor carbogazoase cu ceai! Ceaiurile se pot servi atât cald
                     cât și rece. Pentru a vă rocării vara vă recomandăm blendurile noastre de ceai negru cu arome de
                     fructe, sau pentru cei care preferă un gust citric vă recomandăm să combinați ceai de lămâie cu
                     ghimbir!</p>
-                <h2>Calculul prețului pentru ceai la vrac</h2>
+                <p>Pentru mai multe informații despre planta de ceai, consultați:
+                    <a
+                        href="https://ro.wikipedia.org/wiki/Camellia_sinensis#Distribu%C8%9Bia_%C8%99i_habitatul">https://ro.wikipedia.org/<wbr>wiki/<wbr>Camellia_sinensis<wbr>#Distribuția<wbr>_și<wbr>_habitatul</a>
+                </p>
+                <h3>Calculul prețului pentru ceai la vrac</h3>
                 <p>Când cumperi ceai la vrac, costul se calculează în funcție de greutatea dorită. Formula generală
                     este:</p>
                 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -417,7 +424,7 @@
                         </mrow>
                     </math>.
                 </p>
-                <h2>Moduri de preparare ceai</h2>
+                <h3>Moduri de preparare ceai</h3>
                 <div class="container-iframe">
                     <div class="taburi-iframe">
                         <a href="https://www.youtube.com/embed/XoiZlK16b2w?si=2_Vt5uKNtSY7wamy"
@@ -428,7 +435,7 @@
                             negru</a><br />
                     </div>
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/XoiZlK16b2w?si=2_Vt5uKNtSY7wamy"
-                        title="ifr-video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+                        name="ifr-video" title="Video preparare ceai" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
                     encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
@@ -604,14 +611,15 @@
         <!-- <p><small>All frontend and backend code is under MIT License. Images and third-party assets belong to their
                 respective owners and are used under their individual licenses; Popa Mircea Alexandru</small></p> -->
         <p><small>
-                Site făcut de <a href="https://github.com/Aecrimx/Magazin-de-Ceai" target="_blank">Popa Mircea Alexandru</a>. &copy; Copyright <time datetime="2026-03-08">8 martie 2026</time><br>
+                Site făcut de <a href="https://github.com/Aecrimx/Magazin-de-Ceai" target="_blank">Popa Mircea
+                    Alexandru</a>. &copy; Copyright <time datetime="2026-03-08">8 martie 2026</time><br>
             </small>
         </p>
         <address>
             <p><small>
                     <strong>Nr. de telefon:</strong>
                     <a href="tel:+40756728008">0756 728 008</a>
-            </small></p>
+                </small></p>
             <p><small>
                     <strong> Adresă sediu fizic:</strong><br>
                     <a href="https://maps.google.com/?q=Facultatea+de+Matematica+si+Informatica+Bucuresti"
@@ -620,20 +628,20 @@
                         Clădirea Facultatea de Matcha și Infuzii, Parter<br>
                         Sector 1, București
                     </a>
-            </small></p>
+                </small></p>
             <p><small>
                     <strong>Email de contact:</strong>
                     <a href="mailto:mircea.alexandru.popa@gmail.com">mircea.alexandru.popa@gmail.com</a>
-            </small></p>
+                </small></p>
             <p><small>
                     <strong>Contactați-ne pe Whatsapp:</strong>
                     <a href="https://wa.me/40756728008"><i class="fa-brands fa-whatsapp"></i></a>
-            </small></p>
+                </small></p>
             <p><small>
                     <strong>Ne puteți găși pe Social Media:</strong>
-                    <a href="https://www.instagram.com/mirceaa_m.e"><i class="fa-brands fa-instagram"></i></a> | 
+                    <a href="https://www.instagram.com/mirceaa_m.e"><i class="fa-brands fa-instagram"></i></a> |
                     <a href="https://www.facebook.com/alexzip123"> <i class="fa-brands fa-square-facebook"></i></a>
-            </small></p>
+                </small></p>
         </address>
     </footer>
 </body>
