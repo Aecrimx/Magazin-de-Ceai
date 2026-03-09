@@ -78,7 +78,7 @@ figure.fg-img > img{
 /*card pt produs*/
 .card_produs{
     border: 2px solid var(--culoare-contur);
-    border-radius: 12px;
+    /* border-radius: 12px; */
     overflow: hidden;
     background: rgb(255, 202, 234);
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -184,6 +184,43 @@ figure.fg-img > img{
 }
 /* steluta inseamna orice. deci orice fel de element care este fiu care este mai mic decat grid pagina*/
 
+/* cu acestea ne vom juca pt task-ul personalizat unde se cere pozitia butoanelor */
+.container-iframe{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 315px;
+    /* width: 600px; */
+}
+
+.taburi-iframe{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    /* height:  */
+    /* border: 1px solid var(--culoare-contur); */
+}
+
+.taburi-iframe > a {
+    display: inline-block;
+    padding: 5px 5px;
+    background-color: var(--culoare-fundal);
+    border: 1px solid var(--culoare-contur);
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    border-top-left-radius: 5px;
+    /* border-top-right-radius: 5px; */
+    border-bottom-left-radius: 5px;
+    /* margin-right: 10px; */
+    transition: all 0.1s linear;
+    /* cu transition poti face animatii stil transition */
+}
+/* ce e cu : e pseudo clasa */
+.taburi-iframe > a:hover { 
+    background-color: var(--culoare-contur);
+    color: white;
+}
 
 /*pt diferite rezolutii*/
 @media screen and (max-width:1200px) {

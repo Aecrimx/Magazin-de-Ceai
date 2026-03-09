@@ -1,0 +1,47 @@
+nav{
+    --latime-buton: 125px;
+    --inaltime-buton: 25px;
+    /* background-color: ; */
+}
+
+#hamburger, #ch-menu{
+    display: none;
+}
+
+.text-icon, .imag-icon{
+    display: inline-block;
+}
+
+ul.meniu, ul.meniu ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.meniu{
+    display: flex; /*pe coloane*/
+
+}
+
+ul.meniu ul{
+    display: none;
+}
+
+ul.meniu li { /*obs ca nu mai avem >, direct spatiu*/
+    display: inline-block;
+    width: var(--latime-buton);
+    height: var(--inaltime-buton);
+    background-color: var(--culoare-fundal);
+    border: 1px solid var(--culoare-contur);
+    color: rgb(0, 0, 0);
+    /* text-decoration: none; */
+    transition: all 0.1s linear;
+    text-align: center;
+    line-height: var(--inaltime-buton);
+    /* cu transition poti face animatii stil transition */
+}
+
+ul.meniu > li:hover{ /*mai mare ca nu vrem si la submeniu*/
+    background-color: var(--culoare-contur);
+    color: white;
+}
