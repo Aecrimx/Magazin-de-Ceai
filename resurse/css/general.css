@@ -222,6 +222,25 @@ figure.fg-img > img{
     color: white;
 }
 
+#tab-orar{
+    border-collapse: collapse;
+    /*fara acesta avem un padding intern intre celule la tabel*/
+}
+
+#tab-orar td, #tab-orar th{
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+}
+
+#tab-orar tbody tr:nth-child(even){ /*tr pt rows, altfel daca voiam pe coloana faceam td*/
+    background-color: lightpink;
+}
+.bigcell{
+    background-color: var(--culoare-fundal);
+} /*ca sa supresam colorarea acelor celule de dadeau span*/
+
+
 /*pt diferite rezolutii*/
 @media screen and (max-width:1200px) {
     body{

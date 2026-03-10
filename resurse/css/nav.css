@@ -20,15 +20,37 @@ ul.meniu, ul.meniu ul{
 
 ul.meniu{
     display: flex; /*pe coloane*/
+    position: relative;
 
 }
 
 ul.meniu ul{
     display: none;
+    animation: animatie_submeniu 0.25s linear;
+    transform-origin: center top; /*Ca sa nu apara din mijloc submeniul*/
+}
+
+
+
+/*animatie submeniu!*/
+
+@keyframes animatie_submeniu{
+    0% {
+        opacity: 0;
+        transform: scale(0, 0);
+    }
+    50%{
+        transform:scale(0.5, 1);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1, 1);
+    }
 }
 
 ul.meniu li { /*obs ca nu mai avem >, direct spatiu*/
-    display: inline-block;
+    font-weight: bold;
+    cursor: pointer; /*iconita pe hover*/
     width: var(--latime-buton);
     height: var(--inaltime-buton);
     background-color: var(--culoare-fundal);
@@ -41,7 +63,21 @@ ul.meniu li { /*obs ca nu mai avem >, direct spatiu*/
     /* cu transition poti face animatii stil transition */
 }
 
-ul.meniu > li:hover{ /*mai mare ca nu vrem si la submeniu*/
+ul.meniu li:hover{ /*mai mare ca nu vrem si la submeniu*/
     background-color: var(--culoare-contur);
     color: white;
+}
+
+ul.meniu li a{ /*supresam faptul ca se dadea display ca link*/
+    text-decoration: none;
+    color: inherit; /*sau black*/
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+ul.meniu > li:hover ul{
+    display: block;
+    position: absolute;
+    z-index: 17; /*orice val mai mare strict de 0*/
 }

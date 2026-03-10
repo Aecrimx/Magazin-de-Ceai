@@ -35,3 +35,6 @@
 
 ##Etapa 2
 - [ ] FONT GOOGLE!
+
+##Etapa 3
+- [ ] pt buton de arrow up cu animatie verifica exemplul doamnei profesoare layout 1 de pe replit.
