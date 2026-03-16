@@ -1,4 +1,6 @@
 # Magazin de Ceai
+# Pt. a porni serverul "nodemon . "
+
 ## TODO list
 - [ ] Tematica Design
 - [ ] Backend

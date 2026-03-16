@@ -45,3 +45,7 @@
 - de terminat CSS
 - de facut sageata pt sus (cu position fixed in css)
 - in exemplu css printare de pe replit pt a da overload la cum ar arata print-ul cu ctrl p
+- mutat header in ejs spart pe fragmente
+- la fel si footer
+- insa acum sendFile nu o sa stie sa trimita aceste ejs-uri
+- in loc de sendFile folosim functia render (in index.js)
