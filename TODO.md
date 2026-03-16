@@ -38,3 +38,10 @@
 
 ##Etapa 3
 - [ ] pt buton de arrow up cu animatie verifica exemplul doamnei profesoare layout 1 de pe replit.
+
+
+## Azi si maine
+- de reparat label-urile de la exemplele profei (clase corecte, label-uri etc)
+- de terminat CSS
+- de facut sageata pt sus (cu position fixed in css)
+- in exemplu css printare de pe replit pt a da overload la cum ar arata print-ul cu ctrl p
