@@ -3,8 +3,9 @@
 }
 
 #hamburger > img{
-    height: 3em; /*relativ la font size container*/
-    width: auto;   
+    height: clamp(2rem, 4vw, 3.5em); /*relativ la font size container*/
+    width: auto;
+    transition: height 0.3s ease-in-out;
 }
 
 ul.meniu{

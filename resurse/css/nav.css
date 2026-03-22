@@ -57,7 +57,8 @@ ul.meniu li { /*obs ca nu mai avem >, direct spatiu*/
     border: 1px solid var(--culoare-contur);
     color: rgb(0, 0, 0);
     /* text-decoration: none; */
-    transition: all 0.1s linear;
+    font-size: clamp(0.75rem, 1vw, 0.9rem);
+    transition: all 0.3s ease-in-out;
     text-align: center;
     line-height: var(--inaltime-buton);
     /* cu transition poti face animatii stil transition */

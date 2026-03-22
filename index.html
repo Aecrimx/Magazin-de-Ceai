@@ -28,50 +28,59 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+DK+Uloopet+Guides&display=swap" rel="stylesheet">
     <!-- biblioteca externa font -->
 </head>
 
 <body>
-    <header>
-        <h1><i class="fa-solid fa-mug-hot"></i>Camellie's Corner</h1>
-        <a href="/resurse/imagini/siglatemporara.png" target="_blank"><img src="/resurse/imagini/siglatemporara.png" alt="sigla" /></a>
-        <nav>
-            <label id="hamburger" for="ch-menu">
-                <img src="/resurse/imagini/Hamburger_icon_alb.png" alt="menu"> 
-            </label>   
-            <input type="checkbox", id="ch-menu"/>
-            <!-- DE COPIAT AICI LABEL HAMBURGER SI CHECKBOX DIN CODU PROFEI -->
-            <ul class="meniu">
-                <li>Acasă
-                    <ul> <!--LA FEL SI PT ICONITE, LA TN SUNT TEXT, A PROFA SUNT CLASS IMAG-ICON-->>
-                        <li><a href="#welcome"><i class="fa-solid fa-house"></i>Bine ati venit la ceainaria Camellie's
-                                Corner!</a></li> <!--Link intern # urmarit de id-->
-                        <li><a href="#promotii"><i class="fa-solid fa-percent"></i>Promotii!</a></li>
-
-                    </ul>
-                </li>
-                <li>Cumpărați
-                    <ul>
-                        <li><a href="#produse"><i class="fa-solid fa-store"></i>Produse</a></li>
-                        <li><a href="#ghid"><i class="fa-solid fa-hand-holding-heart"></i>Ceaiul perfect pentru
-                                tine!</a></li>
-                        <!-- mai tarziu va face referinta la o pagina diferita pt acel quiz de care vorbeam -->
-                    </ul>
-                </li>
-                <li>Informații
-                    <ul>
-                        <li><a href="#ghid"><i class="fa-solid fa-book-open"></i>Ghid</a></li>
-                        <li><a href="#orar"><i class="fa-regular fa-calendar"></i>Program</a></li>
-                        <li><a href="#index-intrebari"><i class="fa-regular fa-circle-question"></i>Întrebări
-                                frecvente</a></li>
-                        <li><a href="#despre-noi"><i class="fa-regular fa-face-laugh-beam"></i>Despre noi</a></li>
-                    </ul>
-                </li>
-                <li><i class="fa-solid fa-user"></i>Inregistrare</li>
-            </ul>
-        </nav>
-
-    </header>
+    <nav>
+        <label id="hamburger" for="ch-menu">
+            <img src="/resurse/imagini/Hamburger_icon_alb.png" alt="menu">
+        </label>
+        <input type="checkbox" id="ch-menu" />
+        <ul class="meniu">
+            <li>
+                <div class="text-icon" id="acasa">Acasă</div>
+                <div class="imag-icon" id="acasa-mediu">
+                    <span class="fas fa-solid fa-house"></span>
+                </div>
+                <ul>
+                    <li><a href="#welcome">Bine ați venit!</a></li>
+                    <li><a href="#promotii">Promoții!</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="text-icon">Cumpărați</div>
+                <div class="imag-icon"><span class="fas fa-solid fa-store"></span></div>
+                <ul>
+                    <li><a href="#produse">Produse</a></li>
+                    <li><a href="#ghid">Ceaiul perfect!</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="text-icon">Informații</div>
+                <div class="imag-icon"><span class="fas fa-solid fa-book-open"></span></div>
+                <ul>
+                    <li><a href="#ghid">Ghid</a></li>
+                    <li><a href="#orar">Program</a></li>
+                    <li><a href="#index-intrebari">FAQ</a></li>
+                    <li><a href="#despre-noi">Despre noi</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="text-icon"><a href="#">Înregistrare</a></div>
+                <div class="imag-icon"><span class="fas fa-solid fa-user"></span></div>
+            </li>
+        </ul>
+    </nav>
+    <section id="test">
+        <header class="c1" id="titlu">
+            <h1 id="t">Camellie's <span>Corner</span></h1>
+            <a href="/resurse/imagini/siglatemporara.png" target="_blank">
+                <img src="/resurse/imagini/siglatemporara.png" alt="sigla" />
+            </a>
+        </header>
+    </section>
     <main>
         <div id="grid-pagina">
 
@@ -80,9 +89,16 @@
                     <h2>Bine ati venit</h2>
                     <p class="subtitlu">Prezentarea magazinului</p>
                 </hgroup>
-
                 <p class="intro">Vă mulțumim că ne vizitați acest colț virtual al magazinului nostru! La ceainăria
                     noastră găsiți cele mai fresh sortimente de ceai de calitate!
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam finibus, tortor nec porttitor
+                    consectetur, odio magna posuere massa, quis scelerisque nisl tellus sed ipsum. Sed eu sem lorem.
+                    Fusce quis est nec metus vehicula convallis consectetur et tortor. Suspendisse potenti. Proin nulla
+                    libero, venenatis sed metus sed, tempus pulvinar nunc. Pellentesque habitant morbi tristique
+                    senectus et netus et malesuada fames ac turpis egestas. Vestibulum tellus lectus, luctus facilisis
+                    porttitor sit amet, eleifend vestibulum purus. Donec nunc urna, congue ac arcu sit amet, laoreet
+                    sollicitudin neque. Aliquam vestibulum aliquam lorem ut fringilla. Nulla vel tellus vitae massa
+                    accumsan cursus. Etiam iaculis ante vestibulum dolor rhoncus suscipit.
                 </p>
 
                 <div class="intro-oferte">
@@ -98,17 +114,20 @@
                     <div id="dv-prezentare">
                         <figure>
                             <a href="/resurse/imagini/bineativenit1.jpg">
-                            <picture title="Bine ati venit!">
-                                <!--Basically picture ne lasa sa dam o imagine pt o rezolutie specifica, which is good-->
-                                <!-- il ia pe primul care se potriveste cu query-ul din media-->
-                                <source srcset="/resurse/imagini/bineativenit1_800.jpg" media="(max-width:700px)" />
-                                <source srcset="/resurse/imagini/bineativenit1_1200.jpg" media="(max-width:1200px)" />
-                                <img src="/resurse/imagini/bineativenit1.jpg" alt="lipsa poza" style="width: 100%" />
-                            </picture>
+                                <picture title="Bine ati venit!">
+                                    <!--Basically picture ne lasa sa dam o imagine pt o rezolutie specifica, which is good-->
+                                    <!-- il ia pe primul care se potriveste cu query-ul din media-->
+                                    <source srcset="/resurse/imagini/bineativenit1_800.jpg" media="(max-width:700px)" />
+                                    <source srcset="/resurse/imagini/bineativenit1_1200.jpg"
+                                        media="(max-width:1200px)" />
+                                    <img src="/resurse/imagini/bineativenit1.jpg" alt="lipsa poza"
+                                        style="width: 100%" />
+                                </picture>
                             </a>
                             <figcaption>O ceașcă de ceai te poate însoți în momentele intime ale zilei, fie dimineața
-                                sau seara.<br><a href="/resurse/imagini/bineativenit1.jpg" download="bineativenit1_descarcat.jpg">Descarcă imaginea</a></figcaption>
-                            
+                                sau seara.<br><a href="/resurse/imagini/bineativenit1.jpg"
+                                    download="bineativenit1_descarcat.jpg">Descarcă imaginea</a></figcaption>
+
                         </figure>
                     </div>
                 </div>
@@ -216,83 +235,85 @@
             </section>
             <section id="orar">
                 <h2>Orar</h2>
-                <table id="tab-orar">
-                    <caption>Program locație fizică</caption>
-                    <thead>
+                <div class="orar-scroll-container">
+                    <table id="tab-orar">
+                        <caption>Program locație fizică</caption>
+                        <thead>
 
-                        <tr>
-                            <th>Cod</th>
-                            <th>Perioadă</th>
-                            <th>Zi</th>
-                            <th>Interval dimineata</th>
-                            <th>Pauza de masa</th>
-                            <th>Interval seară</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td rowspan="5" class="bigcell">Zile<br />Lucrătoare</td>
-                            <td>Luni</td>
-                            <td>10-12</td>
-                            <td>12-14</td>
-                            <td>14-20</td>
-                        </tr>
-                        <tr>
-                            <td></td>
+                            <tr>
+                                <th>Cod</th>
+                                <th>Perioadă</th>
+                                <th>Zi</th>
+                                <th>Interval dimineata</th>
+                                <th>Pauza de masa</th>
+                                <th>Interval seară</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td rowspan="5" class="bigcell">Zile<br />Lucrătoare</td>
+                                <td>Luni</td>
+                                <td>10-12</td>
+                                <td>12-14</td>
+                                <td>14-20</td>
+                            </tr>
+                            <tr>
+                                <td></td>
 
-                            <td>Marti</td>
-                            <td>9-12</td>
-                            <td>12-14</td>
-                            <td>14-21</td>
-                        </tr>
-                        <tr>
-                            <td></td>
+                                <td>Marti</td>
+                                <td>9-12</td>
+                                <td>12-14</td>
+                                <td>14-21</td>
+                            </tr>
+                            <tr>
+                                <td></td>
 
-                            <td>Miercuri</td>
-                            <td>9-11</td>
-                            <td>11-13</td>
-                            <td>14-21</td>
-                        </tr>
-                        <tr>
-                            <td></td>
+                                <td>Miercuri</td>
+                                <td>9-11</td>
+                                <td>11-13</td>
+                                <td>14-21</td>
+                            </tr>
+                            <tr>
+                                <td></td>
 
-                            <td>Joi</td>
-                            <td>9-11</td>
-                            <td>11-13</td>
-                            <td>14-21</td>
-                        </tr>
-                        <tr>
-                            <td></td>
+                                <td>Joi</td>
+                                <td>9-11</td>
+                                <td>11-13</td>
+                                <td>14-21</td>
+                            </tr>
+                            <tr>
+                                <td></td>
 
-                            <td>Vineri</td>
-                            <td>9-12</td>
-                            <td>12-14</td>
-                            <td>14-19</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td rowspan="2" class="bigcell">Weekend</td>
-                            <td>Sambata</td>
-                            <td>10-12</td>
-                            <td>12-13</td>
-                            <td>13-16</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>Duminica</td>
-                            <td>10-14</td>
-                            <td>-</td>
-                            <td>inchis</td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="6">Închis cu ocazia sărbătorilor legale.</td>
-                        </tr>
-                    </tfoot>
-                </table>
-                <p><strong>Atentie!!!</strong> in prima zi a lunii facem inventar.</p>
+                                <td>Vineri</td>
+                                <td>9-12</td>
+                                <td>12-14</td>
+                                <td>14-19</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td rowspan="2" class="bigcell">Weekend</td>
+                                <td>Sambata</td>
+                                <td>10-12</td>
+                                <td>12-13</td>
+                                <td>13-16</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Duminica</td>
+                                <td>10-14</td>
+                                <td>-</td>
+                                <td>inchis</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6">Închis cu ocazia sărbătorilor legale.</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <p id="p-orar"><strong>Atentie!!!</strong> in prima zi a lunii facem inventar.</p>
             </section>
             <section id="despre-noi">
                 <h2>Despre noi</h2>
@@ -321,7 +342,7 @@
                     </iframe>
                 </div>
             </section>
-            <figure id="fig1" class="fg-img">
+            <!-- <figure id="fig1" class="fg-img">
                 <img src="/resurse/imagini/ceai1.jpg" alt="ceai1">
                 <figcaption></figcaption>
             </figure>
@@ -332,7 +353,7 @@
             <figure id="fig3" class="fg-img">
                 <img src="/resurse/imagini/ceai3.jpg" alt="ceai3">
                 <figcaption></figcaption>
-            </figure>
+            </figure> -->
             <section id="anunturi">
                 <h2 class="fg-img">Anunțuri</h2>
                 <ul>
@@ -348,6 +369,14 @@
                     <li><time datetime="2019-12-01T10:00">01 decembrie 2019, ora 10:00</time> — <b>Reduceri de
                             sărbători</b> - Reduceri speciale pentru pachetele cadou!</li>
                 </ul>
+            </section>
+            <section id="calendar">
+                <h2>Calendar</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.</p>
             </section>
             <section id="ghid">
                 <h2>Ghiduri</h2>
@@ -414,6 +443,10 @@
                 </p>
                 <h3>Moduri de preparare ceai</h3>
                 <div class="container-iframe">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/XoiZlK16b2w?si=2_Vt5uKNtSY7wamy"
+                        name="ifr-video" title="Video preparare ceai" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+                    encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     <div class="taburi-iframe">
                         <a href="https://www.youtube.com/embed/XoiZlK16b2w?si=2_Vt5uKNtSY7wamy"
                             target="ifr-video">Preparare ceai turcesc</a>
@@ -422,10 +455,6 @@
                         <a href="https://www.youtube.com/watch?v=8Zz8RHj90w8" target="ifr-video">Proces de facut ceai
                             negru</a><br />
                     </div>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/XoiZlK16b2w?si=2_Vt5uKNtSY7wamy"
-                        name="ifr-video" title="Video preparare ceai" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
-                    encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </section>
             <section id="index-intrebari">
@@ -595,7 +624,10 @@
 
     </main>
     <footer id="subsol">
-        <a href="#" title="mergi sus" id="link-top">Mergi sus</a>
+        <a href="#" title="mergi sus" id="link-top">
+            <span class="sageata">&#8593;</span>
+            <span class="tooltip">Mergi sus!</span>
+        </a>
         <!-- <p><small>All frontend and backend code is under MIT License. Images and third-party assets belong to their
                 respective owners and are used under their individual licenses; Popa Mircea Alexandru</small></p> -->
         <p><small>

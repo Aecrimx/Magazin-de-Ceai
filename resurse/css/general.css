@@ -1,49 +1,127 @@
-body{
-    --culoare-fundal: pink;
-    --culoare-contur: rgb(214, 96, 116);
+html {
+    /*relative la viewport width*/
+    font-size: clamp(14px, 2vw, 18px);
+    /*tranzitie smooth*/
+    transition: font-size 0.2s ease-in-out;
+}
+
+body {
+    --culoare-fundal: #ffc0cb;
+    --culoare-contur: #d66074;
+    --culoare-text: #2d1b1e;
+    --culoare-text2: #6d4c51;
+    --culoare-text-inversat: #ffffff;
+    --culoare-highlight-verde: #3d5a40;
+    --culoare-highlight-bordeaux: #8a2b3d;
+    /*culori off-pallete dar pe care am dorit sa le pastrez :p*/
+    --culoare-card-bg: #ffcaea;
+    --culoare-tabel-col1: #ffe4ec;
+    --culoare-tabel-col2: #fff5e4;
+    --culoare-tabel-hover: #f4b8c8;
+    --culoare-tabel-bigcell: #e8d5da;
+    --culoare-tabel-tfoot: #f7dde5;
+    /* culori zone izolate */
+    --culoare-header-bg: #f7a8b8;
+    --culoare-footer-bg: #f0c0cc;
+    --culoare-zona-bg: #ffd6e0;
+
+    /*Spatiere stanga/dreapta pagina prin padding pe main */
+    --spatiere-pagina: 100px;
+    /* Gap intre celulele gridului */
+    --gap-grid: 15px;
+    /* Padding uniform pentru toate zonele de text */
+    --padding-zona: 18px;
+
     background-color: var(--culoare-fundal);
+    transition: font-size 0.3s ease-in-out;
 }
 
-p{
+h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    transition: font-size 0.3s ease-in-out;
+    font-family: "Playwrite DK Uloopet Guides", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h2 {
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    transition: font-size 0.3s ease-in-out;
+    text-align: center;
+    font-family: "Playwrite DK Uloopet Guides", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h3 {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    transition: font-size 0.3s ease-in-out;
+    text-align: center;
+    font-family: "Playwrite DK Uloopet Guides", cursive;
+    font-weight: 300;
+    font-style: normal;
+}
+
+h4 {
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    transition: font-size 0.3s ease-in-out;
+    font-family: "Playwrite DK Uloopet Guides", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+p {
     border: 1px solid var(--culoare-fundal);
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    transition: font-size 0.3s ease-in-out;
 }
 
-main{
-    --valoare-margine: 100px;
-    margin-left: var(--valoare-margine);
-    margin-right: var(--valoare-margine);
+main {
+    padding-left: var(--spatiere-pagina);
+    padding-right: var(--spatiere-pagina);
 }
 
-figure{
-    margin:0;
+figure {
+    margin: 0;
 }
+
 /*Pentru a alinia figure cum trebuie fata de celelalte, irelevant de rezolutia imaginii. ALtfel avem spatiu gol*/
 
 
- 
-#welcome{
+
+#welcome {
     grid-area: welcome;
 }
-#promotii{
+
+#promotii {
     grid-area: promotii;
 }
-#anunturi{
+
+#anunturi {
     grid-area: anunturi;
 }
-#ghid{
+
+#ghid {
     grid-area: ghid;
 }
-#orar{
+
+#orar {
     grid-area: orar;
 }
- 
-#fig1{
+
+#calendar {
+    grid-area: calendar;
+}
+
+#fig1 {
     grid-area: fig1;
 }
-#fig2{
+
+#fig2 {
     grid-area: fig2;
 }
-#fig3{
+
+#fig3 {
     grid-area: fig3;
 }
 
@@ -52,118 +130,151 @@ figure{
 } daca vrem sa se intample doar pt fig1 fig2 si fig3 nu putem face asa general*/
 /*folosim class id!!!!*/
 
-figure.fg-img > img{
-    width:100%;
+figure.fg-img>img {
+    width: 100%;
 }
 
-#produse{
+#produse {
     grid-area: produse;
 }
 
-#index-produse{
+#index-produse {
     grid-area: index-produse;
 }
 
-#index-intrebari{
+#index-intrebari {
     grid-area: index-intrebari;
 }
 
 /* grid 2x2 pt produse home*/
-#grid_produse_home{
+#grid_produse_home {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
 
 /*card pt produs*/
-.card_produs{
+.card_produs {
     border: 2px solid var(--culoare-contur);
     /* border-radius: 12px; */
     overflow: hidden;
-    background: rgb(255, 202, 234);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background: var(--culoare-card-bg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.card_produs header{
+.card_produs header {
     padding: 12px 15px 8px 15px;
 }
 
-.card_produs h3{
+.card_produs h3 {
     margin: 0 0 6px 0;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    transition: font-size 0.3s ease-in-out;
 }
 
-.fig-produse-card{
+.fig-produse-card {
     margin: 0;
 }
 
-.fig-produse-card img{
+.fig-produse-card img {
     width: 100%;
     display: block;
 }
 
-.fig-produse-card figcaption{
+.fig-produse-card figcaption {
     padding: 6px 15px;
     font-style: italic;
-    font-size: 0.9em;
-    color: #555;
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    color: var(--culoare-text2);
+    transition: font-size 0.3s ease-in-out;
 }
 
-.info-meters{
+.info-meters {
     padding: 8px 15px;
 }
 
-.info-meters p{
+.info-meters p {
     margin: 4px 0 2px 0;
     border: none;
 }
 
-.meter-descriere{
+.meter-descriere {
     width: 100%;
 }
 
-.descriere-card{
+.descriere-card {
     padding: 8px 15px 15px 15px;
 }
 
-.descriere-card p{
+.descriere-card p {
     margin: 0;
     border: none;
 }
 
 /*TAGURI PRODUSE ------------------------------*/
-.tags{
+.tags {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
 }
 
-.tag{
+.tag {
     display: inline-block;
     padding: 3px 10px;
     border-radius: 12px;
-    font-size: 0.75em;
+    font-size: clamp(0.7rem, 1vw, 0.9rem);
     font-weight: bold;
-    color: white;
+    color: var(--culoare-text-inversat);
     letter-spacing: 0.3px;
+    transition: font-size 0.3s ease-in-out;
 }
 
-.tag-verde      { background-color: #4caf50; }
-.tag-popular    { background-color: #ff9800; }
-.tag-sweet      { background-color: #e91e63; }
-.tag-floral     { background-color: #ab47bc; }
-.tag-relaxant   { background-color: #5c6bc0; }
-.tag-exotic     { background-color: #7b1fa2; }
-.tag-amar       { background-color: #795548; }
-.tag-rar        { background-color: #00897b; }
-.tag-blend      { background-color: #f06292; }
-.tag-aromat     { background-color: #ff7043; }
+.tag-verde {
+    background-color: #4caf50;
+}
+
+.tag-popular {
+    background-color: #ff9800;
+}
+
+.tag-sweet {
+    background-color: #e91e63;
+}
+
+.tag-floral {
+    background-color: #ab47bc;
+}
+
+.tag-relaxant {
+    background-color: #5c6bc0;
+}
+
+.tag-exotic {
+    background-color: #7b1fa2;
+}
+
+.tag-amar {
+    background-color: #795548;
+}
+
+.tag-rar {
+    background-color: #00897b;
+}
+
+.tag-blend {
+    background-color: #f06292;
+}
+
+.tag-aromat {
+    background-color: #ff7043;
+}
 
 
 
-#grid-pagina{
+#grid-pagina {
     display: grid;
-    /* gap:15px; daca nu vrem cu padding*/
-    grid-template-columns: 2fr 1fr 2fr;
+    gap: var(--gap-grid);
+    /* grid-template-columns: 2fr 1fr 2fr;
     grid-template-areas: "welcome welcome welcome"
                          "promotii promotii anunturi"
                          "fig1 ghid ghid"
@@ -172,123 +283,390 @@ figure.fg-img > img{
                          "despre-noi orar orar"
                          "produse produse produse"
                          "index-intrebari index-intrebari index-intrebari"
-                         "index-produse index-produse index-produse";
+                         "index-produse index-produse index-produse"; */
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas:
+        "welcome welcome welcome"
+        "welcome welcome welcome"
+        "calendar produse promotii"
+        "anunturi produse promotii"
+        "anunturi despre-noi index-intrebari"
+        "ghid ghid ghid"
+        "orar orar orar"
+        "index-produse index-produse index-produse";
+    /* placeholdere momentan : calendar-evenimente */
 }
-#grid-pagina > *{
-    padding: 15px 15px 15px 15px;
-    border: 2.5px solid var(--culoare-contur);
 
-    box-shadow: 0 0 5px var(--culoare-contur);
-    /* box-shadow: 10px 0 5px var(--culoare-contur);  */
-    /*putem muta si umbra!*/
+#grid-pagina>* {
+    padding: var(--padding-zona);
+    background-color: var(--culoare-zona-bg);
+    border: 2px solid var(--culoare-contur);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(214, 96, 116, 0.25);
 }
+
+#titlu {
+    background-color: var(--culoare-header-bg);
+    border-bottom: 2px solid var(--culoare-contur);
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 10px rgba(214, 96, 116, 0.3);
+    padding: var(--padding-zona) var(--spatiere-pagina);
+    /*Centrare logo+titlu*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+footer {
+    background-color: var(--culoare-footer-bg);
+    border-top: 2px solid var(--culoare-contur);
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -4px 10px rgba(214, 96, 116, 0.2);
+    padding: var(--padding-zona) var(--spatiere-pagina);
+    margin-top: var(--gap-grid);
+}
+
+/*Latime procentuala pt imagini/media(desktop default)*/
+.harta-container {
+    width: 100%;
+}
+
+.harta-container iframe {
+    width: 90%;
+    max-width: 700px;
+    min-width: 300px;
+    display: block;
+}
+
+.container-iframe iframe {
+    width: 100%;
+    max-width: 560px;
+    min-width: 260px;
+    height: 315px;
+    flex-shrink: 0;
+}
+
+/* Imaginea sigla din header */
+#titlu img {
+    width: 60%;
+    max-width: 220px;
+    min-width: 80px;
+}
+
 /* steluta inseamna orice. deci orice fel de element care este fiu care este mai mic decat grid pagina*/
 
 /* cu acestea ne vom juca pt task-ul personalizat unde se cere pozitia butoanelor */
-.container-iframe{
+.container-iframe {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-end;
+    /*aliniaza elementele la finalul containerului */
     height: 315px;
     /* width: 600px; */
 }
 
-.taburi-iframe{
+.taburi-iframe {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    justify-content: flex-start;
+    justify-content: flex-end;
     /* height:  */
     /* border: 1px solid var(--culoare-contur); */
 }
 
-.taburi-iframe > a {
+.taburi-iframe>a {
     display: inline-block;
     padding: 5px 5px;
     background-color: var(--culoare-fundal);
     border: 1px solid var(--culoare-contur);
-    color: rgb(0, 0, 0);
+    color: var(--culoare-text);
     text-decoration: none;
-    border-top-left-radius: 5px;
+    text-align: center;
+    border-top-right-radius: 45px;
     /* border-top-right-radius: 5px; */
-    border-bottom-left-radius: 5px;
+    /* border-bottom-left-radius: 5px; */
     /* margin-right: 10px; */
-    transition: all 0.1s linear;
+    font-size: clamp(0.85rem, 1.3vw, 1rem);
+    transition: all 0.3s ease-in-out;
     /* cu transition poti face animatii stil transition */
 }
+
 /* ce e cu : e pseudo clasa */
-.taburi-iframe > a:hover { 
+.taburi-iframe>a:hover {
     background-color: var(--culoare-contur);
-    color: white;
+    color: var(--culoare-text-inversat);
 }
 
-#tab-orar{
+/*TABEL ORAR*/
+/* Container cu border-radius si overflow:hidden pentru colturi rotunjite */
+.orar-scroll-container {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid var(--culoare-contur);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+    /*pt a il forta sa fie centrat*/
+}
+
+#p-orar {
+    text-align: center;
+    font-size: clamp(0.8rem, 1.1vw, 1rem);
+    color: var(--culoare-text2);
+}
+
+#tab-orar {
     border-collapse: collapse;
     /*fara acesta avem un padding intern intre celule la tabel*/
+    width: 100%;
 }
 
-#tab-orar td, #tab-orar th{
-    border: 1px solid black;
-    padding: 5px;
+/*Caption pozitionat sub tabel */
+#tab-orar caption {
+    caption-side: bottom;
+    padding: 8px 0 4px 0;
+    font-style: italic;
+    font-size: clamp(0.8rem, 1.1vw, 0.95rem);
+    color: var(--culoare-text2);
+}
+
+#tab-orar td,
+#tab-orar th {
+    border: 1px solid var(--culoare-fundal);
+    padding: 7px 10px;
     text-align: center;
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    transition: font-size 0.3s ease-in-out, background-color 0.35s ease;
 }
 
-#tab-orar tbody tr:nth-child(even){ /*tr pt rows, altfel daca voiam pe coloana faceam td*/
-    background-color: lightpink;
+#tab-orar th:nth-child(odd),
+#tab-orar td:nth-child(odd) {
+    background-color: var(--culoare-tabel-col1);
 }
-.bigcell{
+
+#tab-orar th:nth-child(even),
+#tab-orar td:nth-child(even) {
+    background-color: var(--culoare-tabel-col2);
+
+}
+
+#tab-orar thead th {
+    background-color: var(--culoare-tabel-tfoot) !important;
+    color: var(--culoare-text);
+    font-weight: bold;
+}
+
+#tab-orar tbody tr {
+    transition: background-color 0.35s ease;
+}
+
+#tab-orar tbody tr:hover td {
+    background-color: var(--culoare-tabel-hover);
+}
+
+#tab-orar tbody tr:hover td:hover {
+    background-color: var(--culoare-highlight-bordeaux);
+    color: var(--culoare-text-inversat);
+}
+
+.bigcell {
+    /*important forteaza suprascrie*/
+    background-color: var(--culoare-tabel-bigcell) !important;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#tab-orar tfoot td {
+    background-color: var(--culoare-tabel-tfoot);
+    font-style: italic;
+    font-size: clamp(0.75rem, 1.1vw, 0.9rem);
+}
+
+
+/* TASK sageata sus */
+#link-top {
+    position: fixed;
+    bottom: 60px;
+    right: 50px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.7) 20%, var(--culoare-fundal) 90%);
+    opacity: 0.6;
+    transition: opacity 0.4s ease;
+    z-index: 1000;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#link-top:hover {
+    opacity: 1;
+}
+
+#link-top::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 50%;
+    border: 10px dashed var(--culoare-contur);
+    box-sizing: border-box;
+    transition: transform 0.4s ease-in-out;
+}
+
+#link-top:hover::before {
+    transform: rotate(90deg);
+}
+
+#link-top .sageata {
+    font-size: 2rem;
+    color: var(--culoare-highlight-bordeaux);
+}
+
+@keyframes miscare-sageata {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#link-top:hover .sageata {
+    animation: miscare-sageata 0.4s ease-in-out;
+}
+
+#link-top .tooltip {
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: var(--culoare-fundal);
-} /*ca sa supresam colorarea acelor celule de dadeau span*/
+    border: 1px solid var(--culoare-highlight-bordeaux);
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: var(--culoare-highlight-bordeaux);
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+}
 
+#link-top:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
 
 /*pt diferite rezolutii*/
 @media screen and (max-width:1200px) {
-    body{
-        --valoare-margine: 80px;
+    body {
+        --spatiere-pagina: 60px;
+        --gap-grid: 10px;
     }
 
-    #grid-pagina{
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "welcome welcome"
-                         "promotii promotii"
-                         "anunturi anunturi"
-                         "fig1 orar"
-                         "fig2 orar"
-                         "fig3 orar"
-                         "ghid ghid"
-                         "produse produse"
-                         "despre-noi despre-noi"
-                         "index-intrebari index-intrebari"
-                         "index-produse index-produse";
-}
+    #grid-pagina {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "welcome welcome"
+            "promotii promotii"
+            "anunturi anunturi"
+            "calendar calendar"
+            "produse produse"
+            "despre-noi despre-noi"
+            "ghid ghid"
+            "orar orar"
+            "index-intrebari index-intrebari"
+            "index-produse index-produse";
+    }
+
+    .orar-scroll-container {
+        display: block;
+        /* din inline-block in block ca sa ocupe tot spatiul disponibil */
+        overflow-x: auto;
+        /* scrollbar orizontal DOAR pe container */
+        width: 100%;
+    }
+
+    .harta-container iframe {
+        width: 85%;
+        max-width: 560px;
+        min-width: 280px;
+    }
+
+    .container-iframe iframe {
+        width: 80%;
+        max-width: 560px;
+        min-width: 240px;
+    }
+
+    #titlu img {
+        width: 50%;
+        max-width: 200px;
+        min-width: 80px;
+    }
 }
 
 @media screen and (max-width:700px) {
-    body{
-        --valoare-margine: 50px;
+    body {
+        --spatiere-pagina: 15px;
+        --gap-grid: 6px;
     }
 
-    #grid-pagina{
-    grid-template-columns: 1fr;
-    grid-template-areas: "welcome"
-                         "promotii"
-                         "anunturi"
-                         "fig1"
-                         "fig2"
-                         "fig3"
-                         "orar"
-                         "ghid"
-                         "produse"
-                         "despre-noi"
-                         "index-intrebari"
-                         "index-produse";
+    #grid-pagina {
+        grid-template-columns: 1fr;
+        grid-template-areas: "welcome"
+            "promotii"
+            "anunturi"
+            "calendar"
+            "orar"
+            "ghid"
+            "produse"
+            "despre-noi"
+            "index-intrebari"
+            "index-produse";
 
-    /* 
+        /* 
     putem pune doar display: block; si va face sa fie unu dupa altul  */
     }
 
-    #grid_produse_home{
+    #grid_produse_home {
         grid-template-columns: 1fr;
     }
-}
 
+    .orar-scroll-container {
+        display: block;
+        overflow-x: auto;
+        width: 100%;
+    }
+
+    .harta-container iframe {
+        width: 100%;
+        max-width: 480px;
+        min-width: 200px;
+    }
+
+    .container-iframe iframe {
+        width: 100%;
+        max-width: 480px;
+        min-width: 200px;
+    }
+
+    #titlu img {
+        width: 40%;
+        max-width: 150px;
+        min-width: 60px;
+    }
+}
