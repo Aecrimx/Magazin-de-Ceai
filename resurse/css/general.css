@@ -27,9 +27,9 @@ body {
 
     /*Spatiere stanga/dreapta pagina prin padding pe main */
     --spatiere-pagina: 100px;
-    /* Gap intre celulele gridului */
+    /*Gap intre celulele gridului */
     --gap-grid: 15px;
-    /* Padding uniform pentru toate zonele de text */
+    /*Padding uniform pentru toate zonele de text */
     --padding-zona: 18px;
 
     background-color: var(--culoare-fundal);
