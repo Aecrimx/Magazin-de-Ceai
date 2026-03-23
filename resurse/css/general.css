@@ -528,8 +528,9 @@ footer {
 #link-top .sageata {
     font-size: 2rem;
     color: var(--culoare-highlight-bordeaux);
+    filter: blur(2px);
 }
-
+/* 
 @keyframes miscare-sageata {
     0% {
         transform: translateY(0);
@@ -542,10 +543,24 @@ footer {
     100% {
         transform: translateY(0);
     }
+} */
+
+@keyframes blur-sageata {
+    0% {
+        filter: blur(2px);
+    }
+    50% {
+        filter: blur(0px);
+    }
+    100% {
+        filter: blur(0px);
+    }
 }
 
 #link-top:hover .sageata {
-    animation: miscare-sageata 0.4s ease-in-out;
+    /* animation: miscare-sageata 0.4s ease-in-out; */
+    animation: blur-sageata 0.4s linear forwards;
+    /* forwards sustine animatia cat timp inca dai hover pe sageata */
 }
 
 #link-top .tooltip {
