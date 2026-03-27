@@ -2,7 +2,7 @@
 <html lang="ro">
 
 <head>
-    <%- include("../fragments/head", { titlu: (typeof titlu !== "undefined" ? titlu : "Eroare") }) %>
+    <%- include("../fragments/head", { titlu: "404 - Pagină inexistentă" }) %>
 </head>
 
 <body>
@@ -11,7 +11,7 @@
     <main>
         <section id="err-coloane">
             <div id="err-imag">
-                <img src="<%= imagine %>" alt="imagine eroare" />
+                <img src="<%= imagine %>" alt="pagina nu exista" />
             </div>
             <div>
                 <h2><%= titlu %></h2>
