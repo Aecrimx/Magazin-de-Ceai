@@ -442,15 +442,14 @@ footer {
     transition: font-size 0.3s ease-in-out, background-color 0.35s ease;
 }
 
-#tab-orar th:nth-child(odd),
-#tab-orar td:nth-child(odd) {
+/* #tab-orar th:nth-child(odd), */
+#tab-orar tr:nth-child(odd) {
     background-color: var(--culoare-tabel-col1);
 }
 
-#tab-orar th:nth-child(even),
-#tab-orar td:nth-child(even) {
+/* #tab-orar th:nth-child(even), */
+#tab-orar tr:nth-child(even) {
     background-color: var(--culoare-tabel-col2);
-
 }
 
 #tab-orar thead th {
@@ -472,7 +471,7 @@ footer {
     color: var(--culoare-text-inversat);
 }
 
-.bigcell {
+.weekend,.zile_lucratoare {
     /*important forteaza suprascrie*/
     background-color: var(--culoare-tabel-bigcell) !important;
     font-weight: bold;
@@ -592,6 +591,9 @@ footer {
         --spatiere-pagina: 60px;
         --gap-grid: 10px;
     }
+    * {
+    animation: none !important;
+   }
 
     #grid-pagina {
         grid-template-columns: 1fr 1fr;
@@ -638,6 +640,10 @@ footer {
     body {
         --spatiere-pagina: 15px;
         --gap-grid: 6px;
+    }
+
+    * {
+    animation: none !important;
     }
 
     #grid-pagina {

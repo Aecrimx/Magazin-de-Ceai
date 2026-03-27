@@ -10,6 +10,16 @@ console.log("Folder index.js", __dirname);
 console.log("Folder curent (de lucru)", process.cwd());
 console.log("Cale fisier", __filename);
 
+//pt taskul cu foldere
+// let vect_foldere = ["temp", "logs", "backup", "fisiere_uploadate"];
+// for(let folder of vect_foldere){
+//     let caleFolder=path.join(__dirname, folder);
+//     if(!fs.existsSync(caleFolder)){
+//         fs.mkdir(caleFolder);
+//     }
+// }
+
+
 // incepem sa definim http requests
 // app.get("/cale", function(req, res){
 //     res.send("Salut, ai ajuns pe <b style='color = red;'>server!</b>");
@@ -36,16 +46,26 @@ obGlobal={
 app.get("/cale/:a/:b", function(req, res){
     res.send(parseInt(req.params.a) + parseInt(req.params.b));
     console.log("cerere parsata");
-}); // parametrii in cerere
+});// parametrii in cerere
+
+
 app.get(["/", "/index", "/home"], function(req, res){ //acel vector ne lasa sa avem "alias-uri" pt main page
     // res.sendFile(path.join(__dirname, "index.html")); 
-    res.render("pagini/index");   
+    res.render("pagini/index", {
+        ip: req.ip // si in ejs putem folosi <%- locals.ip> ca sa il vedem
+        //parametrul transmis in render se numeste locals
+    });   
 })
 //e gresit sa returnam pt fiecare get un alt fisier.
 // o metoda mai smart este:
 app.use("/resurse", express.static(path.join(__dirname, "resurse")));
 // asa nu trb sa scriem pt fiecare fisier css un sendFile
 //mereu concatanam cu __Dirname si nu cu current working directory pt ca dirname e relativ la entry point, cwd e locatia de unde se apeleaza
+
+//pt task-ul cu favicon.ico
+app.get("/favicon.ico", function(req, res){
+    res.sendFIle(path.joib(__dirname, "resurse/imagini/favicon/favicon.ico"))
+});
 
 
 app.get("/:a/:b", function(req, res){
@@ -75,6 +95,11 @@ app.get("/eroare", function(req, res){
         text: obGlobal.obErori.eroare_default.text,
     });
 }) // testam o eroare.
+
+//cum facem mai multe pagini fara sa facme cpy paste app.get? see line 141 inainte de app.listen
+
+
+
 
 
 function compileazaScss(caleScss, caleCss){
@@ -133,6 +158,42 @@ function afisareEroare(res, identificator, titlu, text, imagine){
 
 
 // nodemon . pt a da run
+
+app.get("/*pagina", function(req,res){ //intern acm va cauta pagina respectiva
+    console.log("Cale pagina", req.url);
+    //daca poate renda .render(), il tirmite in rezultatRendare
+    //daca nu poate, apeleaza functia callback
+    if(req.url.startsWith("/resurse") && path.extname(req.url)==""){
+        //e director, nu fisier.
+        afisareEroare(res, 403);
+        return;
+    }
+    if(path.extname(req.url) == ".ejs"){
+        afisareEroare(res, 400); //badrequest
+        return;
+    }
+    try{
+            res.render("pagini"+req.url, function(err, rezRendare){
+        if(err){
+            if(err.message.includes("Failed to lookup view")){
+                afisareEroare(res, 404)
+                return;
+            }
+            afisareEroare(res);
+            return;
+        }
+        res.send(rezRendare);
+        console.log("Randare", rezRandare); // verificam e un html duh
+    });
+    }catch(err){
+        if(err.message.includes("Cannot find module")){
+            afisareEroare(res, 404);
+            return;
+        }
+        afisareEroare(res);
+        return;
+    }
+});
 
 app.listen(8080);
 console.log("Serverul a pornit!");
