@@ -110,6 +110,7 @@ function compileazaScss(caleScss, caleCss) {
 
     const rez = sass.compile(caleScss, { sourceMap: true });
     fs.writeFileSync(caleCss, rez.css);
+    console.log("SCSS recompilat:", caleScss, "->", caleCss);
 }
 
 function initScss() {

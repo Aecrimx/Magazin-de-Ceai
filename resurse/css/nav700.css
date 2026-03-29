@@ -1,30 +1,145 @@
-#hamburger{
-    display: block;
+nav#menu-site #hamburger {
+  width: 48px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0.3rem 0 0.45rem 0.2rem;
+  position: relative;
+  z-index: 1000;
 }
-
-#hamburger > img{
-    height: clamp(2rem, 4vw, 3.5em); /*relativ la font size container*/
-    width: auto;
-    transition: height 0.3s ease-in-out;
+nav#menu-site #hamburger .hamburger-container {
+  position: relative;
+  width: 34px;
+  height: 24px;
+  display: block;
 }
-
-ul.meniu{
-    display: none;
+nav#menu-site #hamburger .hamburger-container .bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--culoare-nav-item-hover);
+  display: block;
+  animation: hamburger-bar-in 0.6s ease both;
 }
-/* + inseamna fratele fix dupa el */
-#ch-menu:checked + ul.meniu{
-    display: block;
-    position: absolute;
-    /* top: 0; */
-    /* left: 0; */
-    z-index: 10;
-    width: 100%;
+nav#menu-site #hamburger .hamburger-container .bar.bar-1 {
+  top: 0;
 }
-/* toate li-urile de sub ul meniu */
-ul.meniu li{
-    width: 100%;
+nav#menu-site #hamburger .hamburger-container .bar.bar-2 {
+  top: 10px;
 }
-
-ul.meniu ul{
-    width: 100%;
+nav#menu-site #hamburger .hamburger-container .bar.bar-3 {
+  top: 20px;
+}
+nav#menu-site #hamburger .hamburger-container .bar-1 {
+  animation-delay: 0ms;
+}
+nav#menu-site #hamburger .hamburger-container .bar-2 {
+  animation-delay: 300ms;
+}
+nav#menu-site #hamburger .hamburger-container .bar-3 {
+  animation-delay: 600ms;
+}
+nav#menu-site #ch-menu {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+nav#menu-site ul.meniu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  flex-direction: column;
+  gap: 0;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 999;
+  padding-top: 55px;
+  background: var(--culoare-nav-item-bg);
+  overflow-y: auto;
+}
+nav#menu-site ul.meniu > li {
+  width: 100%;
+  min-height: 44px;
+  border: none;
+  border-radius: 0;
+}
+nav#menu-site ul.meniu > li > a {
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 0.8rem;
+  gap: 0.7rem;
+}
+nav#menu-site ul.meniu > li > a .text-icon {
+  display: block;
+  font-size: 1rem;
+}
+nav#menu-site ul.meniu > li > a .imag-icon {
+  display: none;
+  font-size: 1.05rem;
+}
+nav#menu-site ul.meniu > li.item-acasa > a {
+  justify-content: center;
+}
+nav#menu-site ul.meniu > li.item-acasa > a .text-icon {
+  display: none;
+}
+nav#menu-site ul.meniu > li.item-acasa > a .imag-icon {
+  display: block;
+  font-size: 1.3rem;
+}
+nav#menu-site ul.meniu > li:hover > a, nav#menu-site ul.meniu > li:focus-within > a {
+  background: var(--culoare-nav-item-hover);
+  color: var(--culoare-nav-text-hover);
+}
+nav#menu-site ul.meniu > li:hover > a .text-icon, nav#menu-site ul.meniu > li:focus-within > a .text-icon {
+  font-size: 1.13rem;
+}
+nav#menu-site ul.meniu ul {
+  position: static;
+  border: none;
+  border-top: 1px solid var(--culoare-nav-border-soft);
+  border-radius: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: max-height 0.4s ease, opacity 0.35s ease, visibility 0.35s ease;
+  background: var(--culoare-nav-submenu-bg);
+}
+nav#menu-site ul.meniu ul li {
+  border-bottom: 1px solid var(--culoare-nav-border-soft);
+}
+nav#menu-site ul.meniu ul li:last-child {
+  border-bottom: none;
+}
+nav#menu-site ul.meniu ul a {
+  display: block;
+  padding: 0.65rem 1.2rem;
+  color: var(--culoare-nav-text);
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+nav#menu-site ul.meniu ul a:hover, nav#menu-site ul.meniu ul a:focus-visible {
+  background: var(--culoare-nav-item-hover);
+  color: var(--culoare-nav-text-hover);
+}
+nav#menu-site ul.meniu > li:hover > ul,
+nav#menu-site ul.meniu > li:focus-within > ul {
+  max-height: 300px;
+  overflow: visible;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+nav#menu-site #ch-menu:checked + ul.meniu {
+  transform: translateX(0);
 }

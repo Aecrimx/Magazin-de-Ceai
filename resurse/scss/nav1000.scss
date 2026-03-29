@@ -1,0 +1,28 @@
+$inaltime-buton-mediu: 42px;
+
+nav#menu-site {
+    ul.meniu {
+        >li {
+            min-height: $inaltime-buton-mediu;
+            width: 125px;
+
+            >a {
+                min-height: $inaltime-buton-mediu;
+                font-size: 0.9rem;
+            }
+
+            >a .text-icon {
+                display: none;
+            }
+
+            >a .imag-icon {
+                font-size: 1.22rem;
+            }
+        }
+
+        ul a {
+            font-size: 0.92rem;
+            padding-inline: 0.9rem;
+        }
+    }
+}

@@ -1,40 +1,57 @@
-<nav>
-    <label id="hamburger" for="ch-menu">
-        <img src="/resurse/imagini/Hamburger_icon_alb.png" alt="menu">
+<nav id="menu-site">
+    <label id="hamburger" for="ch-menu" aria-label="Deschide meniul principal">
+        <span class="hamburger-container" aria-hidden="true">
+            <span class="bar bar-1"></span>
+            <span class="bar bar-2"></span>
+            <span class="bar bar-3"></span>
+        </span>
     </label>
     <input type="checkbox" id="ch-menu" />
     <ul class="meniu">
-        <li>
-            <div class="text-icon" id="acasa">Acasă</div>
-            <div class="imag-icon" id="acasa-mediu">
-                <span class="fas fa-solid fa-house"></span>
-            </div>
+        <li class="item-acasa">
+            <a href="/" aria-label="Pagina principală">
+                <span class="imag-icon"><i class="fa-solid fa-house"></i></span>
+                <span class="text-icon">Acasă</span>
+            </a>
             <ul>
-                <li><a href="#welcome">Bine ați venit!</a></li>
-                <li><a href="#promotii">Promoții!</a></li>
+                <li><a href="/#welcome">Bine ați venit</a></li>
+                <li><a href="/#promotii">Promoții</a></li>
+                <li><a href="/#orar">Program</a></li>
             </ul>
         </li>
         <li>
-            <div class="text-icon">Cumpărați</div>
-            <div class="imag-icon"><span class="fas fa-solid fa-store"></span></div>
+            <a href="/produse">
+                <span class="imag-icon"><i class="fa-solid fa-store"></i></span>
+                <span class="text-icon">Produse</span>
+            </a>
             <ul>
-                <li><a href="#produse">Produse</a></li>
-                <li><a href="#ghid">Ceaiul perfect!</a></li>
+                <li><a href="/produse">Catalog produse</a></li>
+                <li><a href="/produse?categorie=ceai-verde">Ceai verde</a></li>
+                <li><a href="/produse?categorie=accesorii">Accesorii</a></li>
             </ul>
         </li>
         <li>
-            <div class="text-icon">Informații</div>
-            <div class="imag-icon"><span class="fas fa-solid fa-book-open"></span></div>
+            <a href="/galerie-statica">
+                <span class="imag-icon"><i class="fa-solid fa-images"></i></span>
+                <span class="text-icon">Galerie</span>
+            </a>
+        </li>
+        <li>
+            <a href="/despre">
+                <span class="imag-icon"><i class="fa-solid fa-circle-info"></i></span>
+                <span class="text-icon">Informații</span>
+            </a>
             <ul>
-                <li><a href="#ghid">Ghid</a></li>
-                <li><a href="#orar">Program</a></li>
-                <li><a href="#index-intrebari">FAQ</a></li>
-                <li><a href="#despre-noi">Despre noi</a></li>
+                <li><a href="/#despre-noi">Despre noi</a></li>
+                <li><a href="/#index-intrebari">Întrebări frecvente</a></li>
+                <li><a href="/#ghid">Ghidul ceaiului</a></li>
             </ul>
         </li>
         <li>
-            <div class="text-icon"><a href="#">Înregistrare</a></div>
-            <div class="imag-icon"><span class="fas fa-solid fa-user"></span></div>
+            <a href="/inregistrare">
+                <span class="imag-icon"><i class="fa-solid fa-user-plus"></i></span>
+                <span class="text-icon">Înregistrare</span>
+            </a>
         </li>
     </ul>
 </nav>

@@ -1,3 +1,18 @@
-.text-icon{
-    display: none;
+nav#menu-site ul.meniu > li {
+  min-height: 42px;
+  width: 125px;
+}
+nav#menu-site ul.meniu > li > a {
+  min-height: 42px;
+  font-size: 0.9rem;
+}
+nav#menu-site ul.meniu > li > a .text-icon {
+  display: none;
+}
+nav#menu-site ul.meniu > li > a .imag-icon {
+  font-size: 1.22rem;
+}
+nav#menu-site ul.meniu ul a {
+  font-size: 0.92rem;
+  padding-inline: 0.9rem;
 }

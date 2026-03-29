@@ -24,6 +24,16 @@ body {
     --culoare-header-bg: #f7a8b8;
     --culoare-footer-bg: #f0c0cc;
     --culoare-zona-bg: #ffd6e0;
+    --culoare-nav-item-bg: #ffcdd8;
+    --culoare-nav-item-hover: #d66074;
+    --culoare-nav-submenu-bg: #ffdce5;
+    --culoare-nav-border: #a94f5f;
+    --culoare-nav-border-soft: #c78793;
+    --culoare-nav-text: #2d1b1e;
+    --culoare-nav-text-hover: #ffffff;
+    --culoare-nav-hamburger-start: #fff5f8;
+    --culoare-nav-hamburger-mid: #f0a4b6;
+    --culoare-nav-hamburger-end: #7f2031;
 
     /*Spatiere stanga/dreapta pagina prin padding pe main */
     --spatiere-pagina: 100px;

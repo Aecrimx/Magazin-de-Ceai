@@ -1,0 +1,177 @@
+$latime-buton: 180px;
+$inaltime-buton: 48px;
+$raza-colt: 8px;
+$viteza: 0.3s;
+$latime-bara-submeniu: 5px;
+
+// Keyframes pentru aparitia barelor hamburger (in fisierul principal, mereu incarcat)
+// 3 cadre cheie: culoare, transformare geometrica, opacitate
+@keyframes hamburger-bar-in {
+    0% {
+        background: transparent;
+        transform: scaleX(0) rotate(-90deg);
+        opacity: 0;
+    }
+
+    50% {
+        background: var(--culoare-nav-text-hover);
+        transform: scaleX(1.2) rotate(10deg);
+        opacity: 0.7;
+    }
+
+    100% {
+        background: var(--culoare-nav-item-hover);
+        transform: scaleX(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+%element-meniu {
+    width: $latime-buton;
+    min-height: $inaltime-buton;
+    border: 1px solid var(--culoare-nav-border);
+    background: var(--culoare-nav-item-bg);
+    border-radius: $raza-colt;
+}
+
+%link-principal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    min-height: $inaltime-buton;
+    color: var(--culoare-nav-text);
+    text-decoration: none;
+    transition: background-color $viteza ease, color $viteza ease;
+}
+
+nav#menu-site {
+    --latime-buton: #{$latime-buton};
+    --inaltime-buton: #{$inaltime-buton};
+    position: relative;
+    z-index: 30;
+
+    #hamburger,
+    #ch-menu {
+        display: none;
+    }
+
+    ul.meniu,
+    ul.meniu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    ul.meniu {
+        display: flex;
+        gap: 0.35rem;
+        justify-content: center;
+
+        >li {
+            @extend %element-meniu;
+            position: relative;
+            font-weight: 700;
+
+            >a {
+                @extend %link-principal;
+            }
+
+            &:hover>a,
+            &:focus-within>a {
+                background: var(--culoare-nav-item-hover);
+                color: var(--culoare-nav-text-hover);
+
+                .text-icon {
+                    font-size: 1.13rem;
+                }
+            }
+
+            .imag-icon {
+                display: inline-flex;
+                font-size: 1.05rem;
+            }
+
+            .text-icon {
+                font-size: 1rem;
+                transition: font-size $viteza ease;
+            }
+        }
+
+        ul {
+            position: absolute;
+            top: calc(100% + 1px);
+            left: 0;
+            min-width: 100%;
+            background: var(--culoare-nav-submenu-bg);
+            border: 1px solid var(--culoare-nav-border);
+            border-top: none;
+            border-radius: 0 0 $raza-colt $raza-colt;
+            transform: scaleY(0);
+            transform-origin: top center;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: transform 0.28s ease, opacity 0.22s ease;
+
+            li {
+                border-bottom: 1px solid var(--culoare-nav-border-soft);
+
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+
+            a {
+                position: relative;
+                display: block;
+                padding: 0.65rem 1.2rem;
+                color: var(--culoare-nav-text);
+                text-decoration: none;
+                transition: background-color $viteza ease, color $viteza ease;
+
+                &::before,
+                &::after {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    width: $latime-bara-submeniu;
+                    height: 100%;
+                    transform: scaleY(0);
+                    transform-origin: center top;
+                    transition: transform $viteza ease;
+                }
+
+                &::before {
+                    left: 0;
+                    background: linear-gradient(to right, var(--culoare-header-bg),var(--culoare-nav-item-hover));
+                }
+
+                &::after {
+                    right: 0;
+                    background: linear-gradient(to left, var(--culoare-header-bg),var(--culoare-nav-item-hover));
+                }
+
+                &:hover,
+                &:focus-visible {
+                    background: var(--culoare-nav-item-hover);
+                    color: var(--culoare-nav-text-hover);
+
+                    &::before,
+                    &::after {
+                        transform: scaleY(1);
+                    }
+                }
+            }
+        }
+
+        >li:hover>ul,
+        >li:focus-within>ul {
+            transform: scaleY(1);
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+    }
+}
