@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <%- include("../fragments/head", { titlu: "403 - Acces interzis" }) %>
+</head>
+
+<body>
+    <%- include("../fragments/header") %>
+
+    <main>
+        <section id="err-coloane">
+            <div id="err-imag">
+                <img src="<%= imagine %>" alt="pagina nu exista" />
+            </div>
+            <div>
+                <h2><%= titlu %></h2>
+                <p><%= text %></p>
+            </div>
+        </section>
+    </main>
+
+    <%- include("../fragments/footer") %>
+</body>
+
+</html>
