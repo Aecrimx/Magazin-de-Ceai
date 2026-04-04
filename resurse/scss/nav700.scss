@@ -29,26 +29,26 @@ nav#menu-site {
                 border-radius: 999px;
                 background: var(--culoare-nav-item-hover);
                 display: block;
-                // Animatia de aparitie
-                animation: hamburger-bar-in 0.6s ease both;
-
-                &.bar-1 {
-                    top: 0;
-                }
-
-                &.bar-2 {
-                    top: 10px;
-                }
-
-                &.bar-3 {
-                    top: 20px;
-                }
             }
 
-            // Delay-uri succesive generate cu @for in Sass
-            @for $i from 1 through 3 {
+            // .bar-1 {
+            //     top: 0;
+            //     animation: anim-hamburger1 0.45s ease-out 0ms both !important;
+            // }
+
+            // .bar-2 {
+            //     top: 10px;
+            //     animation: anim-hamburger2 0.45s ease-out $delay-animatie both !important;
+            // }
+
+            // .bar-3 {
+            //     top: 20px;
+            //     animation: anim-hamburger3 0.45s ease-out ($delay-animatie * 2) both !important;
+            // }
+            @for $i from 1 through 3 { // acum e for loop
                 .bar-#{$i} {
-                    animation-delay: #{($i - 1) * 300}ms;
+                    top: ($i - 1) * 10px;
+                    animation: anim-hamburger#{$i} 0.45s ease-out ($delay-animatie * ($i - 1)) both !important;
                 }
             }
         }
@@ -59,6 +59,7 @@ nav#menu-site {
         opacity: 0;
         pointer-events: none;
     }
+
 
     ul.meniu {
         position: fixed;

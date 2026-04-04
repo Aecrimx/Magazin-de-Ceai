@@ -1,0 +1,6 @@
+@use '../../node_modules/bootstrap/scss/bootstrap.scss' with 
+(
+    $primary: red,
+    $secondary:purple,
+    // TODO: Adaugat alte variabile pentru a personaliza mai mult (ex: $font-family-base, $body-bg, etc.   
+)

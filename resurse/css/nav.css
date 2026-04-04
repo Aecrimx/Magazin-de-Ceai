@@ -1,18 +1,52 @@
-@keyframes hamburger-bar-in {
+@keyframes anim-hamburger1 {
   0% {
-    background: transparent;
-    transform: scaleX(0) rotate(-90deg);
     opacity: 0;
+    transform: rotate(-45deg) scaleX(0.2);
+    background: transparent;
   }
   50% {
+    transform: rotate(8deg) scaleX(1.15);
     background: var(--culoare-nav-text-hover);
-    transform: scaleX(1.2) rotate(10deg);
     opacity: 0.7;
   }
   100% {
-    background: var(--culoare-nav-item-hover);
-    transform: scaleX(1) rotate(0deg);
     opacity: 1;
+    transform: rotate(0deg) scaleX(1);
+    background: var(--culoare-nav-item-hover);
+  }
+}
+@keyframes anim-hamburger2 {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) scaleX(0.2);
+    background: transparent;
+  }
+  50% {
+    transform: rotate(-6deg) scaleX(1.1);
+    background: var(--culoare-nav-text-hover);
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scaleX(1);
+    background: var(--culoare-nav-item-hover);
+  }
+}
+@keyframes anim-hamburger3 {
+  0% {
+    opacity: 0;
+    transform: rotate(-90deg) scaleX(0.2);
+    background: transparent;
+  }
+  50% {
+    transform: rotate(4deg) scaleX(1.12);
+    background: var(--culoare-nav-text-hover);
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scaleX(1);
+    background: var(--culoare-nav-item-hover);
   }
 }
 nav#menu-site ul.meniu > li {

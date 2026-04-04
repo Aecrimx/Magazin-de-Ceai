@@ -23,25 +23,18 @@ nav#menu-site #hamburger .hamburger-container .bar {
   border-radius: 999px;
   background: var(--culoare-nav-item-hover);
   display: block;
-  animation: hamburger-bar-in 0.6s ease both;
-}
-nav#menu-site #hamburger .hamburger-container .bar.bar-1 {
-  top: 0;
-}
-nav#menu-site #hamburger .hamburger-container .bar.bar-2 {
-  top: 10px;
-}
-nav#menu-site #hamburger .hamburger-container .bar.bar-3 {
-  top: 20px;
 }
 nav#menu-site #hamburger .hamburger-container .bar-1 {
-  animation-delay: 0ms;
+  top: 0px;
+  animation: anim-hamburger1 0.45s ease-out 0ms both !important;
 }
 nav#menu-site #hamburger .hamburger-container .bar-2 {
-  animation-delay: 300ms;
+  top: 10px;
+  animation: anim-hamburger2 0.45s ease-out 300ms both !important;
 }
 nav#menu-site #hamburger .hamburger-container .bar-3 {
-  animation-delay: 600ms;
+  top: 20px;
+  animation: anim-hamburger3 0.45s ease-out 600ms both !important;
 }
 nav#menu-site #ch-menu {
   position: absolute;

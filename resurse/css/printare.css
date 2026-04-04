@@ -78,7 +78,7 @@
 		top: 0;
 		left: 50%;
 		transform: translateX(-50%);
-		width: 80%;
+		width: 80%; /*80% din width-ul total*/
 		border: 2px dotted black;
 		text-align: center;
 		padding: 0.35rem;
@@ -89,7 +89,7 @@
 	body::after { /* Watermark */
 		content: "Popa Mircea Alexandru";
 		position: fixed;
-		right: 0.5cm;
+		right: 0.7cm;
 		bottom: 0.5cm;
 		width: 100px;
 		height: 2cm;

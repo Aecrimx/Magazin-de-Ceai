@@ -605,6 +605,10 @@ footer {
     animation: none !important;
    }
 
+    nav#menu-site #hamburger .hamburger-container .bar {
+        animation: initial !important;
+    }
+
     #grid-pagina {
         grid-template-columns: 1fr 1fr;
         grid-template-areas: "welcome welcome"
@@ -654,6 +658,10 @@ footer {
 
     * {
     animation: none !important;
+    }
+
+    nav#menu-site #hamburger .hamburger-container .bar {
+        animation: initial !important;
     }
 
     #grid-pagina {
