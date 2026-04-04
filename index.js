@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const sass = require("sass");
+const sharp = require("sharp");
 
 const app = express();
 
@@ -20,6 +21,7 @@ const obGlobal = {
 };
 
 app.use("/resurse", express.static(path.join(__dirname, "resurse")));
+app.use("/dist", express.static(path.join(__dirname, "node_modules/bootstrap/dist"))); // am inclus bootstrap.js din modemodules
 
 app.get("/favicon.ico", function (req, res) {
     res.sendFile(path.join(__dirname, "resurse/imagini/favicon/favicon.ico"));
@@ -79,6 +81,14 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
         res.render("pagini/404", dateRandare);
         return;
     }
+    if (identificator === 403) {
+        res.render("pagini/403", dateRandare);
+        return;
+    }
+    if (identificator === 400) {
+        res.render("pagini/400", dateRandare);
+        return;
+    }
 
     res.render("pagini/eroare", dateRandare);
 }
@@ -100,7 +110,7 @@ function compileazaScss(caleScss, caleCss) {
 
     const caleBackup = path.join(obGlobal.folderBackup, "resurse/css");
     if (!fs.existsSync(caleBackup)) {
-        fs.mkdirSync(caleBackup, { recursive: true });
+        fs.mkdirSync(caleBackup, { recursive: true }); // pt a putea crea si subfoldere in toata structura arborescenta, fara el eroare
     }
 
     const numeFisCss = path.basename(caleCss);
@@ -126,7 +136,7 @@ function initScss() {
             return;
         }
 
-        if (eveniment === "change" || eveniment === "rename") {
+        if (eveniment === "change" || eveniment === "rename") { // fun fact: rename da trigger si la new files.
             const caleCompleta = path.join(obGlobal.folderScss, numeFis);
             if (fs.existsSync(caleCompleta) && path.extname(numeFis) === ".scss") {
                 compileazaScss(caleCompleta);
