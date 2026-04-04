@@ -1,0 +1,107 @@
+@media print {
+	@page:left {
+		margin-left: 2.5cm;
+		margin-right: 0.5cm;
+	}
+
+	@page:right {
+		margin-left: 0.5cm;
+		margin-right: 2.5cm;
+	}
+
+	html,
+	body {
+		background: white !important;
+		color: black !important;
+	}
+
+	a,
+	a:visited,
+	a:hover,
+	a:active {
+		color: inherit !important;
+		text-decoration: none !important;
+	}
+
+	nav#menu-site,
+	#titlu img,
+	#link-top,
+	img,
+	picture,
+	video,
+	iframe,
+	audio,
+	canvas,
+	svg,
+	source,
+	track,
+	figcaption,
+	.taburi-iframe,
+	.harta-container,
+	.container-iframe {
+		display: none !important;
+	}
+
+	#grid-pagina {
+		display: block !important;
+	}
+
+	#grid-pagina>* {
+		break-inside: avoid;
+		page-break-inside: avoid;
+	}
+
+	#titlu {
+		min-height: 100vh;
+		display: flex !important;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		break-after: page;
+		page-break-after: always;
+	}
+
+	#titlu h1 {
+		font-size: 2.5rem !important;
+		text-decoration: underline;
+		margin: 0;
+	}
+
+	#subsol {
+		break-before: page;
+		page-break-before: always;
+	}
+
+	#banner-print {
+		display: block !important;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 80%;
+		border: 2px dotted black;
+		text-align: center;
+		padding: 0.35rem;
+		margin: 0;
+		background: white;
+	}
+
+	body::after { /* Watermark */
+		content: "Popa Mircea Alexandru";
+		position: fixed;
+		right: 0.5cm;
+		bottom: 0.5cm;
+		width: 100px;
+		height: 2cm;
+		border: 3px double black;
+		opacity: 0.65;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		font-size: 0.75rem;
+		padding: 0.2rem;
+		box-sizing: border-box;
+		z-index: 9999;
+	}
+}
