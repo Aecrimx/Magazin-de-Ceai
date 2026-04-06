@@ -51,3 +51,34 @@
 - la fel si footer
 - insa acum sendFile nu o sa stie sa trimita aceste ejs-uri
 - in loc de sendFile folosim functia render (in index.js)
+
+
+# CURS 6
+- DE COPIAT DIN INDEX.JS FUNCTIA DE INIT IMAGINI
+- APOI IN APP.GET(["/, "/INDEX", "/HOME]) si dam la render obiectul de imagini
+- in index.ejs apoi mergem unde avem o sectiune de galerie
+- VOm da replace la figure bazat pe vectorul de imagine din obGlobal, folosind un for loop ce itereazea asupra imag of locals.imagini
+- also sa avem chestia de cod pt creare imagini ecran mediu si mic
+
+# CURS 7
+- GALERIA STATICA: de facut galerie.json plus modificari din cerinta cerute! (sharp)
+- la el trb macar 15 imagini pt produse. Pozele nu trb sa fie neaparat difrite, macar descrierea produselor sa fie
+- Bazat pe descieri/intervale de timp vom implementa functie de filtrat!
+- NEVOIE DE InitImagini() din cursuri pt a avea un vector cu imagini.
+- Acesta il vom pune in obGlobal
+- DUpa tot acest setup vom lycra in index.ejs
+- Trebuie sa facem un section GalerieStatica.
+- Ejs ne permite sa trantim in block-ul <%> un vector de luni/intervale orare luate din locals
+- vectLuni=["ianuarie", "februarie","martie", "aprilie", "mai","iunie","iulie", "august","septembrie","octombrie","noiembrie","decembrie"] ex curs
+- putem folosi date din javascript. d = new Date()
+- d.getFullYear(). FUN FACT d.getMonth() numara DUPA 0!. 0 - IANUARIE, 1 - FEBRUARIE...
+- d.getDay() face acelasi lucru, dum - 0, luni - 1, marti - 2, etc...
+- Deci vectorul de zile o sa inceapa cu Duminica.
+- SEE CURS7 din tw.lab, section id galerie-statica din ejs pt cum rb sa fie implementat.
+- La cerintele custom in grid-ul de galerie ce e alb e blank, ce e negru trb sa fie imagini. (exemplulayout-1 de la profa)
+- fun fact2: la grid . inseamna blank.
+- din pacate trb sa dam coordonate la figuri la TOATE.
+- acest lucru il vom face cu un for in SASS!
+- se va umbla la grid-area la coordonate.
+- exemplu counter: curs4-exemple.
+- BONUS galeria animata va fi la lab 211 i inregistrare 7 aprilie
