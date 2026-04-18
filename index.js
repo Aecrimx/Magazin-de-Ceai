@@ -44,6 +44,14 @@ function initErori() {
     obGlobal.obErori = erori;
 }
 
+let vect_foldere=[ "temp", "logs", "backup", "fisiere_uploadate" ]
+for (let folder of vect_foldere){
+    let caleFolder=path.join(__dirname, folder);
+    if (!fs.existsSync(caleFolder)) {
+        fs.mkdirSync(path.join(caleFolder), {recursive:true});   
+    }
+}
+
 function getEroareById(identificator) {
     if (!obGlobal.obErori) {
         return {
@@ -267,7 +275,7 @@ initScss();
 
 app.get(["/", "/index", "/home"], function (req, res) {
     res.render("pagini/index", {
-        ip: req.ip
+        ip: req.ip // should be passed la toate paginile altfel plange sv
     });
 });
 

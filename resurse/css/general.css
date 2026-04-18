@@ -135,6 +135,37 @@ figure {
     grid-area: fig3;
 }
 
+/* TASK: VIDEO-FTT */
+
+#video-vtt {
+    width: 80%;
+    min-width: 300px; 
+    max-width: 400px;
+    display: block;
+    margin: 20px auto; 
+    border: 2px solid var(--culoare-contur, black); 
+    /* border-radius: 10px;  */
+}
+
+::cue {
+    background-color: var(--culoare-text, white);
+    color: var(--culoare-text-inversat, black);
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.4;
+    font-size: 0.9rem;
+    font-weight: bold;
+    /* text-align: left; */
+}
+/*pseudo element care e supported de maj. browserelor */
+
+#p-video {
+    text-align: center;
+    font-size: clamp(0.8rem, 1.1vw, 1rem);
+    color: var(--culoare-text2);
+}
+
+
+
 /* figure > img{
     width:100%;
 } daca vrem sa se intample doar pt fig1 fig2 si fig3 nu putem face asa general*/
