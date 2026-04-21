@@ -97,6 +97,47 @@ figure {
 
 /*Pentru a alinia figure cum trebuie fata de celelalte, irelevant de rezolutia imaginii. ALtfel avem spatiu gol*/
 
+/* TASK stilizare link */
+/* cul text 2 unvisited, 1 for visited */
+main a:link {
+    color: var(--culoare-highlight-verde);
+
+}
+/* task gradient pe link */
+main a {
+    background-image: radial-gradient(circle, var(--culoare-nav-item-hover) 0%, var(--culoare-nav-item-hover) 40%, transparent 80%, transparent 100%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 0% 0%;
+    transition: background-size 0.6s ease-in-out, color 0.3s ease-in-out;
+}
+
+main a:hover, main a:focus {
+    background-size: 100% 100%;
+}
+
+main a:visited {
+    color: var(--culoare-highlight-bordeaux);
+}
+
+main a:active {
+    color: var(--culoare-highlight-verde);
+    border: 1px solid var(--culoare-contur);
+}
+
+main a[href^="http"]::before {
+    content: "⮳ ";
+    font-size: 1.5em;
+    line-height: 1;
+    color: var(--culoare-highlight-bordeaux);
+    display: inline-block;
+    transition: color 0.25s ease-in-out;
+}
+
+main a[href^="http"]:hover::before {
+    color: var(--culoare-highlight-verde);
+}
+
 
 
 #welcome {
