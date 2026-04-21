@@ -15,6 +15,7 @@ console.log("Cale fisier", __filename);
 
 const obGlobal = {
     obErori: null,
+    obGalerie: null,
     folderScss: path.join(__dirname, "resurse/scss"),
     folderCss: path.join(__dirname, "resurse/css"),
     folderBackup: path.join(__dirname, "backup")
@@ -120,10 +121,12 @@ function compileazaScss(caleScss, caleCss) {
     if (!fs.existsSync(caleBackup)) {
         fs.mkdirSync(caleBackup, { recursive: true }); // pt a putea crea si subfoldere in toata structura arborescenta, fara el eroare
     }
-
+    // TASK BONUS galerie backup CSS pana la zi ca sa nu umplem folderul in 5 secunde :)
     const numeFisCss = path.basename(caleCss);
     if (fs.existsSync(caleCss)) {
-        fs.copyFileSync(caleCss, path.join(caleBackup, numeFisCss));
+        const timestamp = new Date().toISOString().slice(0, 10);
+        const numeFisBackup = numeFisCss.replace(".css", `_${timestamp}.css`);
+        fs.copyFileSync(caleCss, path.join(caleBackup, numeFisBackup));
     }
 
     const rez = sass.compile(caleScss, { sourceMap: true });
@@ -151,6 +154,197 @@ function initScss() {
             }
         }
     });
+}
+
+function initGalerie() {
+    const caleGalerieJson = path.join(__dirname, "resurse/json/galerie.json");
+    if (!fs.existsSync(caleGalerieJson)) {
+        console.error('\x1b[31m%s\x1b[0m', "Eroare: Fișierul galerie.json nu există.");
+        obGlobal.obGalerie = null;
+        return;
+    }
+
+    const galerieRaw = fs.readFileSync(caleGalerieJson, "utf-8");
+    const galerieJson = JSON.parse(galerieRaw);
+
+    const caleGalerieRel = (galerieJson.cale_galerie || "resurse/imagini/galerie").replace(/^\/+/, "");
+    const caleGalerieAbs = path.join(__dirname, caleGalerieRel);
+
+    if (!fs.existsSync(caleGalerieAbs)) {
+        console.error('\x1b[31m%s\x1b[0m', `Eroare: Folderul galeriei (${caleGalerieAbs}) nu există.`);
+    }
+
+    obGlobal.obGalerie = {
+        caleGalerieRel,
+        caleGalerieUrl: `/${caleGalerieRel.replace(/\\/g, "/")}`,
+        caleGalerieAbs,
+        imagini: Array.isArray(galerieJson.imagini) ? galerieJson.imagini : []
+    };
+}
+
+function esteInIntervalStrictSameDay(oraCurenta, interval) {
+    if (!Array.isArray(interval) || interval.length !== 2) {
+        return false;
+    }
+
+    const [oraStart, oraStop] = interval;
+    const startValid = Number.isInteger(oraStart) && oraStart >= 0 && oraStart <= 23;
+    const stopValid = Number.isInteger(oraStop) && oraStop >= 0 && oraStop <= 23;
+
+    if (!startValid || !stopValid || oraStart >= oraStop) {
+        return false;
+    }
+
+    return oraCurenta >= oraStart && oraCurenta < oraStop;
+    // return true; // test
+}
+
+function getColoanaZigZag(indexRand) {
+    const pattern = [1, 2, 3, 2];
+    return pattern[(indexRand - 1) % pattern.length];
+}
+
+function construiesteCeluleGalerie(imagini) {
+    const celule = [];
+    let indexImagine = 0;
+    let indexRand = 1;
+
+    while (indexImagine < imagini.length) {
+        const coloanaGoala = getColoanaZigZag(indexRand);
+
+        for (let coloana = 1; coloana <= 3; coloana++) {
+            if (coloana === coloanaGoala) {
+                celule.push({ tip: "gol" });
+            } else if (indexImagine < imagini.length) {
+                celule.push({ tip: "imagine", imagine: imagini[indexImagine++] });
+            } else {
+                celule.push({ tip: "gol" });
+            }
+        }
+
+        indexRand++;
+    }
+
+    return celule;
+}
+
+function extrageNumeFisierImagine(caleRelativa) {
+    const numeFisier = path.basename(caleRelativa || "");
+    if (!obGlobal.obGalerie || !numeFisier) {
+        return numeFisier;
+    }
+
+    if (numeFisier.startsWith("500_")) {
+        const faraPrefix = numeFisier.substring(4);
+        const caleFaraPrefix = path.join(obGlobal.obGalerie.caleGalerieAbs, faraPrefix);
+        if (fs.existsSync(caleFaraPrefix)) {
+            return faraPrefix;
+        }
+    }
+
+    return numeFisier;
+}
+
+function construiesteModelGalerie() {
+    if (!obGlobal.obGalerie) {
+        return {
+            oraCurenta: new Date().getHours(),
+            imagini: [],
+            celule: []
+        };
+    }
+
+    const oraCurenta = new Date().getHours();
+    const imaginiFiltrate = obGlobal.obGalerie.imagini
+        .filter((img) => {
+            if (!Array.isArray(img.intervale_ore)) {
+                return false;
+            }
+
+            return img.intervale_ore.some((interval) => esteInIntervalStrictSameDay(oraCurenta, interval));
+        })
+        .map((img) => {
+            const numeFisier = extrageNumeFisierImagine(img.cale_relativa);
+            const numeImplicit = path.parse(numeFisier).name || "imagine";
+            const altText = typeof img.alt_text === "string" && img.alt_text.trim().length > 0
+                ? img.alt_text.trim()
+                : numeImplicit;
+            const licenta = typeof img.licenta === "string" && img.licenta.trim().length > 0
+                ? img.licenta.trim()
+                : null;
+
+            return {
+                nume: img.nume || numeImplicit,
+                descriere: img.descriere || "",
+                licenta,
+                altText,
+                srcOriginal: `${obGlobal.obGalerie.caleGalerieUrl}/${encodeURIComponent(numeFisier)}`,
+                srcMediu: `/galerie-img/mediu/${encodeURIComponent(numeFisier)}`,
+                srcMic: `/galerie-img/mic/${encodeURIComponent(numeFisier)}`
+            };
+        });
+
+    return {
+        oraCurenta,
+        imagini: imaginiFiltrate,
+        celule: construiesteCeluleGalerie(imaginiFiltrate)
+    };
+}
+
+async function trimiteVariantaResponsive(req, res) {
+    const dimensiuni = {
+        mic: 350,
+        mediu: 700
+    };
+
+    const dimensiune = req.params.dimensiune;
+    const latime = dimensiuni[dimensiune];
+
+    if (!latime) {
+        afisareEroare(res, 404);
+        return;
+    }
+
+    const numeFisier = path.basename(req.params.fisier || "");
+    const ext = path.extname(numeFisier).toLowerCase();
+    const extensiiPermise = [".jpg", ".jpeg", ".png", ".webp", ".avif"];
+
+    if (!extensiiPermise.includes(ext)) {
+        afisareEroare(res, 400);
+        return;
+    }
+
+    if (!obGlobal.obGalerie) {
+        afisareEroare(res, 404);
+        return;
+    }
+
+    const caleSursa = path.join(obGlobal.obGalerie.caleGalerieAbs, numeFisier);
+    if (!fs.existsSync(caleSursa)) {
+        afisareEroare(res, 404);
+        return;
+    }
+
+    const folderCache = path.join(__dirname, "temp/galerie");
+    if (!fs.existsSync(folderCache)) {
+        fs.mkdirSync(folderCache, { recursive: true });
+    }
+
+    const caleDestinatie = path.join(folderCache, `${dimensiune}_${numeFisier}`);
+
+    const trebuieRegenerata = !fs.existsSync(caleDestinatie)
+        || fs.statSync(caleDestinatie).mtimeMs < fs.statSync(caleSursa).mtimeMs;
+
+    if (trebuieRegenerata) {
+        await sharp(caleSursa)
+            .resize({
+                width: latime,
+                withoutEnlargement: true
+            })
+            .toFile(caleDestinatie);
+    }
+
+    res.sendFile(caleDestinatie);
 }
 
 // Se va implementa o funcție de verificare a datelor din JSON-ul de erori, care va fi apelata la pornirea serverului. Funcția  va afisa mesaje de eroare (cu text clar, detaliat și relevant care să explice problema, pentru a fi remediată)  în următoare situații:
@@ -271,12 +465,30 @@ verificareErori();
 
 initErori();
 initScss();
+initGalerie();
 
 
 app.get(["/", "/index", "/home"], function (req, res) {
     res.render("pagini/index", {
+        galerie: construiesteModelGalerie(),
         ip: req.ip // should be passed la toate paginile altfel plange sv
     });
+});
+
+app.get("/galerie", function (req, res) {
+    res.render("pagini/galerie", {
+        galerie: construiesteModelGalerie(),
+        ip: req.ip
+    });
+});
+
+app.get("/galerie-img/:dimensiune/:fisier", async function (req, res) {
+    try {
+        await trimiteVariantaResponsive(req, res);
+    } catch (err) {
+        console.error("Eroare la generarea imaginii responsive:", err.message);
+        afisareEroare(res);
+    }
 });
 
 app.get("/eroare", function (req, res) {

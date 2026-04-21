@@ -1,0 +1,38 @@
+<section id="<%= typeof idSectiune !== 'undefined' ? idSectiune : 'galerie-statica' %>" class="sectiune-galerie">
+    <h2><%= typeof titluSectiune !== 'undefined' ? titluSectiune : 'Galerie' %></h2>
+
+    <% if (!galerie || !Array.isArray(galerie.imagini) || galerie.imagini.length === 0) { %>
+        <p class="galerie-fara-imagini">
+            Nu există imagini disponibile pentru ora curentă (<%= galerie ? galerie.oraCurenta : "-" %>:00).
+        </p>
+    <% } else { %>
+        <div class="galerie-grid" role="list">
+            <% galerie.celule.forEach(function(celula){ %>
+                <% if (celula.tip === "gol") { %>
+                    <div class="galerie-celula-goala" aria-hidden="true"></div>
+                <% } else { %>
+                    <figure class="galerie-item" role="listitem">
+                        <a href="<%= celula.imagine.srcOriginal %>" target="_blank" rel="noopener noreferrer" title="Deschide imaginea originală">
+                            <picture title="<%= celula.imagine.descriere %>">
+                                <source srcset="<%= celula.imagine.srcMic %>" media="(max-width:700px)">
+                                <source srcset="<%= celula.imagine.srcMediu %>" media="(max-width:1100px)">
+                                <img
+                                    src="<%= celula.imagine.srcOriginal %>"
+                                    alt="<%= celula.imagine.altText %>"
+                                    title="<%= celula.imagine.descriere %>"
+                                    loading="lazy">
+                            </picture>
+                        </a>
+                        <figcaption>
+                            <span class="galerie-nume"><%= celula.imagine.nume %></span>
+                            <span class="galerie-descriere"><%= celula.imagine.descriere %></span>
+                            <% if (celula.imagine.licenta) { %>
+                                <span class="galerie-licenta"><%= celula.imagine.licenta %></span>
+                            <% } %>
+                        </figcaption>
+                    </figure>
+                <% } %>
+            <% }) %>
+        </div>
+    <% } %>
+</section>

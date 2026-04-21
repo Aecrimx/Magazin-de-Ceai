@@ -545,6 +545,12 @@
                 </div>
             </section>
         </div>
+
+        <%- include("../fragments/galerie", {
+            galerie: galerie,
+            idSectiune: "galerie-statica",
+            titluSectiune: "Galerie statică"
+        }) %>
     </main>
 
     <%- include("../fragments/footer") %>

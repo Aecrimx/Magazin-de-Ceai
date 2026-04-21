@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <%- include("../fragments/head", { titlu: "Galerie statică" }) %>
+</head>
+
+<body>
+    <%- include("../fragments/header") %>
+
+    <main>
+        <%- include("../fragments/galerie", {
+            galerie: galerie,
+            idSectiune: "pagina-galerie",
+            titluSectiune: "Galerie statică"
+        }) %>
+    </main>
+
+    <%- include("../fragments/footer") %>
+</body>
+
+</html>

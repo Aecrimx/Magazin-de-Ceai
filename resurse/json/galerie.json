@@ -3,84 +3,106 @@
 	"imagini": [
 		{
 			"cale_relativa": "500_ceai-arome-exotice.jpg",
+			"alt_text": "Ceai cu arome exotice",
 			"nume": "Ceai cu arome exotice",
 			"descriere": "Un blend parfumat cu note tropicale, potrivit pentru momentele in care vrei ceva special.",
 			"intervale_ore": [[9, 11], [19, 22]]
 		},
 		{
 			"cale_relativa": "500_ceai-floral1.jpg",
+			"alt_text": "Ceai floral",
 			"nume": "Ceai floral",
 			"descriere": "Infuzie delicata cu accente florale, ideala pentru o pauza linistita la pranz.",
 			"intervale_ore": [[11, 14], [16, 18]]
 		},
 		{
 			"cale_relativa": "500_ceai-fructe2.jpg",
+			"alt_text": "Ceai de fructe",
 			"nume": "Ceai de fructe 2",
 			"descriere": "Aroma intensa de fructe coapte, perfecta pentru un plus de prospetime dupa-amiaza.",
 			"intervale_ore": [[13, 16], [20, 22]]
 		},
 		{
 			"cale_relativa": "500_ceai-fructe3.jpg",
+			"alt_text": "Ceai de fructe",
 			"nume": "Ceai de fructe 3",
 			"descriere": "Combinatie dulce-acrisoara de fructe, potrivita pentru seri relaxante.",
 			"intervale_ore": [[17, 19], [21, 23]]
 		},
 		{
 			"cale_relativa": "500_ceai-fructe.jpg",
+			"alt_text": "Ceai de fructe",
 			"nume": "Ceai de fructe",
 			"descriere": "Un clasic fructat, reconfortant in orice moment al zilei.",
 			"intervale_ore": [[8, 10], [15, 17], [19, 21]]
 		},
 		{
 			"cale_relativa": "500_ceai-fructe-mix.jpg",
+			"alt_text": "Mix de ceaiuri de fructe",
 			"nume": "Mix de ceaiuri de fructe",
 			"descriere": "Selecție variata de fructe pentru o infuzie aromata si echilibrata.",
 			"intervale_ore": [[7, 9], [12, 14], [18, 20]]
 		},
 		{
 			"cale_relativa": "500_ceai-mix3.jpg",
+			"alt_text": "Ceai mix",
 			"nume": "Ceai mix 3",
 			"descriere": "Blend complex cu note ierboase si fructate, ideal pentru pauze scurte.",
 			"intervale_ore": [[10, 12], [14, 15], [22, 23]]
 		},
 		{
 			"cale_relativa": "500_ceai-mix-fancy2.jpg",
+			"alt_text": "Ceai mix fancy",
 			"nume": "Ceai mix fancy 2",
 			"descriere": "Amestec premium, cu gust fin si prezentare eleganta pentru ocazii speciale.",
 			"intervale_ore": [[9, 10], [17, 18], [20, 21]]
 		},
 		{
 			"cale_relativa": "500_ceai-mix-fancy.jpg",
+			"alt_text": "Ceai mix fancy",
 			"nume": "Ceai mix fancy",
 			"descriere": "Infuzie sofisticata, cu arome rotunde, potrivita pentru intalniri de seara.",
 			"intervale_ore": [[15, 16], [18, 19], [21, 22]]
 		},
 		{
 			"cale_relativa": "500_ceai-mov1.jpg",
+			"alt_text": "Ceai mov",
 			"nume": "Ceai mov",
 			"descriere": "Ceai cu nuante florale si culoare intensa, ideal pentru momente de rasfat.",
 			"intervale_ore": [[11, 12], [16, 17], [19, 20]]
 		},
 		{
 			"cale_relativa": "500_ceai_verde1.jpg",
+			"alt_text": "Ceai verde",
 			"nume": "Ceai verde 1",
 			"descriere": "Ceai verde revigorant, excelent pentru inceputul zilei.",
 			"intervale_ore": [[6, 8], [13, 14]]
 		},
 		{
 			"cale_relativa": "500_ceai_verde2.jpg",
+			"alt_text": "Ceai verde",
 			"nume": "Ceai verde 2",
 			"descriere": "Infuzie proaspata cu note vegetale, potrivita pentru concentrare.",
 			"intervale_ore": [[8, 9], [12, 13], [17, 18]]
 		},
 		{
+			"cale_relativa": "500_ceai_verde3.jpg",
+			"alt_text": "Ceai verde",
+			"nume": "Ceai verde 3",
+			"descriere": "Ceai verde cu accente de ierburi, ideal pentru relaxare dupa-amiaza.",
+			"intervale_ore": [[14, 16], [18, 20]],
+			"licenta": "CC BY-SA 4.0: https://www.pexels.com/@anna-pou/"
+		},
+		{
 			"cale_relativa": "500_ceai-verde-mix-1.jpg",
+			"alt_text": "Ceai verde mix",
 			"nume": "Ceai verde mix 1",
 			"descriere": "Amestec de ceai verde cu tonuri usoare de citrice, bun pentru energie echilibrata.",
 			"intervale_ore": [[7, 11], [14, 16]]
 		},
 		{
 			"cale_relativa": "500_ceai-verde-mix-2.jpg",
+			"alt_text": "Ceai verde mix",
 			"nume": "Ceai verde mix 2",
 			"descriere": "Blend de ceai verde cu accente aromatice, ideal pentru o pauza tarzie.",
 			"intervale_ore": [[10, 11], [18, 19], [22, 23]]
