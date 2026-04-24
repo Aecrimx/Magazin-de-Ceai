@@ -1,6 +1,52 @@
 @use '../../node_modules/bootstrap/scss/bootstrap.scss' with 
 (
-    $primary: red,
-    $secondary:purple,
-    // TODO: Adaugat alte variabile pentru a personaliza mai mult (ex: $font-family-base, $body-bg, etc.   
+  $primary: #d66074,
+  $secondary: #8a2b3d,
+  $success: #3d5a40,
+  $info: #6d4c51,
+  $warning: #f0a4b6,
+  $danger: #a94f5f,
+
+  $body-bg: #ffc0cb,
+  $body-color: #2d1b1e,
+  $link-color: #3d5a40,
+  $link-hover-color: #8a2b3d,
+// font stack-ul, ordinea de preferinta pt browser e de la stanga la dreapta, pt fall-backuri
+  $font-family-sans-serif: ("Funnel Sans", system-ui, -apple-system, "Segoe UI", sans-serif),
+//   $headings-font-family: ("Cormorant Garamond",  Georgia, "Times New Roman", serif),
+  $headings-font-family: ("Playwrite DK Uloopet Guides", "Cormorant Garamond", Georgia, serif),
+
+  $border-radius: 0.75rem,
+  $border-radius-lg: 1rem,
+  $border-radius-sm: 0.5rem,
+
+// heading sizes
+  $h1-font-size: 2.5rem,
+  $h2-font-size: 2rem,
+  $h3-font-size: 1.65rem,
+  $h4-font-size: 1.35rem,
+  $h5-font-size: 1.15rem,
+  $h6-font-size: 1rem,
+
+// breakpoints medium n large screen
+  $grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 820px,
+    lg: 1120px,
+    xl: 1320px,
+    xxl: 1540px
+  ),
+  $container-max-widths: (
+    sm: 540px,
+    md: 780px,
+    lg: 1060px,
+    xl: 1240px,
+    xxl: 1460px
+  ),
+
+// extra custom vars
+  $enable-shadows: false,
+  $btn-border-radius: 999px
+
 )

@@ -22,7 +22,7 @@ const obGlobal = {
 };
 
 app.use("/resurse", express.static(path.join(__dirname, "resurse")));
-// app.use("/dist", express.static(path.join(__dirname, "node_modules/bootstrap/dist"))); // am inclus bootstrap.js din modemodules
+app.use("/dist", express.static(path.join(__dirname, "node_modules/bootstrap/dist"))); // am inclus bootstrap.js din modemodules
 
 app.get("/favicon.ico", function (req, res) {
     res.sendFile(path.join(__dirname, "resurse/imagini/favicon/favicon.ico"));
@@ -291,6 +291,79 @@ function construiesteModelGalerie() {
     };
 }
 
+function numarAleatorIntre(minim, maxim) {
+    return Math.floor(Math.random() * (maxim - minim + 1)) + minim;
+}
+
+function amestecaVector(vect) {
+    const copie = [...vect];
+
+    for (let indexCurent = copie.length - 1; indexCurent > 0; indexCurent--) {
+        const indexAleator = Math.floor(Math.random() * (indexCurent + 1));
+        [copie[indexCurent], copie[indexAleator]] = [copie[indexAleator], copie[indexCurent]];
+    }
+
+    return copie;
+}
+
+function genereazaCssGalerieAnimata(numarImagini) {
+    const caleScss = path.join(obGlobal.folderScss, "galerie_animata.scss");
+    const caleCss = path.join(obGlobal.folderCss, "galerie_animata.css");
+
+    if (!fs.existsSync(caleScss)) {
+        console.error('\x1b[31m%s\x1b[0m', `Eroare: Fișierul SASS pentru galeria animată nu există (${caleScss}).`);
+        return;
+    }
+
+    const continutScss = fs.readFileSync(caleScss, "utf-8");
+    const sursaScss = `$numar-imagini: ${numarImagini};\n${continutScss}`;
+
+    const caleBackup = path.join(obGlobal.folderBackup, "resurse/css");
+    if (!fs.existsSync(caleBackup)) {
+        fs.mkdirSync(caleBackup, { recursive: true });
+    }
+
+    if (fs.existsSync(caleCss)) {
+        const timestamp = new Date().toISOString().slice(0, 10);
+        const numeFisBackup = path.basename(caleCss).replace(".css", `_${timestamp}.css`);
+        fs.copyFileSync(caleCss, path.join(caleBackup, numeFisBackup));
+    }
+
+    const rezultat = sass.compileString(sursaScss, {
+        syntax: "scss",
+        style: "expanded"
+    });
+
+    fs.writeFileSync(caleCss, rezultat.css);
+    console.log("CSS galerie animată generat:", caleCss, `(imagini: ${numarImagini})`);
+}
+
+function construiesteModelGalerieAnimata(modelGalerie) {
+    const modelDeBaza = modelGalerie || construiesteModelGalerie();
+    const imaginiDisponibile = Array.isArray(modelDeBaza.imagini) ? modelDeBaza.imagini : [];
+
+    if (imaginiDisponibile.length === 0) {
+        return {
+            oraCurenta: modelDeBaza.oraCurenta,
+            numarImagini: 0,
+            imagini: []
+        };
+    }
+
+    const maximPosibil = Math.min(12, imaginiDisponibile.length);
+    const minimPosibil = Math.min(6, maximPosibil);
+    const numarImagini = maximPosibil >= 6 ? numarAleatorIntre(minimPosibil, maximPosibil) : maximPosibil;
+    const imaginiSelectate = amestecaVector(imaginiDisponibile).slice(0, numarImagini);
+
+    genereazaCssGalerieAnimata(numarImagini);
+
+    return {
+        oraCurenta: modelDeBaza.oraCurenta,
+        numarImagini,
+        imagini: imaginiSelectate
+    };
+}
+
 async function trimiteVariantaResponsive(req, res) {
     const dimensiuni = {
         mic: 350,
@@ -469,8 +542,12 @@ initGalerie();
 
 
 app.get(["/", "/index", "/home"], function (req, res) {
+    const galerie = construiesteModelGalerie();
+    const galerieAnimata = construiesteModelGalerieAnimata(galerie);
+
     res.render("pagini/index", {
-        galerie: construiesteModelGalerie(),
+        galerie,
+        galerieAnimata,
         ip: req.ip // should be passed la toate paginile altfel plange sv
     });
 });

@@ -1,0 +1,34 @@
+<section id="<%= typeof idSectiune !== 'undefined' ? idSectiune : 'galerie-animata' %>" class="sectiune-galerie sectiune-galerie-animata">
+    <h2><%= typeof titluSectiune !== 'undefined' ? titluSectiune : 'Galerie animată' %></h2>
+
+    <% if (!galerieAnimata || !Array.isArray(galerieAnimata.imagini) || galerieAnimata.imagini.length === 0) { %>
+        <p class="galerie-fara-imagini">
+            Nu există imagini disponibile pentru afișarea galeriei animate.
+        </p>
+    <% } else { %>
+        <div class="galerie-animata-cadru" role="list" aria-label="Galerie animată cu <%= galerieAnimata.numarImagini %> imagini">
+            <% galerieAnimata.imagini.forEach(function(imagine){ %>
+                <figure class="galerie-animata-item" role="listitem">
+                    <a href="<%= imagine.srcOriginal %>" target="_blank" rel="noopener noreferrer" title="Deschide imaginea originală">
+                        <picture title="<%= imagine.descriere %>">
+                            <source srcset="<%= imagine.srcMic %>" media="(max-width:700px)">
+                            <source srcset="<%= imagine.srcMediu %>" media="(max-width:1100px)">
+                            <img
+                                src="<%= imagine.srcOriginal %>"
+                                alt="<%= imagine.altText %>"
+                                title="<%= imagine.descriere %>"
+                                loading="lazy">
+                        </picture>
+                    </a>
+                    <figcaption>
+                        <span class="galerie-animata-nume"><%= imagine.nume %></span>
+                        <span class="galerie-animata-descriere"><%= imagine.descriere %></span>
+                        <% if (imagine.licenta) { %>
+                            <span class="galerie-animata-licenta"><%= imagine.licenta %></span>
+                        <% } %>
+                    </figcaption>
+                </figure>
+            <% }) %>
+        </div>
+    <% } %>
+</section>

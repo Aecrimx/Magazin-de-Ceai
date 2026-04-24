@@ -1,0 +1,173 @@
+$numar-imagini: 8 !default;
+$durata-imagine: 6s;
+$durata-ciclu: $numar-imagini * $durata-imagine;
+
+// procent pt a determina cate % din ciclul total reprezinta slotul activ al fiecarei imagini
+$slot-procent: (
+    1 / $numar-imagini) * 100;
+
+// La slot-ul activ, imaginea sta pe loc pta 72% din durata slot-ului, apoi incepe sa tremure si sa se estompeze in ultimele 28% din slot, 
+// pana devine complet invizibila la finalul slot-ului (startul urmatorului slot).
+$hold-fractie: 0.72; // full imagine
+$shake1-fractie: 0.80; // shake la 0.80
+$shake2-fractie: 0.88; // shake in cealalta directie
+$fade-fractie: 1.00; // opacitate 1.
+
+// Mapare fractie -> procent din ciclul total, pt keyframes
+$hold-procent: $slot-procent * $hold-fractie;
+$shake1-procent: $slot-procent * $shake1-fractie;
+$shake2-procent: $slot-procent * $shake2-fractie;
+$fade-procent: $slot-procent * $fade-fractie; // = $slot-procent
+
+.sectiune-galerie-animata {
+    border: 0.9rem solid transparent;
+    border-image-source: url("/resurse/imagini/galerie-border.jpg"
+    );
+border-image-slice: 30 fill;
+border-image-repeat: round;
+background: linear-gradient(180deg, rgba(255, 214, 224, 0.92), rgba(255, 202, 234, 0.94));
+box-shadow: 0 0.75rem 1.8rem rgba(214, 96, 116, 0.25);
+}
+
+.sectiune-galerie-animata>h2 {
+    margin-bottom: 1rem;
+}
+
+.galerie-animata-cadru {
+    position: relative;
+    width: min(100%, 960px);
+    margin: 0 auto;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, rgba(247, 168, 184, 0.75), rgba(255, 255, 255, 0.2));
+    box-shadow: inset 0 0 0 0.2rem rgba(255, 255, 255, 0.35);
+}
+
+.galerie-animata-item {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    /* imagini vizile, sunt backgroundul fiecareia */
+    opacity: 1;
+    animation: galerie-animata-cursa $durata-ciclu linear infinite;
+    animation-fill-mode: both;
+    will-change: transform, opacity, z-index;
+}
+
+.galerie-animata-cadru:hover .galerie-animata-item,
+.galerie-animata-cadru:focus-within .galerie-animata-item {
+    animation-play-state: paused;
+}
+
+.galerie-animata-cadru picture,
+.galerie-animata-cadru img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.galerie-animata-cadru img {
+    object-fit: cover;
+}
+
+.galerie-animata-cadru figcaption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 0.8rem 1rem;
+    background: linear-gradient(180deg, rgba(45, 27, 30, 0.15), rgba(45, 27, 30, 0.72));
+    color: var(--culoare-text-inversat);
+    text-shadow: 0 0.1rem 0.25rem rgba(0, 0, 0, 0.35);
+}
+
+.galerie-animata-nume {
+    display: block;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.galerie-animata-descriere {
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-top: 0.2rem;
+}
+
+.galerie-animata-link {
+    display: inline-block;
+    margin-top: 0.4rem;
+    color: inherit;
+}
+
+
+@keyframes galerie-animata-cursa {
+
+    /*slot activ cu z-index mare*/
+    0% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        z-index: #{$numar-imagini + 1};
+    }
+
+    #{($hold-procent * 1%)} {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        z-index: #{$numar-imagini + 1};
+    }
+
+    #{($shake1-procent * 1%)} {
+        opacity: 0.9;
+        transform: translateX(-3.5%) scale(0.992);
+        z-index: #{$numar-imagini + 1};
+    }
+
+    #{($shake2-procent * 1%)} {
+        opacity: 0.75;
+        transform: translateX(3.5%) scale(0.984);
+        z-index: #{$numar-imagini + 1};
+    }
+
+    #{($fade-procent * 1%)} {
+        opacity: 0;
+        transform: translateX(-2.5%) scale(0.975);
+        z-index: #{$numar-imagini + 1};
+    }
+
+    #{(($fade-procent + 0.001) * 1%)} {
+        opacity: 0;
+        transform: translateX(0) scale(1);
+        z-index: 0;
+    }
+
+    /* trecere din nou la opacitate 1, asteapta ciclul*/
+    #{(($fade-procent + 0.01) * 1%)} {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        z-index: 0;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        z-index: 0;
+    }
+}
+
+@for $index from 1 through $numar-imagini {
+    .galerie-animata-item:nth-child(#{$index}) {
+        animation-delay: -($index - 1) * $durata-imagine;
+        /* Initial z-index when all start simultaneously at page load.
+           Z-index initial la page load.
+           imagine 1 (delay 0) incepe la 0% → z-index N+1 (in fata).
+           imagine 2 (delay -DELAYs) incepe la 12.5% → z-index 0 (in spate/background).
+           etc.
+            */
+        z-index: if($index ==1, $numar-imagini + 1, 0);
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .sectiune-galerie-animata {
+        display: none;
+    }
+}

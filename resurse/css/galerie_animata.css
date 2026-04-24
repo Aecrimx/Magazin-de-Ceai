@@ -1,0 +1,219 @@
+@charset "UTF-8";
+.sectiune-galerie-animata {
+  border: 0.9rem solid transparent;
+  border-image-source: url("/resurse/imagini/galerie-border.jpg");
+  border-image-slice: 30 fill;
+  border-image-repeat: round;
+  background: linear-gradient(180deg, rgba(255, 214, 224, 0.92), rgba(255, 202, 234, 0.94));
+  box-shadow: 0 0.75rem 1.8rem rgba(214, 96, 116, 0.25);
+}
+
+.sectiune-galerie-animata > h2 {
+  margin-bottom: 1rem;
+}
+
+.galerie-animata-cadru {
+  position: relative;
+  width: min(100%, 960px);
+  margin: 0 auto;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(247, 168, 184, 0.75), rgba(255, 255, 255, 0.2));
+  box-shadow: inset 0 0 0 0.2rem rgba(255, 255, 255, 0.35);
+}
+
+.galerie-animata-item {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  /* Start visible — each image is the "background" image for the others */
+  opacity: 1;
+  animation: galerie-animata-cursa 48s linear infinite;
+  animation-fill-mode: both;
+  will-change: transform, opacity, z-index;
+}
+
+.galerie-animata-cadru:hover .galerie-animata-item,
+.galerie-animata-cadru:focus-within .galerie-animata-item {
+  animation-play-state: paused;
+}
+
+.galerie-animata-cadru picture,
+.galerie-animata-cadru img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.galerie-animata-cadru img {
+  object-fit: cover;
+}
+
+.galerie-animata-cadru figcaption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 0.8rem 1rem;
+  background: linear-gradient(180deg, rgba(45, 27, 30, 0.15), rgba(45, 27, 30, 0.72));
+  color: var(--culoare-text-inversat);
+  text-shadow: 0 0.1rem 0.25rem rgba(0, 0, 0, 0.35);
+}
+
+.galerie-animata-nume {
+  display: block;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.galerie-animata-descriere {
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-top: 0.2rem;
+}
+
+.galerie-animata-link {
+  display: inline-block;
+  margin-top: 0.4rem;
+  color: inherit;
+}
+
+/*
+ * Animation design:
+ *   Each image occupies 1/$numar-imagini of the full cycle (its "active slot").
+ *   During its slot: it sits on top (high z-index), holds still, then shakes & fades to opacity:0.
+ *   Outside its slot: it sits at the bottom of the stack (z-index:0), fully visible (opacity:1),
+ *   acting as the "revealed" background image for the image currently on top.
+ *
+ *   Keyframe timeline (percentages of total cycle):
+ *     0%                     → opacity:1, z-index:N+1 (on top, holding)
+ *     $hold-procent          → opacity:1, z-index:N+1 (still holding)
+ *     $shake1-procent        → opacity:0.9, translateX(-3.5%) — first shake
+ *     $shake2-procent        → opacity:0.75, translateX(+3.5%) — second shake
+ *     $fade-procent (=slot%) → opacity:0, translateX(-2.5%)   — fully faded
+ *     $fade-procent + ε      → opacity:0, z-index:0           — drop to the back
+ *     ~slot%+ε               → opacity:1, z-index:0           — snap back visible as background
+ *     100%                   → opacity:1, z-index:0           — waiting for next cycle
+ */
+@keyframes galerie-animata-cursa {
+  /* ── ON TOP: active slot ── */
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    z-index: 9;
+  }
+  9% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    z-index: 9;
+  }
+  10% {
+    opacity: 0.9;
+    transform: translateX(-3.5%) scale(0.992);
+    z-index: 9;
+  }
+  11% {
+    opacity: 0.75;
+    transform: translateX(3.5%) scale(0.984);
+    z-index: 9;
+  }
+  12.5% {
+    opacity: 0;
+    transform: translateX(-2.5%) scale(0.975);
+    z-index: 9;
+  }
+  /* ── INSTANTLY drop to background layer ── */
+  12.501% {
+    opacity: 0;
+    transform: translateX(0) scale(1);
+    z-index: 0;
+  }
+  /* ── BACKGROUND: snap back to fully visible, wait behind the next images ── */
+  12.51% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    z-index: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    z-index: 0;
+  }
+}
+.galerie-animata-item:nth-child(1) {
+  animation-delay: 0s;
+  /* Initial z-index when all start simultaneously at page load.
+     Image 1 (delay 0) starts at 0% → z-index N+1 (correct, on top).
+     Image 2 (delay -4s) starts at $slot-procent% → z-index 0 (correct, in background).
+     All subsequent images also start in the background section → z-index 0. */
+  z-index: 9;
+}
+
+.galerie-animata-item:nth-child(2) {
+  animation-delay: -6s;
+  /* Initial z-index when all start simultaneously at page load.
+     Image 1 (delay 0) starts at 0% → z-index N+1 (correct, on top).
+     Image 2 (delay -4s) starts at $slot-procent% → z-index 0 (correct, in background).
+     All subsequent images also start in the background section → z-index 0. */
+  z-index: 0;
+}
+
+.galerie-animata-item:nth-child(3) {
+  animation-delay: -12s;
+  /* Initial z-index when all start simultaneously at page load.
+     Image 1 (delay 0) starts at 0% → z-index N+1 (correct, on top).
+     Image 2 (delay -4s) starts at $slot-procent% → z-index 0 (correct, in background).
+     All subsequent images also start in the background section → z-index 0. */
+  z-index: 0;
+}
+
+.galerie-animata-item:nth-child(4) {
+  animation-delay: -18s;
+  /* Initial z-index when all start simultaneously at page load.
+     Image 1 (delay 0) starts at 0% → z-index N+1 (correct, on top).
+     Image 2 (delay -4s) starts at $slot-procent% → z-index 0 (correct, in background).
+     All subsequent images also start in the background section → z-index 0. */
+  z-index: 0;
+}
+
+.galerie-animata-item:nth-child(5) {
+  animation-delay: -24s;
+  /* Initial z-index when all start simultaneously at page load.
+     Image 1 (delay 0) starts at 0% → z-index N+1 (correct, on top).
+     Image 2 (delay -4s) starts at $slot-procent% → z-index 0 (correct, in background).
+     All subsequent images also start in the background section → z-index 0. */
+  z-index: 0;
+}
+
+.galerie-animata-item:nth-child(6) {
+  animation-delay: -30s;
+  /* Initial z-index when all start simultaneously at page load.
+     Image 1 (delay 0) starts at 0% → z-index N+1 (correct, on top).
+     Image 2 (delay -4s) starts at $slot-procent% → z-index 0 (correct, in background).
+     All subsequent images also start in the background section → z-index 0. */
+  z-index: 0;
+}
+
+.galerie-animata-item:nth-child(7) {
+  animation-delay: -36s;
+  /* Initial z-index when all start simultaneously at page load.
+     Image 1 (delay 0) starts at 0% → z-index N+1 (correct, on top).
+     Image 2 (delay -4s) starts at $slot-procent% → z-index 0 (correct, in background).
+     All subsequent images also start in the background section → z-index 0. */
+  z-index: 0;
+}
+
+.galerie-animata-item:nth-child(8) {
+  animation-delay: -42s;
+  /* Initial z-index when all start simultaneously at page load.
+     Image 1 (delay 0) starts at 0% → z-index N+1 (correct, on top).
+     Image 2 (delay -4s) starts at $slot-procent% → z-index 0 (correct, in background).
+     All subsequent images also start in the background section → z-index 0. */
+  z-index: 0;
+}
+
+@media screen and (max-width: 1200px) {
+  .sectiune-galerie-animata {
+    display: none;
+  }
+}
