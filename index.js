@@ -79,7 +79,8 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
     const dateRandare = {
         titlu: titlu || eroare.titlu,
         text: text || eroare.text,
-        imagine: imagine || eroare.imagine
+        imagine: imagine || eroare.imagine,
+        ip: res.req.ip
     };
 
     if (Number.isInteger(identificator) && identificator >= 400) {
