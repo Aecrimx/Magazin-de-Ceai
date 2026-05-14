@@ -4,7 +4,9 @@ shopt -s nullglob nocaseglob
 
 for f in *.{jpg,jpeg,png,webp,bmp,tif,tiff}; do
   [[ -e "$f" ]] || continue
-  [[ "$f" == 500_* ]] && continue
+  case "$f" in
+    500_*) continue ;;
+  esac
 
   ffmpeg -hide_banner -loglevel error -y \
     -i "$f" \

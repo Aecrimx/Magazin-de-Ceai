@@ -156,8 +156,7 @@ box-shadow: 0 0.75rem 1.8rem rgba(214, 96, 116, 0.25);
 @for $index from 1 through $numar-imagini {
     .galerie-animata-item:nth-child(#{$index}) {
         animation-delay: -($index - 1) * $durata-imagine;
-        /* Initial z-index when all start simultaneously at page load.
-           Z-index initial la page load.
+        /* Z-index initial la page load.
            imagine 1 (delay 0) incepe la 0% → z-index N+1 (in fata).
            imagine 2 (delay -DELAYs) incepe la 12.5% → z-index 0 (in spate/background).
            etc.

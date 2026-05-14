@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const sass = require("sass");
 const sharp = require("sharp");
-
+const pg = require("pg");
 const app = express();
 
 app.set("view engine", "ejs");
@@ -12,6 +12,25 @@ app.set("views", path.join(__dirname, "views"));
 console.log("Folder index.js", __dirname);
 console.log("Folder curent (de lucru)", process.cwd());
 console.log("Cale fisier", __filename);
+
+
+client=new pg.Client({
+    database:"cti_2026",
+    user:"mircea",
+    password:"mircea",
+    host:"localhost",
+    port:5432
+})
+
+client.connect()
+
+// client.query("select * from prajituri where id>3",function(err,rez){
+//     if(err){
+//         console.log(err)
+//     }
+//     else
+//         console.log(rez)
+// })
 
 const obGlobal = {
     obErori: null,
@@ -27,6 +46,49 @@ app.use("/dist", express.static(path.join(__dirname, "node_modules/bootstrap/dis
 app.get("/favicon.ico", function (req, res) {
     res.sendFile(path.join(__dirname, "resurse/imagini/favicon/favicon.ico"));
 });
+
+// PAGINA PRODUSE
+
+app.get("/produse", function(req,res){
+    clauzaWhere=""
+    if(req.query.tip){
+        clauzaWhere=`where tip_produs= '${req.query.tip}'`
+    }
+    client.query(`select * from prajituri ${clauzaWhere}`,function(err,rez){ // TO-DO:schimbat PT PROIECT
+    if(err){
+        console.log(err)
+        afisareEroare(res,2)
+    }
+    else
+        res.render("pagini/produse",{
+            produse: rez.rows,
+            optiuni:[],
+            ip: req.ip
+    })
+})
+})
+
+app.get("/produs/:id", function(req,res){
+    client.query(`select * from prajituri where id=${req.params.id}`,function(err,rez){ // TO-DO:schimbat PT PROIECT
+    if(err){
+        console.log(err)
+        afisareEroare(res,2)
+    }
+    else
+        if(rez.rowCount==0){
+            afisareEroare(res,404,"Produs inexistent")
+        }
+        else{
+
+            res.render("pagini/produs",{
+                prod: rez.rows[0],
+                ip: req.ip
+            })
+        }
+})
+})
+
+
 
 function initErori() {
     const continut = fs
@@ -75,7 +137,12 @@ function getEroareById(identificator) {
 
 function afisareEroare(res, identificator, titlu, text, imagine) {
     const eroare = getEroareById(identificator);
-
+    console.log("Eroare afișată:", {
+        identificator,
+        titlu: titlu || eroare.titlu,
+        text: text || eroare.text,
+        imagine: imagine || eroare.imagine
+    });
     const dateRandare = {
         titlu: titlu || eroare.titlu,
         text: text || eroare.text,
@@ -83,22 +150,22 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
         ip: res.req.ip
     };
 
-    if (Number.isInteger(identificator) && identificator >= 400) {
-        res.status(identificator);
-    }
+    // if (Number.isInteger(identificator) && identificator >= 400) {
+    //     res.status(identificator);
+    // }
 
-    if (identificator === 404) {
-        res.render("pagini/404", dateRandare);
-        return;
-    }
-    if (identificator === 403) {
-        res.render("pagini/403", dateRandare);
-        return;
-    }
-    if (identificator === 400) {
-        res.render("pagini/400", dateRandare);
-        return;
-    }
+    // if (identificator === 404) {
+    //     res.render("pagini/404", dateRandare);
+    //     return;
+    // }
+    // if (identificator === 403) {
+    //     res.render("pagini/403", dateRandare);
+    //     return;
+    // }
+    // if (identificator === 400) {
+    //     res.render("pagini/400", dateRandare);
+    //     return;
+    // }
 
     res.render("pagini/eroare", dateRandare);
 }
@@ -297,7 +364,7 @@ function numarAleatorIntre(minim, maxim) {
 }
 
 function amestecaVector(vect) {
-    const copie = [...vect];
+    const copie = [...vect]; // copie noua, nu doar referinta
 
     for (let indexCurent = copie.length - 1; indexCurent > 0; indexCurent--) {
         const indexAleator = Math.floor(Math.random() * (indexCurent + 1));
@@ -569,10 +636,9 @@ app.get("/galerie-img/:dimensiune/:fisier", async function (req, res) {
     }
 });
 
-app.get("/eroare", function (req, res) {
-    afisareEroare(res);
-});
 
+
+// app.get general
 app.get("/:pagina", function (req, res) {
     const pagina = req.params.pagina;
 
@@ -598,6 +664,10 @@ app.get("/:pagina", function (req, res) {
 
         res.send(rezultatRandare);
     });
+});
+
+app.get("/eroare", function (req, res) {
+    afisareEroare(res);
 });
 
 app.use(function (req, res) {
