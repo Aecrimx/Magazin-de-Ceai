@@ -5,6 +5,7 @@ const sass = require("sass");
 const sharp = require("sharp");
 const pg = require("pg");
 const app = express();
+const { Client } = require("pg");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -47,45 +48,66 @@ app.get("/favicon.ico", function (req, res) {
     res.sendFile(path.join(__dirname, "resurse/imagini/favicon/favicon.ico"));
 });
 
+// test console log query
+
+client.query("select * from unnest(enum_range(null::categorii_ceai))", function(err, rez){
+    if (err){
+        console.log("Eroare", err)
+    }
+    else{
+        console.log(rez)
+        obGlobal.optiuniMeniu=rez.rows
+        console.log("Succes!")
+    }
+})
+
 // PAGINA PRODUSE
 
-app.get("/produse", function(req,res){
-    clauzaWhere=""
-    if(req.query.tip){
-        clauzaWhere=`where tip_produs= '${req.query.tip}'`
-    }
-    client.query(`select * from prajituri ${clauzaWhere}`,function(err,rez){ // TO-DO:schimbat PT PROIECT
-    if(err){
-        console.log(err)
-        afisareEroare(res,2)
-    }
-    else
-        res.render("pagini/produse",{
-            produse: rez.rows,
-            optiuni:[],
-            ip: req.ip
-    })
-})
-})
-
-app.get("/produs/:id", function(req,res){
-    client.query(`select * from prajituri where id=${req.params.id}`,function(err,rez){ // TO-DO:schimbat PT PROIECT
-    if(err){
-        console.log(err)
-        afisareEroare(res,2)
-    }
-    else
-        if(rez.rowCount==0){
-            afisareEroare(res,404,"Produs inexistent")
+app.get("/produse", function(req, res){
+    let clauzaWhere=""
+    if (req.query.tip)
+        clauzaWhere=`where tip_produs='${req.query.tip}'`
+    client.query(`select * from ceaiuri ${clauzaWhere}`, function(err, rez){
+        if (err){
+            console.log("Eroare", err)
+            afisareEroare(res,2)
         }
         else{
-
-            res.render("pagini/produs",{
-                prod: rez.rows[0],
-                ip: req.ip
+            client.query("select * from unnest(enum_range(null::categorii_ceai))", function(err, rezOptiuni){
+                if (err){
+                    afisareEroare(res,2)
+                }
+                else{
+                    res.render("pagini/produse",{
+                        produse:rez.rows,
+                        optiuni:rezOptiuni.rows,
+                        ip:req.ip
+                    })
+                }
             })
+            
         }
+    })
 })
+
+app.get("/produs/:id", function(req, res) {
+    client.query(`SELECT * FROM ceaiuri where id=${req.params.id}`, function(err, rez){
+        if (err) {
+            console.error("Eroare la interogarea bazei de date:", err);
+            afisareEroare(res,2)
+        }
+        else {
+            if(rez.rowCount==0){
+                afisareEroare(res,404,"Produs inexistent");
+            }
+            else{
+                res.render("pagini/produs", {
+                    prod: rez.rows[0],
+                    ip: req.ip
+                })
+            }
+        }
+    });
 })
 
 
@@ -120,7 +142,7 @@ function getEroareById(identificator) {
         return {
             titlu: "Eroare",
             text: "A survenit o eroare.",
-            imagine: "/resurse/imagini/erori/interzis.png"
+            imagine: "/resurse/imagini/erori/lucrusite.png"
         };
     }
 

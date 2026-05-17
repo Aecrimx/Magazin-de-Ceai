@@ -4,10 +4,10 @@
         <meta name="description" content="Cofetaria Dulcelind ofera prajituri, torturi, produse de patiserie cu optiunea de achizitie online si livrare prin curier.">
         <meta name="keywords" content="cofetarie, Dulcelind, prajituri, torturi, dulce, pateuri, produse">
         <link rel="stylesheet" href="/resurse/css/produse.css" type="text/css" />
-        <title>Cofetăria Dulcelind - Produse</title>
+        <title>Camellie's Corner - Produse</title>
         <%- include("../fragments/header") %>     
         <script type="text/javascript" src=/resurse/js/produse.js></script>
-        <script type="text/javascript" src=/resurse/js/produse-cos.js></script>
+        <!-- <script type="text/javascript" src=/resurse/js/produse-cos.js></script> -->
 
     </head>
     <body>
@@ -16,17 +16,22 @@
     <%- include("../fragments/head") %>
 
     <main>
-        <label> Nume: <input type="text" id="inp-nume"></label>
+        <label> Nume: <input type="text" id="inp-nume" list="datalist-nume"></label>
+        <datalist id="datalist-nume">
+            <% for (let p of locals.produse) { %>
+                <option value="<%- p.nume %>"></option>
+            <% } %>
+        </datalist>
         <!--<label> Maxim calorii: <input type="number" id="inp-calorii" value="10000"></label>-->
-        <div> Calorii:<!-- trebuie sa aiba acelasi name ca sa formeze un grup -->
-            <p><label>Dietetic (calorii &lt; 350)
-                <input id="i_rad1"  name="gr_rad" value="0:350" type="radio"/>
+        <div> Gramaj:<!-- trebuie sa aiba acelasi name ca sa formeze un grup -->
+            <p><label>Mic (gramaj &lt; 100)
+                <input id="i_rad1"  name="gr_rad" value="0:100" type="radio"/>
             </label></p>
-            <p><label>Mediu (350 &le; calorii &lt; 700)
-                <input id="i_rad2"  name="gr_rad" value="350:700" type="radio"/>
+            <p><label>Mediu (100 &le; gramaj &lt; 200)
+                <input id="i_rad2"  name="gr_rad" value="100:200" type="radio"/>
             </label>
-            <p><label>Ridicat caloric (700 &le; calorii)
-                <input id="i_rad3" name="gr_rad" value="700:1000000000" type="radio"/>
+            <p><label> Mare (gramaj &ge; 200)
+                <input id="i_rad3" name="gr_rad" value="200:1000000000" type="radio"/>
             </label>
             <p><label>Toate
                 <input id="i_rad4" checked name="gr_rad" value="toate" type="radio"/>
@@ -34,7 +39,28 @@
         </div>
 
 
-        <label> Pret minim: <input type="range" id="inp-pret" value="0" min="0"  max="70"> <span id="infoRange">(0)</span></label>
+        <label> Pret minim:
+            <span id="pret-min">0</span>
+            <input type="range" id="inp-pret" value="0" min="0"  max="70">
+            <span id="pret-max">70</span>
+            <span id="infoRange">(0)</span>
+        </label>
+
+        <label> Cuvinte cheie (în descriere, separate cu virgulă):<br/>
+            <textarea id="inp-keywords" rows="2" cols="40" placeholder="ex: portocala, ghimbir"></textarea>
+        </label>
+
+        <label> Ingrediente (alege 1+):
+            <div id="checkbox-ingrediente">
+                <!-- checkbox-uri populate dinamic -->
+            </div>
+        </label>
+
+        <label> Tip produs (select multiplu):
+            <select id="inp-tip-multiplu" multiple size="4">
+                <!-- optiuni populate dinamic -->
+            </select>
+        </label>
         <label>Select simplu:
             <select id="inp-categorie">
                 <option id="sel-toate" selected value="toate">toate</option>
@@ -64,8 +90,12 @@
                         <h3 class="nume">Nume: <a href="/produs/<%-prod.id %>" ><span class="val-nume"><%- prod.nume%></span></a></h3>
                         <div class="info-prod">
                             <p class="pret">Pret: <span class="val-pret"><%- prod.pret%></span></p>
-                            <p class="calorii">Calorii: <span class="val-calorii"><%- prod.calorii%></span></p>
-                            <p class="gramaj">Gramaj: <span class="val-gramaj"><%- prod.gramaj%></span></p>
+                            <p class="descriere">Descriere: <span class="val-descriere"><%- prod.descriere%></span></p>
+                            <p style="display:none" class="val-ingrediente"><%- prod.ingrediente ? prod.ingrediente.join(',') : '' %></p>
+                            <p style="display:none" class="val-tip"><%- prod.tip_produs %></p>
+                            <% if (prod.gramaj) { %>
+                                <p class="gramaj">Gramaj: <span class="val-gramaj"><%- prod.gramaj%></span></p>
+                            <% } %>
                         </div>
                         <p class="categorie">Categorie:<span class="val-categorie"><%- prod.categorie%></span></p>
                         <figure>

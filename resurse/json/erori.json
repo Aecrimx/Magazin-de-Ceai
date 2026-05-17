@@ -3,7 +3,7 @@
     "eroare_default":{
         "titlu":"Eroare !!!",
         "text": "A survenit o eroare.",
-        "imagine":"interzis.png"
+        "imagine":"lucrusite.png"
     },
     "info_erori": [
         {
