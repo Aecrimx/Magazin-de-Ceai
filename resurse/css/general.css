@@ -63,7 +63,7 @@ body.dark {
     --culoare-tabel-tfoot: #5c4033;
     /* culori zone izolate */
     --culoare-header-bg: #7f2031;
-    --culoare-footer-bg: #5c4033;
+    --culoare-footer-bg: #211611;
     --culoare-zona-bg: #902e3f;
     --culoare-nav-item-bg: #6d4c51;
     --culoare-nav-item-hover: #8a2b3d;
@@ -75,6 +75,11 @@ body.dark {
     --culoare-nav-hamburger-start: #7f2031;
     --culoare-nav-hamburger-mid: #5c4033;
     --culoare-nav-hamburger-end: #4b3621;
+
+    --bs-heading-color: var(--culoare-text);
+    --bs-body-color: var(--culoare-text2);
+    --bs-body-bg: var(--culoare-fundal);
+    --bs-link-color: var(--culoare-highlight-verde);
 }
 
 h1 {
@@ -83,6 +88,7 @@ h1 {
     font-family: "Playwrite DK Uloopet Guides", cursive;
     font-weight: 400;
     font-style: normal;
+    color: var(--culoare-text)
 }
 
 h2 {
@@ -92,6 +98,7 @@ h2 {
     font-family: "Playwrite DK Uloopet Guides", cursive;
     font-weight: 400;
     font-style: normal;
+    color: var(--culoare-text2)
 }
 
 h3 {
@@ -101,6 +108,7 @@ h3 {
     font-family: "Playwrite DK Uloopet Guides", cursive;
     font-weight: 300;
     font-style: normal;
+    color: var(--culoare-text2)
 }
 
 h4 {
@@ -109,6 +117,7 @@ h4 {
     font-family: "Playwrite DK Uloopet Guides", cursive;
     font-weight: 400;
     font-style: normal;
+    color: var(--culoare-text2)
 }
 
 p {
@@ -134,6 +143,7 @@ main a:link {
     color: var(--culoare-highlight-verde);
 
 }
+
 /* task gradient pe link */
 main a {
     background-image: radial-gradient(circle, var(--culoare-nav-item-hover) 0%, var(--culoare-nav-item-hover) 40%, transparent 80%, transparent 100%);

@@ -43,16 +43,16 @@ INSERT INTO ceaiuri (nume, pret, gramaj, tip_produs, categorie, ingrediente, ima
 ('Ceai Floral 1', 29.99, 100, 'ceai', 'mix', ARRAY['trandafir', 'garofita'], '500_ceai-floral1.jpg', FALSE, 'Un ceai floral de calitate superioara');
 -- CEAIURI FRUCTE
 INSERT INTO ceaiuri (nume, pret, gramaj, tip_produs, categorie, ingrediente, imagine, cafeina, descriere) VALUES
-('Ceai Fructe Mix', 28.99, 100, 'ceai', 'fructe', ARRAY['mere', 'pere', 'afine'], '500_ceai-fructe-mix.jpg', FALSE, 'Un ceai cu fructe'),
-('Ceai Fructe', 27.99, 100, 'ceai', 'fructe', ARRAY['capsuni', 'zmeura'], '500_ceai-fructe.jpg', FALSE, 'Un ceai cu fructe'),
-('Ceai Fructe 2', 27.99, 100, 'ceai', 'fructe', ARRAY['piersici', 'ananas'], '500_ceai-fructe2.jpg', FALSE, 'Un ceai cu fructe'),
+('Ceai Fructe Mix', 28.99, 300, 'ceai', 'fructe', ARRAY['mere', 'pere', 'afine'], '500_ceai-fructe-mix.jpg', FALSE, 'Un ceai cu fructe'),
+('Ceai Fructe', 27.99, 40, 'ceai', 'fructe', ARRAY['capsuni', 'zmeura'], '500_ceai-fructe.jpg', FALSE, 'Un ceai cu fructe'),
+('Ceai Fructe 2', 27.99, 50, 'ceai', 'fructe', ARRAY['piersici', 'ananas'], '500_ceai-fructe2.jpg', FALSE, 'Un ceai cu fructe'),
 ('Ceai Fructe 3', 28.99, 100, 'ceai', 'fructe', ARRAY['cirese', 'citrice'], '500_ceai-fructe3.jpg', FALSE, 'Un ceai cu fructe');
 
 -- CEAIURI MIX FANCY
 INSERT INTO ceaiuri (nume, pret, gramaj, tip_produs, categorie, ingrediente, imagine, descriere) VALUES
-('Ceai Mix Fancy', 32.99, 80, 'ceai', 'mix', ARRAY['negru', 'flori', 'fructe'], '500_ceai-mix-fancy.jpg', 'Un ceai mix de calitate superioara'),
-('Ceai Mix Fancy 2', 32.99, 80, 'ceai', 'mix', ARRAY['verde', 'jasmina', 'menta'], '500_ceai-mix-fancy2.jpg', 'Un ceai mix de calitate superioara'),
-('Ceai Mix 3', 31.99, 100, 'ceai', 'mix', ARRAY['oolong', 'fructe', 'flori'], '500_ceai-mix3.jpg', 'Un ceai mix de calitate superioara');
+('Ceai Mix Fancy', 32.99, 350, 'ceai', 'mix', ARRAY['negru', 'flori', 'fructe'], '500_ceai-mix-fancy.jpg', 'Un ceai mix de calitate superioara'),
+('Ceai Mix Fancy 2', 32.99, 350, 'ceai', 'mix', ARRAY['verde', 'jasmina', 'menta'], '500_ceai-mix-fancy2.jpg', 'Un ceai mix de calitate superioara'),
+('Ceai Mix 3', 31.99, 200, 'ceai', 'mix', ARRAY['oolong', 'fructe', 'flori'], '500_ceai-mix3.jpg', 'Un ceai mix de calitate superioara');
 
 -- CEAIURI SPECIALE
 INSERT INTO ceaiuri (nume, pret, gramaj, tip_produs, categorie, imagine, descriere) VALUES

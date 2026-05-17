@@ -47,6 +47,24 @@
 
 // extra custom vars
   $enable-shadows: false,
-  $btn-border-radius: 999px
+  $btn-border-radius: 999px,
+
+  // Range Slider
+
+  // Thumb 50% mai mare decat font-zise html(1rem * 1.5 = 1.5rem)
+    $form-range-thumb-width:  1.5rem,
+  $form-range-thumb-height: 1.5rem,
+  // Culoare track (șina pe care alunecă thumbul)
+  $form-range-track-bg: #f0a4b6,
+  $form-range-track-height: 0.4rem,
+  // Culoarea thumbului — moștenește $primary (#d66074) implicit,
+  // dar o setăm explicit pentru claritate
+  $form-range-thumb-bg: #d66074,
+  $form-range-thumb-border: 0,
+  $form-range-thumb-border-radius: 1rem
+  // // Umbra thumb la focus — folosim culoarea primary cu transparență
+  // $form-range-thumb-focus-box-shadow: 0 0 0 1px #ffc0cb, 0 0 0 0.25rem rgba(#d66074, 0.25),
+  // $form-range-thumb-focus-box-shadow-width: 0.25rem,
+  // $form-range-thumb-active-bg: #c04060
 
 )
