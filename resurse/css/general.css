@@ -46,6 +46,37 @@ body {
     transition: font-size 0.3s ease-in-out;
 }
 
+body.dark {
+    --culoare-fundal: #2d1b1e;
+    --culoare-contur: #8a2b3d;
+    --culoare-text: #ffc0cb;
+    --culoare-text2: #ffb6c1;
+    --culoare-text-inversat: #ffc0cb;
+    --culoare-highlight-verde: #5c6bc0;
+    --culoare-highlight-bordeaux: #ab47bc;
+    /*culori off-pallete dar pe care am dorit sa le pastrez :p*/
+    --culoare-card-bg: #6d4c51;
+    --culoare-tabel-col1: #5c4033;
+    --culoare-tabel-col2: #4b3621;
+    --culoare-tabel-hover: #8a2b3d;
+    --culoare-tabel-bigcell: #7f2031;
+    --culoare-tabel-tfoot: #5c4033;
+    /* culori zone izolate */
+    --culoare-header-bg: #7f2031;
+    --culoare-footer-bg: #5c4033;
+    --culoare-zona-bg: #902e3f;
+    --culoare-nav-item-bg: #6d4c51;
+    --culoare-nav-item-hover: #8a2b3d;
+    --culoare-nav-submenu-bg: #5c4033;
+    --culoare-nav-border: #ab47bc;
+    --culoare-nav-border-soft: #8a2b3d;
+    --culoare-nav-text: #ffc0cb;
+    --culoare-nav-text-hover: #ffffff;
+    --culoare-nav-hamburger-start: #7f2031;
+    --culoare-nav-hamburger-mid: #5c4033;
+    --culoare-nav-hamburger-end: #4b3621;
+}
+
 h1 {
     font-size: clamp(2rem, 5vw, 3.5rem);
     transition: font-size 0.3s ease-in-out;
