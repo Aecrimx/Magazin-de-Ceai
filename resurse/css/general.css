@@ -101,6 +101,8 @@ h2 {
     color: var(--culoare-text2)
 }
 
+
+
 h3 {
     font-size: clamp(1.2rem, 2.5vw, 1.8rem);
     transition: font-size 0.3s ease-in-out;
@@ -439,6 +441,40 @@ figure.fg-img>img {
     flex-direction: column;
     align-items: center;
     text-align: center;
+}
+
+/* TASK REFLEXIE CSS */
+#p-text {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4px;
+  padding-top: 80px;
+  font-size: 2.0rem;
+  font-weight: bold;
+  user-select: none;
+}
+
+
+.p-original {
+  display: inline-block;
+  transform: skew(10deg, -45deg);
+}
+
+#p-reflexie {
+  display: inline-block;
+  /* css right to left applied */
+  transform: scaleX(-1) skew(10deg, -45deg);
+}
+
+/* culoare on hover */
+
+.p-original, #p-reflexie {
+  transition: color 0.5s ease-in-out;
+}
+
+#p-text:hover {
+    color: var(--culoare-highlight-bordeaux);
 }
 
 footer {

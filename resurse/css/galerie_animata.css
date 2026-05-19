@@ -29,7 +29,7 @@
   margin: 0;
   /* imagini vizile, sunt backgroundul fiecareia */
   opacity: 1;
-  animation: galerie-animata-cursa 42s linear infinite;
+  animation: galerie-animata-cursa 36s linear infinite;
   animation-fill-mode: both;
   will-change: transform, opacity, z-index;
 }
@@ -83,35 +83,35 @@
   0% {
     opacity: 1;
     transform: translateX(0) scale(1);
-    z-index: 8;
+    z-index: 7;
   }
-  10.2857142857% {
+  12% {
     opacity: 1;
     transform: translateX(0) scale(1);
-    z-index: 8;
+    z-index: 7;
   }
-  11.4285714286% {
+  13.3333333333% {
     opacity: 0.9;
     transform: translateX(-3.5%) scale(0.992);
-    z-index: 8;
+    z-index: 7;
   }
-  12.5714285714% {
+  14.6666666667% {
     opacity: 0.75;
     transform: translateX(3.5%) scale(0.984);
-    z-index: 8;
+    z-index: 7;
   }
-  14.2857142857% {
+  16.6666666667% {
     opacity: 0;
     transform: translateX(-2.5%) scale(0.975);
-    z-index: 8;
+    z-index: 7;
   }
-  14.2867142857% {
+  16.6676666667% {
     opacity: 0;
     transform: translateX(0) scale(1);
     z-index: 0;
   }
   /* trecere din nou la opacitate 1, asteapta ciclul*/
-  14.2957142857% {
+  16.6766666667% {
     opacity: 1;
     transform: translateX(0) scale(1);
     z-index: 0;
@@ -129,7 +129,7 @@
      imagine 2 (delay -DELAYs) incepe la 12.5% → z-index 0 (in spate/background).
      etc.
       */
-  z-index: 8;
+  z-index: 7;
 }
 
 .galerie-animata-item:nth-child(2) {
@@ -174,16 +174,6 @@
 
 .galerie-animata-item:nth-child(6) {
   animation-delay: -30s;
-  /* Z-index initial la page load.
-     imagine 1 (delay 0) incepe la 0% → z-index N+1 (in fata).
-     imagine 2 (delay -DELAYs) incepe la 12.5% → z-index 0 (in spate/background).
-     etc.
-      */
-  z-index: 0;
-}
-
-.galerie-animata-item:nth-child(7) {
-  animation-delay: -36s;
   /* Z-index initial la page load.
      imagine 1 (delay 0) incepe la 0% → z-index N+1 (in fata).
      imagine 2 (delay -DELAYs) incepe la 12.5% → z-index 0 (in spate/background).
