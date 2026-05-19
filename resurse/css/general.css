@@ -53,7 +53,7 @@ body.dark {
     --culoare-text2: #ffb6c1;
     --culoare-text-inversat: #ffc0cb;
     --culoare-highlight-verde: #5c6bc0;
-    --culoare-highlight-bordeaux: #ab47bc;
+    --culoare-highlight-bordeaux: #ff4782;
     /*culori off-pallete dar pe care am dorit sa le pastrez :p*/
     --culoare-card-bg: #6d4c51;
     --culoare-tabel-col1: #5c4033;
@@ -458,13 +458,13 @@ figure.fg-img>img {
 
 .p-original {
   display: inline-block;
-  transform: skew(10deg, -45deg);
+  transform: skew(0deg, -45deg);
 }
 
 #p-reflexie {
   display: inline-block;
   /* css right to left applied */
-  transform: scaleX(-1) skew(10deg, -45deg);
+  transform: scaleX(-1) skew(0deg, -45deg);
 }
 
 /* culoare on hover */
@@ -476,6 +476,85 @@ figure.fg-img>img {
 #p-text:hover {
     color: var(--culoare-highlight-bordeaux);
 }
+
+/* TASK HR CUSTOM */
+.custom-hr {
+    border: none;
+    height: 12px;
+    background: transparent;
+    position: relative;
+    margin: 1rem 0; /*Spatierea intre elem separate de hr*/
+    overflow: visible; /*Ca sa nu dea clip pseudourile*/
+}
+.custom-hr::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 70px;
+    background-color: var(--culoare-highlight-bordeaux);
+    clip-path: polygon(0 0, 75% 0, 100% 100%, 0 100%);
+}
+
+.custom-hr::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 80px;
+    height: 100%;
+    width: calc(100% - 80px);
+    background: linear-gradient(to right, transparent 0%, var(--culoare-highlight-bordeaux) 20%, var(--culoare-highlight-bordeaux) 100%);
+}
+
+/* TASK DUOTONE */
+
+#bebe-duotone {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 5% 5%;
+    background-image: url("/resurse/imagini/ceainic_bebe.jpg");
+    background-size: cover;
+    background-position: center;
+    filter:brightness(200%) grayscale(0) ;
+    transition:all 2s linear;
+}
+
+#bebe-duotone:after, #bebe-duotone:before{
+    content:" ";
+    position:absolute;
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+    transition:all 2s linear;
+}
+
+#bebe-duotone:after{
+    background-color:rgb(255, 0, 208);
+    mix-blend-mode:lighten;
+}
+
+#bebe-duotone:before{
+    background-color:rgb(255, 158, 158);
+    mix-blend-mode:darken;
+}
+
+#bebe-duotone:hover:after{
+    background-color:rgb(138, 43, 61);
+}
+
+#bebe-duotone:hover:before{
+    background-color:rgb(61, 90, 64);
+}
+
+/* #bebe-duotone img { */
+    /* filter: grayscale(100%) sepia(100%) hue-rotate(300deg) saturate(150%); */
+    /*grayscale face poza alb negru, sepia da o tenta de maro, hue-rotate schimba nuanta, saturate intensifica culorile*/
+    /* transition: filter 0.5s ease-in-out; */
+/* } */
+
 
 footer {
     background-color: var(--culoare-footer-bg);

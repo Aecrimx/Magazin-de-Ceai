@@ -350,7 +350,7 @@ function construiesteModelGalerie() {
             if (!Array.isArray(img.intervale_ore)) {
                 return false;
             }
-
+            // .some - mmetod dearray care returneaza true daca gaseste un element ce satisface conditia
             return img.intervale_ore.some((interval) => esteInIntervalStrictSameDay(oraCurenta, interval));
         })
         .map((img) => {
