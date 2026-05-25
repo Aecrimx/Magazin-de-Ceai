@@ -1,4 +1,5 @@
 <script src = "/resurse/js/schimba_tema.js"></script>
+<script src = "/resurse/js/cookies.js"></script>
 <nav id="menu-site">
     <label id="hamburger" for="ch-menu" aria-label="Deschide meniul principal">
         <span class="hamburger-container" aria-hidden="true">
@@ -16,9 +17,9 @@
             </a>
             <ul>
                 <!-- TODO: De adaugat link-uri reale ulterior... -->
-                <li><a href="index/#welcome">Bine ați venit</a></li>
-                <li><a href="index/#promotii">Promoții</a></li>
-                <li><a href="index/#orar">Program</a></li>
+                <li><a href="/#welcome">Bine ați venit</a></li>
+                <li><a href="/#promotii">Promoții</a></li>
+                <li><a href="/#orar">Program</a></li>
             </ul>
         </li>
         <li>
@@ -37,6 +38,9 @@
                         </li>
                     <% } %>
                 <% } %>
+                <li id="ultimul-produs-item" style="display:none;">
+                    <a href="#" id="ultimul-produs-link">Ultimul produs vizitat</a>
+                </li>
             </ul>
         </li>
         <li>
@@ -64,6 +68,16 @@
         </li>
     </ul>
 </nav>
+<script>
+    // ultimul produs vizitat
+    window.addEventListener("load", function(){
+        const lastProductId = getCookie("ultimulProdusClic");
+        if (lastProductId) {
+            document.getElementById("ultimul-produs-item").style.display = "block";
+            document.getElementById("ultimul-produs-link").href = "/produs/" + lastProductId;
+        }
+    });
+</script>
 <section id="test">
     <header class="c1" id="titlu">
         <h1 id="t">Camellie's <span>Corner</span></h1>

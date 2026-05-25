@@ -26,12 +26,16 @@
                     <p>Data adăugare: <span class="categorie"><%- locals.prod.data_adaugare %> </span></p>
                     <figure class="imag-produs">
                         <img  src="/resurse/imagini/galerie/<%- locals.prod.imagine %>" alt="[imagine <%- locals.prod.nume %>]" />
-                    </figure>    
+                    </figure>
                 </article>
             
         </section>
     </main>
 
     <%- include("../fragments/footer") %>
+    <script src="/resurse/js/cookies.js"></script>
+    <script>
+        setCookie("ultimulProdusClic", "<%= locals.prod.id %>", 86400000);
+    </script>
     </body>
 </html>

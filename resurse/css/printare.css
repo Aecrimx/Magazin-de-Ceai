@@ -86,6 +86,10 @@
 		background: white;
 	}
 
+	#banner-proiect-scolar {
+		display: none !important;
+	}
+
 	body::after { /* Watermark */
 		content: "Popa Mircea Alexandru";
 		position: fixed;

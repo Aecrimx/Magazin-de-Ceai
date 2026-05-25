@@ -43,7 +43,55 @@ body {
     --padding-zona: 18px;
 
     background-color: var(--culoare-fundal);
+    padding-bottom: 4.5rem;
     transition: font-size 0.3s ease-in-out;
+}
+
+#banner-proiect-scolar {
+    --c1: var(--culoare-fundal);
+    --c2: var(--culoare-contur);
+    --c3: var(--culoare-highlight-bordeaux);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.8rem 1rem;
+    margin: 0;
+    z-index: 9998;
+    border-top: 4px solid var(--c3);
+    background-color: var(--c2);
+    color: var(--culoare-text);
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    transform: translateX(-100%);
+    animation: banner-proiect-scolar-animatie 5s linear forwards;
+}
+
+@keyframes banner-proiect-scolar-animatie {
+    0% {
+        transform: translateX(-100%);
+        background-color: var(--c1);
+        border-top-color: var(--c3);
+    }
+
+    25% {
+        background-color: var(--c2);
+        border-top-color: var(--c3);
+    }
+
+    50% {
+        transform: translateX(0);
+        background-color: var(--c3);
+        border-top-color: var(--c2);
+    }
+
+    100% {
+        transform: translateX(0);
+        background-color: var(--c2);
+        border-top-color: var(--c3);
+    }
 }
 
 body.dark {
@@ -833,6 +881,11 @@ footer {
     animation: none !important;
    }
 
+    #banner-proiect-scolar {
+        animation: none !important;
+        transform: translateX(0) !important;
+    }
+
     nav#menu-site #hamburger .hamburger-container .bar {
         animation: initial !important;
     }
@@ -886,6 +939,11 @@ footer {
 
     * {
     animation: none !important;
+    }
+
+    #banner-proiect-scolar {
+        animation: none !important;
+        transform: translateX(0) !important;
     }
 
     nav#menu-site #hamburger .hamburger-container .bar {
