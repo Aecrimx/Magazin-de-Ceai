@@ -1,0 +1,173 @@
+@keyframes anim-hamburger1 {
+  0% {
+    opacity: 0;
+    transform: rotate(-45deg) scaleX(0.2);
+    background: transparent;
+  }
+  50% {
+    transform: rotate(8deg) scaleX(1.15);
+    background: var(--culoare-nav-text-hover);
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scaleX(1);
+    background: var(--culoare-nav-item-hover);
+  }
+}
+@keyframes anim-hamburger2 {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) scaleX(0.2);
+    background: transparent;
+  }
+  50% {
+    transform: rotate(-6deg) scaleX(1.1);
+    background: var(--culoare-nav-text-hover);
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scaleX(1);
+    background: var(--culoare-nav-item-hover);
+  }
+}
+@keyframes anim-hamburger3 {
+  0% {
+    opacity: 0;
+    transform: rotate(-90deg) scaleX(0.2);
+    background: transparent;
+  }
+  50% {
+    transform: rotate(4deg) scaleX(1.12);
+    background: var(--culoare-nav-text-hover);
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scaleX(1);
+    background: var(--culoare-nav-item-hover);
+  }
+}
+nav#menu-site ul.meniu > li {
+  width: 180px;
+  min-height: 48px;
+  border: 1px solid var(--culoare-nav-border);
+  background: var(--culoare-nav-item-bg);
+  border-radius: 8px;
+}
+
+nav#menu-site ul.meniu > li > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 48px;
+  color: var(--culoare-nav-text);
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav#menu-site {
+  --latime-buton: 180px;
+  --inaltime-buton: 48px;
+  position: relative;
+  z-index: 30;
+}
+nav#menu-site #hamburger,
+nav#menu-site #ch-menu {
+  display: none;
+}
+nav#menu-site ul.meniu,
+nav#menu-site ul.meniu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav#menu-site ul.meniu {
+  display: flex;
+  gap: 0.35rem;
+  justify-content: center;
+}
+nav#menu-site ul.meniu > li {
+  position: relative;
+  font-weight: 700;
+}
+nav#menu-site ul.meniu > li:hover > a, nav#menu-site ul.meniu > li:focus-within > a {
+  background: var(--culoare-nav-item-hover);
+  color: var(--culoare-nav-text-hover);
+}
+nav#menu-site ul.meniu > li:hover > a .text-icon, nav#menu-site ul.meniu > li:focus-within > a .text-icon {
+  font-size: 1.13rem;
+}
+nav#menu-site ul.meniu > li .imag-icon {
+  display: inline-flex;
+  font-size: 1.05rem;
+}
+nav#menu-site ul.meniu > li .text-icon {
+  font-size: 1rem;
+  transition: font-size 0.3s ease;
+}
+nav#menu-site ul.meniu ul {
+  position: absolute;
+  top: calc(100% + 1px);
+  left: 0;
+  min-width: 100%;
+  background: var(--culoare-nav-submenu-bg);
+  border: 1px solid var(--culoare-nav-border);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  transform: scaleY(0);
+  transform-origin: top center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.28s ease, opacity 0.22s ease;
+}
+nav#menu-site ul.meniu ul li {
+  border-bottom: 1px solid var(--culoare-nav-border-soft);
+}
+nav#menu-site ul.meniu ul li:last-child {
+  border-bottom: none;
+}
+nav#menu-site ul.meniu ul a {
+  position: relative;
+  display: block;
+  padding: 0.65rem 1.2rem;
+  color: var(--culoare-nav-text);
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+nav#menu-site ul.meniu ul a::before, nav#menu-site ul.meniu ul a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  transform: scaleY(0);
+  transform-origin: center top;
+  transition: transform 0.3s ease;
+}
+nav#menu-site ul.meniu ul a::before {
+  left: 0;
+  background: linear-gradient(to right, var(--culoare-header-bg), var(--culoare-nav-item-hover));
+}
+nav#menu-site ul.meniu ul a::after {
+  right: 0;
+  background: linear-gradient(to left, var(--culoare-header-bg), var(--culoare-nav-item-hover));
+}
+nav#menu-site ul.meniu ul a:hover, nav#menu-site ul.meniu ul a:focus-visible {
+  background: var(--culoare-nav-item-hover);
+  color: var(--culoare-nav-text-hover);
+}
+nav#menu-site ul.meniu ul a:hover::before, nav#menu-site ul.meniu ul a:hover::after, nav#menu-site ul.meniu ul a:focus-visible::before, nav#menu-site ul.meniu ul a:focus-visible::after {
+  transform: scaleY(1);
+}
+nav#menu-site ul.meniu > li:hover > ul,
+nav#menu-site ul.meniu > li:focus-within > ul {
+  transform: scaleY(1);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}

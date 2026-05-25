@@ -27,9 +27,16 @@
                 <span class="text-icon">Produse</span>
             </a>
             <ul>
-                <li><a href="/produse">Catalog produse</a></li>
-                <li><a href="/produse?tip=ceai-verde">Ceai verde</a></li>
-                <li><a href="/produse?tip=accesorii">Accesorii</a></li>
+                <li><a href="/produse">Toate produsele</a></li>
+                <% if (typeof optiuniMeniu !== "undefined" && Array.isArray(optiuniMeniu)) { %>
+                    <% for (let categorie of optiuniMeniu) { %>
+                        <li>
+                            <a href="/produse?categorie=<%= encodeURIComponent(categorie.unnest) %>">
+                                <%= categorie.unnest.charAt(0).toUpperCase() + categorie.unnest.slice(1) %>
+                            </a>
+                        </li>
+                    <% } %>
+                <% } %>
             </ul>
         </li>
         <li>
@@ -63,8 +70,7 @@
         <a href="/resurse/imagini/siglatemporara_trans.png" target="_blank">
             <img src="/resurse/imagini/siglatemporara_trans.png" alt="sigla" />
         </a>
-        <button class = "btn btn-outline-primary" id="schimba_tema">
-            <span class="bi bi-sun"> Schimba tema</span>
+        <button class = "btn btn-outline-primary" id="schimba_tema"><span class="bi bi-sun"></span>
         </button>
     </header>
 </section>

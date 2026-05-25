@@ -6,6 +6,7 @@
         <title>Camellie's Corner - Produse</title>
         <%- include("../fragments/header") %>     
         <script type="text/javascript" src=/resurse/js/produse.js></script>
+        <script type="text/javascript" src="/resurse/js/bootstrap_js.js"></script>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     </head>
@@ -44,11 +45,11 @@
             <div class="col-sm-12 col-lg-4">
                 <label for="inp-pret" class="form-label fw-semibold">
                     Preț minim:
-                    <span id="pret-min">0</span> –
-                    <span id="pret-max">70</span> lei
-                    <span id="infoRange" class="text-primary fw-bold">(0)</span>
+                    <span id="pret-min"><%- typeof pretMin !== 'undefined' ? pretMin : 0 %></span> –
+                    <span id="pret-max"><%- typeof pretMax !== 'undefined' ? pretMax : 0 %></span> lei
+                    <span id="infoRange" class="text-primary fw-bold">(<%- typeof pretMin !== 'undefined' ? pretMin : 0 %>)</span>
                 </label>
-                <input type="range" class="form-range" id="inp-pret" value="0" min="0" max="70">
+                <input type="range" class="form-range" id="inp-pret" value="<%- typeof pretMin !== 'undefined' ? pretMin : 0 %>" min="<%- typeof pretMin !== 'undefined' ? pretMin : 0 %>" max="<%- typeof pretMax !== 'undefined' ? pretMax : 0 %>">
             </div>
 
             <!-- Gramaj — radio toggle buttons -->
@@ -127,7 +128,7 @@
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
                 <% for( let prod of locals.produse) { %>
-                    <div class="col produs">
+                    <div class="col produs" style="opacity: 0; transform: translateY(10px); transition: opacity 300ms ease, transform 300ms ease;">
                         <article class="card h-100">
                             <a href="/produs/<%-prod.id %>">
                                 <img src="/resurse/imagini/produse/<%- prod.imagine %>" class="card-img-top img-fluid" alt="imagine <%- prod.nume %>">

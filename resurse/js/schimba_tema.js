@@ -5,12 +5,12 @@ function updateThemeIcon() {
     if(document.body.classList.contains("dark")){
         span.classList.remove("bi-sun");
         span.classList.add("bi-moon");
-        span.textContent = " Schimba tema";
+        // span.textContent = " Schimba tema";
     }
     else{
         span.classList.remove("bi-moon");
         span.classList.add("bi-sun");
-        span.textContent = " Schimba tema";
+        // span.textContent = " Schimba tema";
     }
 }
 

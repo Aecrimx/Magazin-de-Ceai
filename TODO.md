@@ -82,3 +82,10 @@
 - se va umbla la grid-area la coordonate.
 - exemplu counter: curs4-exemple.
 - BONUS galeria animata va fi la lab 211 i inregistrare 7 aprilie
+
+# CURS 7.1
+- s-a updatat folderul curs 7. acum e tot ce trb pt a initializa baza de date sql
+- ij cont voi lucra pe acel folder
+- am facut systemctl service postgresql.
+- se va face setup frumos pt a avea super user si un user cu privilegii(de bun simt obv duubhh)
+- fata de oraclesql, postgresql foloseste serial pt id-uri auto incrementing

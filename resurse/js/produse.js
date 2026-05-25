@@ -207,14 +207,17 @@ window.onload = function () {
     document.getElementById("resetare").onclick = function () {
         if (!confirm('Sigur doriți să resetați filtrele?')) return
 
+        const inpPret = document.getElementById("inp-pret")
+        const pretMin = inpPret.min || '0'
+
         document.getElementById("inp-nume").value = ""
-        document.getElementById("inp-pret").value = "0"
-        document.getElementById("infoRange").innerHTML = "(0)"
+        inpPret.value = pretMin
+        document.getElementById("infoRange").innerHTML = `(${pretMin})`
 
         const pretMinSpan = document.getElementById('pret-min')
-        if (pretMinSpan) pretMinSpan.innerText = document.getElementById('inp-pret').min || '0'
+        if (pretMinSpan) pretMinSpan.innerText = pretMin
         const pretMaxSpan = document.getElementById('pret-max')
-        if (pretMaxSpan) pretMaxSpan.innerText = document.getElementById('inp-pret').max || '70'
+        if (pretMaxSpan) pretMaxSpan.innerText = inpPret.max || '0'
 
         document.getElementById("inp-categorie").value = "toate"
         document.getElementById("i_rad4").checked = true
