@@ -129,7 +129,7 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
                 <% for( let prod of locals.produse) { %>
                     <div class="col produs" style="opacity: 0; transform: translateY(10px); transition: opacity 300ms ease, transform 300ms ease;">
-                        <article class="card h-100">
+                        <article class="card h-100 card-produs" role="button" tabindex="0" aria-label="Deschide detalii produs în fereastră modală">
                             <a href="/produs/<%-prod.id %>">
                                 <img src="/resurse/imagini/produse/<%- prod.imagine %>" class="card-img-top img-fluid" alt="imagine <%- prod.nume %>">
                             </a>
@@ -142,6 +142,8 @@
                                 <p class="text-muted mb-2">Categorie: <span class="val-categorie"><%- prod.categorie%></span></p>
                                 <p style="display:none" class="val-ingrediente"><%- prod.ingrediente ? prod.ingrediente.join(',') : '' %></p>
                                 <p style="display:none" class="val-tip"><%- prod.tip_produs %></p>
+                                <p style="display:none" class="val-cafeina"><%- prod.cafeina ? 'Da' : 'Nu' %></p>
+                                <p style="display:none" class="val-data-adaugare"><%- prod.data_adaugare.toLocaleDateString('ro-RO') %></p>
                                 <% if (prod.gramaj) { %>
                                     <p class="mb-2">Gramaj: <span class="val-gramaj"><%- prod.gramaj%></span></p>
                                 <% } %>
@@ -158,6 +160,38 @@
                 <% } %>
             </div>
         </section>
+        <!-- BONUS 11 ETAPA 6 MODAL -->
+        <div class="modal fade" id="modal-produs" tabindex="-1" aria-labelledby="modal-produs-titlu" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-produs-titlu">Detalii produs</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Închide"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="col-md-5 text-center">
+                                <img id="modal-produs-imagine" src="" alt="Imagine produs" class="img-fluid rounded">
+                            </div>
+                            <div class="col-md-7">
+                                <p class="mb-2"><strong>Preț:</strong> <span id="modal-produs-pret">-</span> lei</p>
+                                <p class="mb-2"><strong>Descriere:</strong> <span id="modal-produs-descriere">-</span></p>
+                                <p class="mb-2"><strong>Ingrediente:</strong> <span id="modal-produs-ingrediente">-</span></p>
+                                <p class="mb-2"><strong>Gramaj:</strong> <span id="modal-produs-gramaj">-</span></p>
+                                <p class="mb-2"><strong>Categorie:</strong> <span id="modal-produs-categorie">-</span></p>
+                                <p class="mb-2"><strong>Tip produs:</strong> <span id="modal-produs-tip">-</span></p>
+                                <p class="mb-2"><strong>Cafeină:</strong> <span id="modal-produs-cafeina">-</span></p>
+                                <p class="mb-0"><strong>Data adăugare:</strong> <span id="modal-produs-data">-</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                        <a id="modal-btn-pagina-produs" href="#" class="btn btn-primary">Pagina produsului</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </main>
 

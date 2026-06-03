@@ -229,6 +229,17 @@ main a[href^="http"]:hover::before {
     color: var(--culoare-highlight-verde);
 }
 
+/* fix pt bootstrap culoare titlu card produse la tematica siteului */
+body.dark .card-produs .card-title a,
+body.dark .card-produs .card-title a.text-dark {
+    color: var(--culoare-text) !important;
+}
+
+body.dark .card-produs .card-title a:hover,
+body.dark .card-produs .card-title a:focus {
+    color: var(--culoare-highlight-verde) !important;
+}
+
 
 
 #welcome {
@@ -511,7 +522,6 @@ figure.fg-img>img {
 
 #p-reflexie {
   display: inline-block;
-  /* css right to left applied */
   transform: scaleX(-1) skew(0deg, -45deg);
 }
 

@@ -1,11 +1,61 @@
 window.onload = function () {
+    // BONUS 3 ETAPA 6
+    function afiseazaMesajFaraProduse(afiseaza) {
+        const sectiuneProduse = document.getElementById("produse")
+        if (!sectiuneProduse) return
+
+        let mesaj = document.getElementById("mesaj-fara-produse")
+
+        if (afiseaza) {
+            if (!mesaj) {
+                mesaj = document.createElement("p")
+                mesaj.id = "mesaj-fara-produse"
+                mesaj.className = "alert alert-warning mt-3"
+                mesaj.setAttribute("role", "alert")
+                mesaj.textContent = "Nu există produse care să corespundă filtrării curente."
+                sectiuneProduse.insertAdjacentElement("afterbegin", mesaj)
+            } else {
+                mesaj.style.display = "block"
+            }
+        } else if (mesaj) {
+            mesaj.style.display = "none"
+        }
+    }
+    // BONUS 15 ETAPA 6
+    function afiseazaCounterProduse(nrProduse) {
+        let counter = document.getElementById("counter-produse-afisate")
+        if (!counter) {
+            counter = document.createElement("p")
+            counter.id = "counter-produse-afisate"
+            counter.className = "text-muted mb-3"
+
+            const pSuma = document.getElementById("p-suma")
+            if (pSuma && pSuma.parentElement) {
+                pSuma.insertAdjacentElement("afterend", counter)
+            } else {
+                const sectiuneProduse = document.getElementById("produse")
+                if (sectiuneProduse && sectiuneProduse.parentElement) {
+                    sectiuneProduse.parentElement.insertBefore(counter, sectiuneProduse)
+                }
+            }
+        }
+
+        counter.textContent = `Produse afișate: ${nrProduse}`
+    }
+
+    document.getElementById("inp-pret").oninput = function () {
+        let val = this.value.trim()
+        document.getElementById("infoRange").innerHTML = `(${val})`
+        aplicaFiltre()
+    }
 
     document.getElementById("inp-pret").onchange = function () {
         let val = this.value.trim()
         document.getElementById("infoRange").innerHTML = `(${val})`
+        aplicaFiltre()
     }
 
-    // store original order so reset can restore it
+    // reset origianl order
     let originalOrder = null
 
     // ── Populare filtre dinamice ─────────────────────────────────────────────
@@ -39,7 +89,7 @@ window.onload = function () {
             }
         }
 
-        // ── Ingrediente → btn-check outline ──────────────────────────────────
+        // ── Ingrediente -> btn-check outline ──────────────────────────────────
         const container = document.getElementById("checkbox-ingrediente")
         container.innerHTML = ""
 
@@ -69,7 +119,7 @@ window.onload = function () {
             container.appendChild(lbl)
         }
 
-        // ── Tip produs → btn-check outline (înlocuiește select multiple) ─────
+        // ── Tip produs --> btn-check outline (înlocuiește select multiple) ─────
         const tipContainer = document.getElementById('inp-tip-multiplu')
         tipContainer.innerHTML = ''
 
@@ -97,7 +147,7 @@ window.onload = function () {
     populateDynamicFilters()
 
     // ── Filtrare ─────────────────────────────────────────────────────────────
-    document.getElementById("filtrare").onclick = function () {
+    function aplicaFiltre() {
         let inpNume = document.getElementById("inp-nume").value.trim().toLowerCase()
 
         let grupRadio = document.getElementsByName("gr_rad")
@@ -132,6 +182,7 @@ window.onload = function () {
             .filter(c => c.checked).map(c => c.value)
 
         let produse = document.getElementsByClassName("produs")
+        let nrProduseAfisate = 0
         for (let prod of produse) {
             prod.style.display = "none"
 
@@ -180,9 +231,131 @@ window.onload = function () {
 
             if (cond1 && cond2 && cond3 && cond4 && condKw && condIngred && condTip) {
                 prod.style.display = "block"
+                nrProduseAfisate++
             }
         }
+
+        afiseazaMesajFaraProduse(nrProduseAfisate === 0)
+        afiseazaCounterProduse(nrProduseAfisate)
     }
+
+    document.getElementById("filtrare").onclick = aplicaFiltre
+
+    // ── Filtrare live (onchange / input) ────────────────────────────────────
+    // BONUS 4 ETAPA 6
+    document.getElementById("inp-nume").addEventListener("input", aplicaFiltre)
+    document.getElementById("inp-categorie").addEventListener("change", aplicaFiltre)
+    document.getElementById("inp-keywords").addEventListener("input", aplicaFiltre)
+
+    const radioGramaj = document.getElementsByName("gr_rad")
+    for (let rad of radioGramaj) {
+        rad.addEventListener("change", aplicaFiltre)
+    }
+
+    const containerIngrediente = document.getElementById("checkbox-ingrediente")
+    if (containerIngrediente) {
+        containerIngrediente.addEventListener("change", function (e) {
+            if (e.target && e.target.classList.contains("chk-ingred")) {
+                aplicaFiltre()
+            }
+        })
+    }
+
+    const containerTip = document.getElementById("inp-tip-multiplu")
+    if (containerTip) {
+        containerTip.addEventListener("change", function (e) {
+            if (e.target && e.target.classList.contains("chk-tip")) {
+                aplicaFiltre()
+            }
+        })
+    }
+
+    // ── Modal produs (click pe card) BONUS 11 ETAPA 6 ────────────────────────────────────────
+    function initModalProduse() {
+        const modalEl = document.getElementById("modal-produs")
+        if (!modalEl || typeof bootstrap === "undefined") return
+
+        const modal = new bootstrap.Modal(modalEl)
+
+        const titluEl = document.getElementById("modal-produs-titlu")
+        const pretEl = document.getElementById("modal-produs-pret")
+        const descriereEl = document.getElementById("modal-produs-descriere")
+        const ingredienteEl = document.getElementById("modal-produs-ingrediente")
+        const gramajEl = document.getElementById("modal-produs-gramaj")
+        const categorieEl = document.getElementById("modal-produs-categorie")
+        const tipEl = document.getElementById("modal-produs-tip")
+        const cafeinaEl = document.getElementById("modal-produs-cafeina")
+        const dataEl = document.getElementById("modal-produs-data")
+        const imgEl = document.getElementById("modal-produs-imagine")
+        const btnPaginaProdusEl = document.getElementById("modal-btn-pagina-produs")
+
+        function textDinProdus(prod, cls, fallback = "-") {
+            const el = prod.getElementsByClassName(cls)[0]
+            if (!el) return fallback
+            const txt = el.textContent.trim()
+            return txt || fallback
+        }
+
+        function deschideModalProdus(prod) {
+            const nume = textDinProdus(prod, "val-nume")
+            const pret = textDinProdus(prod, "val-pret", "0")
+            const descriere = textDinProdus(prod, "val-descriere")
+            const ingrediente = textDinProdus(prod, "val-ingrediente")
+            const gramaj = textDinProdus(prod, "val-gramaj")
+            const categorie = textDinProdus(prod, "val-categorie")
+            const tip = textDinProdus(prod, "val-tip")
+            const cafeina = textDinProdus(prod, "val-cafeina")
+            const dataAdaugare = textDinProdus(prod, "val-data-adaugare")
+
+            const linkProdusEl = prod.querySelector('a[href^="/produs/"]')
+            const hrefProdus = linkProdusEl ? linkProdusEl.getAttribute("href") : "#"
+
+            const imgCardEl = prod.querySelector("img")
+
+            titluEl.textContent = nume
+            pretEl.textContent = pret
+            descriereEl.textContent = descriere
+            ingredienteEl.textContent = ingrediente
+            gramajEl.textContent = gramaj
+            categorieEl.textContent = categorie
+            tipEl.textContent = tip
+            cafeinaEl.textContent = cafeina
+            dataEl.textContent = dataAdaugare
+
+            if (imgCardEl) {
+                imgEl.src = imgCardEl.getAttribute("src") || ""
+                imgEl.alt = imgCardEl.getAttribute("alt") || `imagine ${nume}`
+            }
+
+            btnPaginaProdusEl.href = hrefProdus || "#"
+
+            modal.show()
+        }
+
+        const carduri = document.querySelectorAll(".card-produs")
+        for (let card of carduri) {
+            card.addEventListener("click", function (e) {
+                const tinta = e.target
+                if (tinta.closest(".select-cos") || tinta.closest("input.select-cos")) {
+                    return
+                }
+
+                e.preventDefault()
+                const prod = this.closest(".produs")
+                if (prod) deschideModalProdus(prod)
+            })
+
+            card.addEventListener("keydown", function (e) {
+                if (e.key !== "Enter" && e.key !== " ") return
+
+                e.preventDefault()
+                const prod = this.closest(".produs")
+                if (prod) deschideModalProdus(prod)
+            })
+        }
+    }
+
+    initModalProduse()
 
     // ── Sortare ───────────────────────────────────────────────────────────────
     function sorteaza(semn) {
@@ -226,6 +399,9 @@ window.onload = function () {
         for (let prod of produse) {
             prod.style.display = "block"
         }
+
+        afiseazaMesajFaraProduse(false)
+        afiseazaCounterProduse(produse.length)
 
         // reset keywords
         const kw = document.getElementById('inp-keywords')
@@ -280,5 +456,7 @@ window.onload = function () {
             }
         }
     }
+
+    afiseazaCounterProduse(document.getElementsByClassName("produs").length)
 
 }

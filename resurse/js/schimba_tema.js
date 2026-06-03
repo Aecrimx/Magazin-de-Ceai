@@ -15,12 +15,12 @@ function updateThemeIcon() {
 }
 
 window.addEventListener("DOMContentLoaded", function(){
-    // Set initial theme from localStorage
+    // set tema initiala
     if(localStorage.getItem("tema") === "dark"){
-        document.body.classList.add("dark");
+        document.body.classList.add("dark"); // classList vector de clase css
     }
     
-    // Update icon on page load
+    //update
     updateThemeIcon();
     
     document.getElementById("schimba_tema").onclick= function(){
